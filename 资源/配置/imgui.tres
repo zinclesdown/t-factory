@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ImGuiConfig" load_steps=5 format=3 uid="uid://de1w7ypl72qu4"]
+
+[ext_resource type="Script" uid="uid://bgxbuq8c32mm1" path="res://addons/imgui-godot/scripts/ImGuiConfig.gd" id="1_72cxc"]
+[ext_resource type="FontFile" uid="uid://bb5on3wmxes77" path="res://资源/字体/VonwaonBitmap-16px.ttf" id="1_xu26f"]
+[ext_resource type="Script" uid="uid://ich6rjhhuy5h" path="res://addons/imgui-godot/scripts/ImGuiFont.gd" id="2_b6qx4"]
+
+[sub_resource type="Resource" id="Resource_4ra0v"]
+script = ExtResource("2_b6qx4")
+FontData = ExtResource("1_xu26f")
+FontSize = 16
+Merge = true
+metadata/_custom_type_script = "uid://ich6rjhhuy5h"
+
+[resource]
+script = ExtResource("1_72cxc")
+Scale = 1.0
+IniFilename = "user://imgui.ini"
+Renderer = "Dummy"
+Layer = 128
+AddDefaultFont = true
+Fonts = [SubResource("Resource_4ra0v")]
+metadata/_custom_type_script = "uid://bgxbuq8c32mm1"

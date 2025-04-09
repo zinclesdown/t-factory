@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd7pnekctbkl8"]
+
+[ext_resource type="Script" uid="uid://ckn2eeoxt1k3o" path="res://addons/focus-clock/clock.gd" id="1_yppao"]
+
+[node name="Clock" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -11.5
+offset_right = 49.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yppao")
+
+[node name="ClockDisplayer" type="MenuButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = " 2025年4月5日星期六   0:53:58 "
+flat = false
+item_count = 2
+popup/item_0/text = "长日期"
+popup/item_0/id = 0
+popup/item_1/text = "短日期"
+popup/item_1/id = 1
+
+[connection signal="pressed" from="ClockDisplayer" to="." method="_on_clock_displayer_pressed"]

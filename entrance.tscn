@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1pme7iu4igj2"]
+
+[sub_resource type="GDScript" id="GDScript_wlost"]
+resource_name = "_entrance"
+script/source = "extends Node
+
+## 开始场景。
+
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Entrance" type="Node"]
+script = SubResource("GDScript_wlost")
