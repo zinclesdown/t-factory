@@ -36,10 +36,22 @@ func _process(_delta: float) -> void:
 
 ## 绘制 "放置框"
 func _draw() -> void:
-	draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0,0)), 图块大小*(当前鼠标图块坐标+Vector2i(0,1)), Color.RED)
-	draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0,1)), 图块大小*(当前鼠标图块坐标+Vector2i(1,1)), Color.RED)
-	draw_line(图块大小*(当前鼠标图块坐标+Vector2i(1,1)), 图块大小*(当前鼠标图块坐标+Vector2i(1,0)), Color.RED)
-	draw_line(图块大小*(当前鼠标图块坐标+Vector2i(1,0)), 图块大小*(当前鼠标图块坐标+Vector2i(0,0)), Color.RED)
+	if _当前手上的蓝图实例:
+		var 构筑物大小X := _当前手上的蓝图实例.构筑物大小.x
+		var 构筑物大小Y := _当前手上的蓝图实例.构筑物大小.y
+		
+		var 颜色:Color
+		if 可放置建筑层.是否可在位置放置构筑物实例_Atom(_当前手上的蓝图实例, 当前鼠标图块坐标):
+			颜色 = Color.GREEN
+		else:
+			颜色 = Color.RED
+		
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 颜色, 4)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 颜色, 4)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 颜色, 4)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 颜色, 4)
+		
+		
 
 
 func _ready() -> void:
