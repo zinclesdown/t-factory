@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://ejcx85unsfv"]
+
+[ext_resource type="Script" uid="uid://buv5tvcv3sb2j" path="res://全局/资源管理器.gd" id="1_0ai83"]
+[ext_resource type="PackedScene" uid="uid://bwq880qf83tvj" path="res://实体/构筑物蓝图/特斯拉塔_蓝图.tscn" id="2_2ej71"]
+[ext_resource type="PackedScene" uid="uid://cc34n7n7isjm0" path="res://实体/构筑物蓝图/机枪塔_蓝图.tscn" id="3_x7av8"]
+
+[node name="资源管理器" type="Node"]
+script = ExtResource("1_0ai83")
+"蓝图预制件_特斯拉塔" = ExtResource("2_2ej71")
+"蓝图预制件_机枪塔" = ExtResource("3_x7av8")

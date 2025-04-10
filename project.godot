@@ -22,6 +22,7 @@ config/icon="res://资源/图像/icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+"资源管理器"="*res://全局/资源管理器.tscn"
 
 [editor_plugins]
 

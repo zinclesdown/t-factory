@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwq880qf83tvj"]
+
+[ext_resource type="PackedScene" uid="uid://ciog2a0j8cbj0" path="res://实体/构筑物蓝图/base/构筑物蓝图.tscn" id="1_4uq2i"]
+[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/Tesla_tower.png" id="2_3yg21"]
+[ext_resource type="PackedScene" uid="uid://cmugc0xu3wc5h" path="res://实体/构筑物实例/特斯拉塔_构筑物.tscn" id="2_if1v8"]
+
+[node name="构筑物蓝图" instance=ExtResource("1_4uq2i")]
+"对应的构筑物预制件" = ExtResource("2_if1v8")
+"构筑物大小" = Vector2i(1, 3)
+
+[node name="构筑物范围" parent="." index="0"]
+offset_right = 32.0
+offset_bottom = 96.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.22, 0.623, 1, 0.745098)
+texture = ExtResource("2_3yg21")
+centered = false

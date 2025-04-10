@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chf0283yq0poi"
-path="res://.godot/imported/idle.png-c91d4574f1ac18f8ca34efd57a3ab395.ctex"
+uid="uid://duf2vdf4iy6p5"
+path="res://.godot/imported/Tesla_tower.png-3e03238c000b418627f3b78f072617ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://实验/idle.png"
-dest_files=["res://.godot/imported/idle.png-c91d4574f1ac18f8ca34efd57a3ab395.ctex"]
+source_file="res://资源/图像/Tesla_tower.png"
+dest_files=["res://.godot/imported/Tesla_tower.png-3e03238c000b418627f3b78f072617ec.ctex"]
 
 [params]
 

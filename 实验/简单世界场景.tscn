@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://cojnnr234nlqm"]
+[gd_scene load_steps=12 format=4 uid="uid://cojnnr234nlqm"]
 
 [ext_resource type="Script" uid="uid://bbd1aw0y8s34s" path="res://实验/简单世界场景.gd" id="1_iys2p"]
 [ext_resource type="Script" uid="uid://cqxt4mjfsd30i" path="res://实验/人形.gd" id="2_prq8m"]
 [ext_resource type="Script" uid="uid://b7fogthhjblx3" path="res://实验/角色控制器/玩家角色控制器.gd" id="3_dic63"]
-[ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://实验/idle.png" id="4_dic63"]
+[ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://资源/图像/idle.png" id="4_dic63"]
 [ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://实验/场景Tileset.tres" id="5_8eyk4"]
 [ext_resource type="Script" uid="uid://6qkgoqmbimf4" path="res://实验/可放置建筑层.gd" id="6_8eyk4"]
-[ext_resource type="Script" uid="uid://db1828eef03fc" path="res://实验/手持建筑物.gd" id="6_54uys"]
 [ext_resource type="PackedScene" uid="uid://dxavnqyei1ecw" path="res://实体/构筑物实例/机枪塔构筑物.tscn" id="7_5kt3b"]
 [ext_resource type="Texture2D" uid="uid://cp51arhdpf4fw" path="res://资源/图像/mouse.png" id="8_4t4vc"]
-[ext_resource type="PackedScene" uid="uid://cmugc0xu3wc5h" path="res://实体/构筑物实例/特斯拉塔构筑物.tscn" id="8_8eyk4"]
+[ext_resource type="PackedScene" uid="uid://cmugc0xu3wc5h" path="res://实体/构筑物实例/特斯拉塔_构筑物.tscn" id="8_8eyk4"]
 
 [sub_resource type="Resource" id="Resource_54uys"]
 script = ExtResource("3_dic63")
@@ -21,11 +20,10 @@ metadata/_custom_type_script = "uid://b7fogthhjblx3"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eth3"]
 size = Vector2(21, 36)
 
-[node name="简单场景" type="Node2D" node_paths=PackedStringArray("可放置建筑层")]
+[node name="简单场景" type="Node2D" node_paths=PackedStringArray("可放置建筑层", "蓝图显示层")]
 script = ExtResource("1_iys2p")
-"特斯拉塔构筑物" = ExtResource("8_8eyk4")
-"机枪塔构筑物" = ExtResource("7_5kt3b")
 "可放置建筑层" = NodePath("可放置建筑层")
+"蓝图显示层" = NodePath("蓝图显示层")
 
 [node name="人形" type="CharacterBody2D" parent="."]
 position = Vector2(148, 141)
@@ -44,6 +42,9 @@ shape = SubResource("RectangleShape2D_0eth3")
 
 [node name="Camera2D" type="Camera2D" parent="人形"]
 zoom = Vector2(1.3, 1.3)
+
+[node name="蓝图显示层" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="不可破坏世界地图" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEAAsAAAABAAIAAAAFAAsAAAADAAIAAAAGAAsAAAADAAIAAAAHAAsAAAADAAIAAAAIAAsAAAADAAIAAAAJAAsAAAADAAIAAAAKAAsAAAADAAIAAAALAAsAAAADAAIAAAAMAAsAAAADAAIAAAANAAsAAAADAAIAAAAOAAsAAAADAAIAAAAPAAsAAAADAAIAAAAQAAsAAAADAAIAAAARAAsAAAADAAIAAAASAAsAAAADAAIAAAATAAsAAAADAAIAAAAUAAsAAAADAAIAAAAVAAsAAAADAAIAAAAEAAwAAAABAAIAAAAEAA0AAAABAAIAAAAFAAwAAAADAAIAAAAFAA0AAAADAAIAAAAGAAwAAAADAAIAAAAGAA0AAAADAAIAAAAHAAwAAAADAAIAAAAHAA0AAAADAAIAAAAIAAwAAAADAAIAAAAIAA0AAAADAAIAAAAJAAwAAAADAAIAAAAJAA0AAAADAAIAAAAKAAwAAAADAAIAAAAKAA0AAAADAAIAAAALAAwAAAADAAIAAAALAA0AAAADAAIAAAAMAAwAAAADAAIAAAAMAA0AAAADAAIAAAANAAwAAAADAAIAAAANAA0AAAADAAIAAAAOAAwAAAADAAIAAAAOAA0AAAADAAIAAAAPAAwAAAADAAIAAAAPAA0AAAADAAIAAAAQAAwAAAADAAIAAAAQAA0AAAADAAIAAAARAAwAAAADAAIAAAARAA0AAAADAAIAAAASAAwAAAADAAIAAAASAA0AAAADAAIAAAATAAwAAAADAAIAAAATAA0AAAADAAIAAAAUAAwAAAADAAIAAAAUAA0AAAADAAIAAAAVAAwAAAADAAIAAAAVAA0AAAADAAIAAAAEAAoAAAABAAEAAAAFAAoAAAADAAEAAAAGAAoAAAADAAEAAAAHAAoAAAADAAEAAAAIAAoAAAADAAEAAAAJAAoAAAADAAEAAAAKAAoAAAADAAEAAAALAAoAAAADAAEAAAAMAAoAAAADAAEAAAANAAoAAAADAAEAAAAOAAoAAAADAAEAAAAPAAoAAAADAAEAAAAQAAoAAAADAAEAAAARAAoAAAADAAEAAAASAAoAAAADAAEAAAATAAoAAAADAAEAAAAUAAoAAAADAAEAAAAVAAoAAAADAAIAAAAVAAcAAAADAAEAAAAVAAgAAAADAAIAAAAVAAkAAAADAAIAAAAWAAoAAAADAAIAAAAWAAsAAAADAAIAAAAWAAwAAAADAAIAAAAWAAkAAAADAAIAAAAWAAgAAAADAAIAAAAWAAcAAAADAAEAAAAWAA0AAAADAAIAAAADAAoAAAABAAIAAAACAAoAAAABAAIAAAABAAoAAAABAAIAAAAAAAoAAAABAAIAAAAEAA4AAAABAAIAAAADAAwAAAABAAIAAAADAAsAAAABAAIAAAADAA0AAAABAAIAAAACAA0AAAABAAIAAAACAAwAAAABAAIAAAACAAsAAAABAAIAAAABAAsAAAABAAIAAAABAAwAAAABAAIAAAABAA0AAAABAAIAAAAAAAsAAAABAAIAAAAAAAwAAAABAAIAAAAAAA0AAAABAAIAAAADAA4AAAABAAIAAAACAA4AAAABAAIAAAABAA4AAAABAAIAAAAAAA4AAAABAAIAAAAFAA4AAAADAAIAAAAGAA4AAAADAAIAAAAHAA4AAAADAAIAAAAIAA4AAAADAAIAAAAJAA4AAAADAAIAAAAKAA4AAAADAAIAAAALAA4AAAADAAIAAAAMAA4AAAADAAIAAAANAA4AAAADAAIAAAAOAA4AAAADAAIAAAAPAA4AAAADAAIAAAAQAA4AAAADAAIAAAARAA4AAAADAAIAAAASAA4AAAADAAIAAAATAA4AAAADAAIAAAAUAA4AAAADAAIAAAAVAA4AAAADAAIAAAAWAA4AAAADAAIAAAAXAAcAAAADAAIAAAAXAAgAAAADAAIAAAAXAAkAAAADAAIAAAAXAAoAAAADAAIAAAAXAAsAAAADAAIAAAAXAAwAAAADAAIAAAAXAA0AAAADAAIAAAAXAA4AAAADAAIAAAAYAAgAAAADAAIAAAAYAAkAAAADAAIAAAAYAAoAAAADAAIAAAAYAAsAAAADAAIAAAAYAAwAAAADAAIAAAAYAA0AAAADAAIAAAAYAA4AAAADAAIAAAAZAAgAAAADAAIAAAAZAAkAAAADAAIAAAAZAAoAAAADAAIAAAAZAAsAAAADAAIAAAAZAAwAAAADAAIAAAAZAA0AAAADAAIAAAAZAA4AAAADAAIAAAAaAAgAAAADAAIAAAAaAAkAAAADAAIAAAAaAAoAAAADAAIAAAAaAAsAAAADAAIAAAAaAAwAAAADAAIAAAAaAA0AAAADAAIAAAAaAA4AAAADAAIAAAAbAAkAAAADAAIAAAAbAAoAAAADAAIAAAAbAAsAAAADAAIAAAAbAAwAAAADAAIAAAAbAA0AAAADAAIAAAAbAA4AAAADAAIAAAAcAAkAAAADAAIAAAAcAAoAAAADAAIAAAAcAAsAAAADAAIAAAAcAAwAAAADAAIAAAAcAA0AAAADAAIAAAAcAA4AAAADAAIAAAD//wQAAAABAAEAAAAAAAQAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAD//wUAAAABAAIAAAD//wYAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAD//wcAAAABAAIAAAD//wgAAAABAAIAAAD//wkAAAABAAIAAAD//woAAAABAAIAAAAAAAcAAAABAAIAAAAAAAgAAAABAAIAAAAAAAkAAAABAAIAAAD//wsAAAABAAIAAAD//wwAAAABAAIAAAD//w0AAAABAAIAAAD//w4AAAABAAIAAAAAAAAAAAABAAIAAAA=")
@@ -73,11 +74,9 @@ asdawasadawdawdwadawdwsad
 zaw"
 autowrap_mode = 1
 
-[node name="手持建筑物" type="VBoxContainer" parent="调试层" node_paths=PackedStringArray("可放置建筑层")]
+[node name="手持建筑物" type="VBoxContainer" parent="调试层"]
 offset_right = 280.0
 offset_bottom = 130.0
-script = ExtResource("6_54uys")
-"可放置建筑层" = NodePath("../../可放置建筑层")
 
 [node name="切换到_试作型投射物防御塔" type="Button" parent="调试层/手持建筑物"]
 layout_mode = 2
@@ -87,13 +86,16 @@ text = "试作型投射物防御塔"
 layout_mode = 2
 text = "试作型电弧防御塔"
 
+[node name="切换到_无蓝图" type="Button" parent="调试层/手持建筑物"]
+layout_mode = 2
+text = "无蓝图"
+
 [node name="Label" type="Label" parent="调试层/手持建筑物"]
 layout_mode = 2
 text = "当前手持建筑物： {0}"
 
 [node name="鼠标跟随" type="Marker2D" parent="调试层"]
 unique_name_in_owner = true
-position = Vector2(349, 22)
 metadata/_edit_group_ = true
 
 [node name="鼠标Label" type="Label" parent="调试层/鼠标跟随"]
@@ -113,3 +115,7 @@ position = Vector2(389, 250)
 
 [node name="特斯拉塔构筑物" parent="." instance=ExtResource("8_8eyk4")]
 position = Vector2(556, 230)
+
+[connection signal="pressed" from="调试层/手持建筑物/切换到_试作型投射物防御塔" to="." method="_on_切换到_试作型投射物防御塔_pressed"]
+[connection signal="pressed" from="调试层/手持建筑物/切换到_试作型电弧防御塔" to="." method="_on_切换到_试作型电弧防御塔_pressed"]
+[connection signal="pressed" from="调试层/手持建筑物/切换到_无蓝图" to="." method="_on_切换到_无蓝图_pressed"]

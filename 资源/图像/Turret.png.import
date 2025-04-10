@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duf2vdf4iy6p5"
-path="res://.godot/imported/Tesla_tower.png-bcaf6b45f43f13898d00acd8dea53826.ctex"
+uid="uid://camu7sv38jn2k"
+path="res://.godot/imported/Turret.png-f1c67ba79bad8122c25a666534e05094.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://实验/Tesla_tower.png"
-dest_files=["res://.godot/imported/Tesla_tower.png-bcaf6b45f43f13898d00acd8dea53826.ctex"]
+source_file="res://资源/图像/Turret.png"
+dest_files=["res://.godot/imported/Turret.png-f1c67ba79bad8122c25a666534e05094.ctex"]
 
 [params]
 
