@@ -105,3 +105,7 @@ func _on_切换到_试作型电弧防御塔_pressed() -> void:
 
 func _on_切换到_无蓝图_pressed() -> void:
 	设置当前手上的蓝图实例(null)
+
+
+func _on_切换到_建筑房子_pressed() -> void:
+	设置当前手上的蓝图实例(资源管理器.蓝图预制件_测试房子.instantiate())
