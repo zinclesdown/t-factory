@@ -4,7 +4,7 @@ extends 角色控制器
 
 @export var 行走速度 := 200
 @export var 跑步速度 := 360
-@export var 跳跃速度 := 300
+@export var 跳跃速度 := 600
 
 
 func physics_应用控制器(chara:人形角色, _delta:float):
