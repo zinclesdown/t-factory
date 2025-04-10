@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwpj6r38ue67k"]
+
+[ext_resource type="Script" uid="uid://dbsm8bbiofnnr" path="res://资源/构筑物/构筑物.gd" id="1_0tpjc"]
+
+[node name="构筑物" type="Node2D" node_paths=PackedStringArray("构筑物范围矩形")]
+script = ExtResource("1_0tpjc")
+"构筑物大小" = Vector2i(2, 2)
+"构筑物范围矩形" = NodePath("构筑物范围")
+
+[node name="构筑物范围" type="ReferenceRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+metadata/_edit_lock_ = true
