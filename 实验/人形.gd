@@ -3,8 +3,7 @@ class_name 人形角色
 
 
 @export var 控制器: 角色控制器
-
-
+@export var 交互HitBox:交互HitBox实例
 
 
 

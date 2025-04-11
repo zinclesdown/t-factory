@@ -61,3 +61,10 @@ func capitalize_weekday_zh_cn(num:int)->String:
 			return "日"
 		_:
 			return "ERROR"
+
+
+func _on_full_screen_toggle_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		EditorInterface.get_editor_main_screen().get_viewport().mode = Window.MODE_FULLSCREEN
+	else:
+		EditorInterface.get_editor_main_screen().get_viewport().mode = Window.MODE_WINDOWED

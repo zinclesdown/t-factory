@@ -3,7 +3,6 @@ class_name 构筑物场景实例
 extends Node2D
 
 ### 在场景内的构筑物所在位置。
-#var 场景中构筑物位置:Vector2i
 
 # 大小为32*32的格子。
 @export var 构筑物大小 := Vector2i(1, 1):

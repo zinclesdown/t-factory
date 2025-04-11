@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd7pnekctbkl8"]
+[gd_scene load_steps=3 format=3 uid="uid://dd7pnekctbkl8"]
 
-[ext_resource type="Script" uid="uid://ckn2eeoxt1k3o" path="res://addons/focus-clock/clock.gd" id="1_yppao"]
+[ext_resource type="Script" uid="uid://ckn2eeoxt1k3o" path="res://addons/godot_owl/focus-clock/clock.gd" id="1_yppao"]
+[ext_resource type="Texture2D" uid="uid://cquub6reufcxr" path="res://addons/focus-clock/fullscreen_icon.png" id="2_8ou8j"]
 
 [node name="Clock" type="MarginContainer"]
 anchors_preset = 8
@@ -16,10 +17,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yppao")
 
-[node name="ClockDisplayer" type="MenuButton" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ClockDisplayer" type="MenuButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = " 2025年4月5日星期六   0:53:58 "
+text = " 2025年4月11日星期五  11:55:22 "
 flat = false
 item_count = 2
 popup/item_0/text = "长日期"
@@ -27,4 +31,12 @@ popup/item_0/id = 0
 popup/item_1/text = "短日期"
 popup/item_1/id = 1
 
-[connection signal="pressed" from="ClockDisplayer" to="." method="_on_clock_displayer_pressed"]
+[node name="FullScreenToggleButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+icon = ExtResource("2_8ou8j")
+
+[connection signal="pressed" from="HBoxContainer/ClockDisplayer" to="." method="_on_clock_displayer_pressed"]
+[connection signal="toggled" from="HBoxContainer/FullScreenToggleButton" to="." method="_on_full_screen_toggle_button_toggled"]

@@ -46,12 +46,18 @@ func _draw() -> void:
 		else:
 			颜色 = Color.RED
 		
-		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 颜色, 4)
-		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 颜色, 4)
-		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 颜色, 4)
-		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 颜色, 4)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0          ,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,构筑物大小Y)), 图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(构筑物大小X,0          )), 图块大小*(当前鼠标图块坐标+Vector2i(0          ,0          )), 颜色, 2)
 		
-		
+	else:
+		var 颜色:Color = Color.WHITE
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0,0)), 图块大小*(当前鼠标图块坐标+Vector2i(0,1)), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(0,1)), 图块大小*(当前鼠标图块坐标+Vector2i(1,1)), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(1,1)), 图块大小*(当前鼠标图块坐标+Vector2i(1,0)), 颜色, 2)
+		draw_line(图块大小*(当前鼠标图块坐标+Vector2i(1,0)), 图块大小*(当前鼠标图块坐标+Vector2i(0,0)), 颜色, 2)
+
 
 
 func _ready() -> void:
@@ -82,6 +88,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			可能存在的实例.queue_free()
 		else:
 			print("移除失败.")
+	
+	elif event.is_action_pressed("退出游戏"):
+		get_tree().quit()
+
 
 
 func 设置当前手上的蓝图实例(蓝图实例:构筑物蓝图实例):
