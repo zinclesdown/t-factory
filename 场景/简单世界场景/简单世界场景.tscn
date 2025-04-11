@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cojnnr234nlqm"]
+[gd_scene load_steps=9 format=4 uid="uid://cojnnr234nlqm"]
 
 [ext_resource type="Script" uid="uid://bbd1aw0y8s34s" path="res://场景/简单世界场景/简单世界场景.gd" id="1_iys2p"]
 [ext_resource type="PackedScene" uid="uid://blllr8yma4ogw" path="res://组件/TileMap相关/通用世界TileMap组件/通用世界TileMap组件.tscn" id="2_8aw1f"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxavnqyei1ecw" path="res://组件/子场景内实例/构筑物蓝图与实例/机枪塔/机枪塔构筑物.tscn" id="7_5kt3b"]
 [ext_resource type="Texture2D" uid="uid://cp51arhdpf4fw" path="res://资源/图像/mouse.png" id="8_4t4vc"]
 [ext_resource type="PackedScene" uid="uid://cmugc0xu3wc5h" path="res://组件/子场景内实例/构筑物蓝图与实例/特斯拉塔/特斯拉塔_构筑物.tscn" id="8_8eyk4"]
+[ext_resource type="PackedScene" uid="uid://c4p0te8jin2th" path="res://组件/角色实体/飞行怪/飞行远程攻击敌人角色.tscn" id="8_aph50"]
 
 [node name="简单场景" type="Node2D" node_paths=PackedStringArray("可放置建筑层", "蓝图显示层")]
 script = ExtResource("1_iys2p")
@@ -81,6 +82,7 @@ offset_bottom = 58.0
 text = "鼠标跟随文本"
 
 [node name="Sprite2D" type="Sprite2D" parent="调试层/鼠标跟随"]
+visible = false
 texture = ExtResource("8_4t4vc")
 centered = false
 
@@ -89,6 +91,9 @@ position = Vector2(399, -11)
 
 [node name="特斯拉塔构筑物" parent="." instance=ExtResource("8_8eyk4")]
 position = Vector2(533, -23)
+
+[node name="飞行敌人角色" parent="." instance=ExtResource("8_aph50")]
+position = Vector2(339, 142)
 
 [connection signal="pressed" from="调试层/手持建筑物/切换到_试作型投射物防御塔" to="." method="_on_切换到_试作型投射物防御塔_pressed"]
 [connection signal="pressed" from="调试层/手持建筑物/切换到_试作型电弧防御塔" to="." method="_on_切换到_试作型电弧防御塔_pressed"]

@@ -1,29 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://br2y11xrqotgj"]
+[gd_scene load_steps=6 format=3 uid="uid://br2y11xrqotgj"]
 
-[ext_resource type="Script" uid="uid://cqxt4mjfsd30i" path="res://组件/角色实体/人形.gd" id="1_mfbgr"]
-[ext_resource type="Script" uid="uid://b7fogthhjblx3" path="res://组件/角色实体/角色控制器/玩家角色控制器.gd" id="2_xbjtl"]
+[ext_resource type="Script" uid="uid://drjnt4vkmbhx3" path="res://组件/角色实体/玩家/玩家角色.gd" id="1_m806w"]
 [ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://资源/图像/idle.png" id="3_uykip"]
 [ext_resource type="PackedScene" uid="uid://clu02vm72blgu" path="res://组件/交互HitboxAndHurtbox/交互HitBox.tscn" id="4_xbjtl"]
-
-[sub_resource type="Resource" id="Resource_54uys"]
-script = ExtResource("2_xbjtl")
-"行走速度" = 200
-"跑步速度" = 360
-"跳跃速度" = 600
-metadata/_custom_type_script = "uid://b7fogthhjblx3"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eth3"]
 size = Vector2(21, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uykip"]
-size = Vector2(44, 33)
+size = Vector2(36, 27)
 
-[node name="人形" type="CharacterBody2D" node_paths=PackedStringArray("交互HitBox")]
+[node name="玩家角色" type="CharacterBody2D" node_paths=PackedStringArray("交互HitBox") groups=["我方角色"]]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_mfbgr")
-"控制器" = SubResource("Resource_54uys")
+script = ExtResource("1_m806w")
+"行走速度" = null
+"跑步速度" = null
+"跳跃速度" = null
 "交互HitBox" = NodePath("交互HitBox")
+"血量" = null
+"最大血量" = null
 metadata/_edit_group_ = true
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -43,6 +39,6 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="交互HitBox"]
-position = Vector2(15, 1.5)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_uykip")
 debug_color = Color(0, 0.64, 0.362667, 0.192157)

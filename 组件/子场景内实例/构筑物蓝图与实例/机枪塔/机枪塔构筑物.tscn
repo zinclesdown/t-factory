@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxavnqyei1ecw"]
+[gd_scene load_steps=5 format=3 uid="uid://dxavnqyei1ecw"]
 
 [ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://组件/子场景内实例/构筑物蓝图与实例/构筑物.tscn" id="1_c13n5"]
 [ext_resource type="Texture2D" uid="uid://camu7sv38jn2k" path="res://资源/图像/Turret.png" id="2_xha41"]
+[ext_resource type="Script" uid="uid://dn3bbt4x6r0di" path="res://组件/子场景内实例/构筑物蓝图与实例/机枪塔/机枪塔攻击器.gd" id="3_h2hee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqb4d"]
+radius = 500.025
 
 [node name="机枪塔构筑物" instance=ExtResource("1_c13n5")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_xha41")
 centered = false
+
+[node name="机枪塔攻击器" type="Node2D" parent="." index="2" node_paths=PackedStringArray("索敌区域", "子弹生成处")]
+script = ExtResource("3_h2hee")
+"索敌区域" = NodePath("索敌区域")
+"子弹生成处" = NodePath("子弹生成处")
+
+[node name="索敌区域" type="Area2D" parent="机枪塔攻击器" index="0"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="机枪塔攻击器/索敌区域" index="0"]
+position = Vector2(33, 23)
+shape = SubResource("CircleShape2D_vqb4d")
+debug_color = Color(0, 0.64, 0.32, 0)
+
+[node name="子弹生成处" type="Marker2D" parent="机枪塔攻击器" index="1"]
+position = Vector2(33, 12)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://beiuprolqa2ea"]
+
+[ext_resource type="PackedScene" uid="uid://b2vgmnm52ww8q" path="res://组件/物品资源/物品资源.tscn" id="1_eu48p"]
+
+[node name="飞行物刷怪蛋" instance=ExtResource("1_eu48p")]

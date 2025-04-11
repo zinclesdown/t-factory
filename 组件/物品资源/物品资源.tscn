@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vgmnm52ww8q"]
+
+[ext_resource type="Script" uid="uid://dsvj4rxn8w06e" path="res://组件/物品资源/物品资源.gd" id="1_6044m"]
+[ext_resource type="Texture2D" uid="uid://b62efpba1nqgy" path="res://资源/图像/unknown_item.png" id="2_j21gi"]
+
+[node name="物品资源" type="Node2D"]
+script = ExtResource("1_6044m")
+metadata/_custom_type_script = "uid://dsvj4rxn8w06e"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j21gi")

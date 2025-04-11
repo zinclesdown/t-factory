@@ -28,8 +28,14 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/godot_owl/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
+[global_group]
+
+"敌人角色"="敌人单位."
+"我方角色"="我方单位,"
+
 [gui]
 
+theme/custom="uid://dmgjsi52adb0k"
 theme/custom_font="uid://bb5on3wmxes77"
 
 [input]
@@ -111,6 +117,7 @@ theme/custom_font="uid://bb5on3wmxes77"
 2d_physics/layer_1="世界碰撞层"
 2d_physics/layer_2="单向向上碰撞(平台)"
 2d_physics/layer_3="可交互物品的HurtBox (E)"
+2d_physics/layer_4="有血量角色的Hurtbox"
 
 [rendering]
 

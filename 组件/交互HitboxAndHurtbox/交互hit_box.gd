@@ -38,15 +38,8 @@ func 对最近的HurtBox进行交互(args:Array=[]):
 func _physics_process(_delta: float) -> void:
 	# HACK 每帧都进行判断,影响性能! 但是懒得改了
 	var hurtBoxes := get_overlapping_areas()
-	hurtBoxes.sort_custom( # 按距离排序. 我们优先选择最近的
-		func(A:Node2D, B:Node2D):
-			var disA := (self.global_position - A.global_position).length()
-			var disB := (self.global_position - B.global_position).length()
-			if disA < disB:
-				return true
-			else:
-				return false
-	)
+	节点方法.对节点列表按距离进行升序排序(self, hurtBoxes)
+	
 	_当前重合的HurtBoxes = []
 	_当前重合的HurtBoxes.assign(hurtBoxes)
 	
