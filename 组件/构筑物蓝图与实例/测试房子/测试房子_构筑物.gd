@@ -21,6 +21,10 @@ func _ready() -> void:
 	subScene.对属性进行初始化(房子所在的子场景)
 	获取此构筑物所在的主要场景().添加子场景(subScene)
 	房子的子场景 = subScene
+	
+	if not $"角色退出的位置".is_node_ready():
+		await $"角色退出的位置".ready
+	房子的子场景.上级子场景的角色默认初始化位置 = $"角色退出的位置".global_position
 
 
 

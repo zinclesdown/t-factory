@@ -5,16 +5,15 @@ extends TileMapLayer
 
 
 ## 获取构筑物所在根位置
-var _构筑物根位置信息 :Dictionary[构筑物场景实例, Vector2i] = {} 
+var _构筑物根位置信息 :Dictionary = {} 
+#var _构筑物根位置信息 :Dictionary[构筑物场景实例, Vector2i] = {} 
 
 ## 通过位置，索引构筑物。 注意：可能是多对一！
-var _位置到构筑物的映射字典: Dictionary[Vector2i, 构筑物场景实例] = {} 
+var _位置到构筑物的映射字典: Dictionary = {} 
+#var _位置到构筑物的映射字典: Dictionary[Vector2i, 构筑物场景实例] = {} 
 
 ## 这些地方不可以放置构筑物！
 var _场景决定的不可放置区域:Array[Vector2i] = []
-
-
-
 
 
 

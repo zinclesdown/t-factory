@@ -11,7 +11,7 @@ class_name 子场景
 @export var 子场景名称 :String = "待命名子场景"
 
 @export var 上级子场景 :子场景 ## 上一级.若该子场景被析构,则将所有角色踢出去.
-@export var 上级子场景的角色默认初始化位置 := Vector2.ZERO ## 把角色踢到那里 ?
+@export var 上级子场景的角色默认初始化位置 := Vector2.ZERO ## 假设角色离开, 要把角色踢到哪里 ?
 
 
 var 角色列表 :Array[人形角色] = [] ## 当前场景内所有角色.

@@ -41,4 +41,7 @@ position = Vector2(80, 97)
 shape = SubResource("RectangleShape2D_cv0ii")
 debug_color = Color(0, 0.64, 0.266667, 0.352941)
 
+[node name="角色退出的位置" type="Marker2D" parent="." index="4"]
+position = Vector2(81, 89)
+
 [connection signal="被执行了交互" from="进入门的交互HurtBox" to="." method="_on_进入门的交互hurt_box_被执行了交互"]
