@@ -15,7 +15,7 @@ imgui/config="uid://de1w7ypl72qu4"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://cojnnr234nlqm"
+run/main_scene="uid://euhcuj8a7s3q"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://资源/图像/icon.svg"
 

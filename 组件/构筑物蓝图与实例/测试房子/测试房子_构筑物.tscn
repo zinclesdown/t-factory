@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyq2va68mtwtk"]
+[gd_scene load_steps=8 format=3 uid="uid://dyq2va68mtwtk"]
 
-[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://实体/构筑物实例/base/构筑物.tscn" id="1_wnpid"]
-[ext_resource type="Script" uid="uid://da0eadtj45o0g" path="res://实体/构筑物实例/测试房子_构筑物.gd" id="2_cv0ii"]
-[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://tiny_platform_house.png" id="2_wnpid"]
+[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://组件/构筑物蓝图与实例/base/构筑物.tscn" id="1_wnpid"]
+[ext_resource type="Script" uid="uid://da0eadtj45o0g" path="res://组件/构筑物蓝图与实例/测试房子/测试房子_构筑物.gd" id="2_cv0ii"]
+[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://资源/图像/tiny_platform_house.png" id="2_wnpid"]
 [ext_resource type="PackedScene" uid="uid://bgothwysgi6wv" path="res://组件/交互HitboxAndHurtbox/交互HurtBox.tscn" id="3_ahtq4"]
+[ext_resource type="PackedScene" uid="uid://cdp2jxrp863ea" path="res://组件/构筑物蓝图与实例/测试房子/子场景/测试房子内.tscn" id="3_ypo8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnpid"]
 size = Vector2(128, 12)
@@ -13,6 +14,7 @@ size = Vector2(30, 64)
 
 [node name="测试房子构筑物" instance=ExtResource("1_wnpid")]
 script = ExtResource("2_cv0ii")
+"房子的子场景预制件" = ExtResource("3_ypo8d")
 "构筑物大小" = Vector2i(4, 4)
 
 [node name="构筑物范围" parent="." index="0"]

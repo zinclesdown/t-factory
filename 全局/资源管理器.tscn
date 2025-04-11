@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ejcx85unsfv"]
 
 [ext_resource type="Script" uid="uid://buv5tvcv3sb2j" path="res://全局/资源管理器.gd" id="1_0ai83"]
-[ext_resource type="PackedScene" uid="uid://bwq880qf83tvj" path="res://实体/构筑物蓝图/特斯拉塔_蓝图.tscn" id="2_2ej71"]
-[ext_resource type="PackedScene" uid="uid://cc34n7n7isjm0" path="res://实体/构筑物蓝图/机枪塔_蓝图.tscn" id="3_x7av8"]
-[ext_resource type="PackedScene" uid="uid://bh5ymy4y52cq0" path="res://实体/构筑物蓝图/测试房子_蓝图.tscn" id="4_x7av8"]
+[ext_resource type="PackedScene" uid="uid://bwq880qf83tvj" path="res://组件/构筑物蓝图与实例/特斯拉塔/特斯拉塔_蓝图.tscn" id="2_2ej71"]
+[ext_resource type="PackedScene" uid="uid://cc34n7n7isjm0" path="res://组件/构筑物蓝图与实例/机枪塔/机枪塔_蓝图.tscn" id="3_x7av8"]
+[ext_resource type="PackedScene" uid="uid://bh5ymy4y52cq0" path="res://组件/构筑物蓝图与实例/测试房子/测试房子_蓝图.tscn" id="4_x7av8"]
 
 [node name="资源管理器" type="Node"]
 script = ExtResource("1_0ai83")

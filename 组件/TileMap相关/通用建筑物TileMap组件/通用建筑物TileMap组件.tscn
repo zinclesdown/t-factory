@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://57px8disfvqf"]
+
+[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://资源/图块/场景Tileset.tres" id="1_mqgds"]
+[ext_resource type="Script" uid="uid://6qkgoqmbimf4" path="res://组件/TileMap相关/通用建筑物TileMap组件/通用建筑物TileMap组件.gd" id="2_1terc"]
+
+[node name="通用建筑物TileMap组件" type="TileMapLayer"]
+tile_set = ExtResource("1_mqgds")
+script = ExtResource("2_1terc")

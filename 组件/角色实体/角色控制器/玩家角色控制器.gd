@@ -34,5 +34,7 @@ func physics_应用控制器(chara:人形角色, _delta:float):
 		chara.交互HitBox.对最近的HurtBox进行交互()
 		pass
 	
+	# 还会重设当前玩家的所在子场景.
+	chara.获取此角色所在子场景().获取此子场景所在的主要场景().当前玩家所在的子场景 = chara.获取此角色所在子场景()
 	
 	chara.move_and_slide()

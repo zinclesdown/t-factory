@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blllr8yma4ogw"]
+
+[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://资源/图块/场景Tileset.tres" id="1_ttyy2"]
+
+[node name="通用世界TileMap组件" type="TileMapLayer"]
+tile_set = ExtResource("1_ttyy2")

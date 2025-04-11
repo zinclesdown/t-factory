@@ -1,6 +1,4 @@
-extends Node2D
-
-
+extends 子场景
 
 
 @export var 可放置建筑层: 可放置建筑层实例

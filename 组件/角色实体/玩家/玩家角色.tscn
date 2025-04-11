@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://br2y11xrqotgj"]
 
-[ext_resource type="Script" uid="uid://cqxt4mjfsd30i" path="res://实验/人形.gd" id="1_mfbgr"]
-[ext_resource type="Script" uid="uid://b7fogthhjblx3" path="res://实验/角色控制器/玩家角色控制器.gd" id="2_xbjtl"]
+[ext_resource type="Script" uid="uid://cqxt4mjfsd30i" path="res://组件/角色实体/人形.gd" id="1_mfbgr"]
+[ext_resource type="Script" uid="uid://b7fogthhjblx3" path="res://组件/角色实体/角色控制器/玩家角色控制器.gd" id="2_xbjtl"]
 [ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://资源/图像/idle.png" id="3_uykip"]
 [ext_resource type="PackedScene" uid="uid://clu02vm72blgu" path="res://组件/交互HitboxAndHurtbox/交互HitBox.tscn" id="4_xbjtl"]
 

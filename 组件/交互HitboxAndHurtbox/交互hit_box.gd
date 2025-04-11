@@ -4,7 +4,12 @@ extends Area2D
 
 var _当前重合的HurtBoxes :Array[交互HurtBox实例] = []
 
+@export var 所有者实例 :人形角色 = owner
 
+
+func _ready() -> void:
+	if 所有者实例 == null:
+		所有者实例 = owner
 
 func 范围内有HurtBox() -> bool:
 	if _当前重合的HurtBoxes.size() >= 1:

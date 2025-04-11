@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxavnqyei1ecw"]
 
-[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://实体/构筑物实例/base/构筑物.tscn" id="1_c13n5"]
+[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://组件/构筑物蓝图与实例/base/构筑物.tscn" id="1_c13n5"]
 [ext_resource type="Texture2D" uid="uid://camu7sv38jn2k" path="res://资源/图像/Turret.png" id="2_xha41"]
 
 [node name="机枪塔构筑物" instance=ExtResource("1_c13n5")]
