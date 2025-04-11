@@ -2,10 +2,9 @@ extends CharacterBody2D
 class_name 人形角色
 
 
-@export var 交互HitBox:交互HitBox实例
 
-@export var 血量 := 100
-@export var 最大血量 := 100
+@export var 血量 :int= 100
+@export var 最大血量 :int= 100
 
 
 ## TESTME
@@ -34,5 +33,18 @@ func 获取此角色所在子场景()->子场景:
 		return null
 
 
-func 受到攻击(伤害, 攻击源):
-	pass
+
+## 受到攻击, 此函数应由攻击方调用.
+func 受到攻击(伤害:int, 源头:攻击源):
+	血量 -= 伤害
+	血量 = clampi(血量, 0, 最大血量)
+	
+	print("受到源头为 %s 的 %s 点伤害!" % [源头, 伤害])
+	
+	if 血量 <= 0:
+		血量耗尽死亡()
+
+
+## 血量为0时的回调函数.
+func 血量耗尽死亡():
+	self.queue_free()

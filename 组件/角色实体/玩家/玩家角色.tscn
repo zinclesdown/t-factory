@@ -11,15 +11,10 @@ size = Vector2(21, 36)
 size = Vector2(36, 27)
 
 [node name="玩家角色" type="CharacterBody2D" node_paths=PackedStringArray("交互HitBox") groups=["我方角色"]]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_m806w")
-"行走速度" = null
-"跑步速度" = null
-"跳跃速度" = null
 "交互HitBox" = NodePath("交互HitBox")
-"血量" = null
-"最大血量" = null
 metadata/_edit_group_ = true
 
 [node name="Icon" type="Sprite2D" parent="."]

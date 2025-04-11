@@ -5,6 +5,10 @@ class_name 玩家角色
 @export var 跑步速度 := 360
 @export var 跳跃速度 := 600
 
+
+@export var 交互HitBox:交互HitBox实例
+
+
 var 当前手持物品 : 可使用物品
 
 

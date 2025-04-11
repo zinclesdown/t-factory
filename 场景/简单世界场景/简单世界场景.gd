@@ -1,7 +1,6 @@
 extends 子场景
 
 
-@export var 可放置建筑层: 可放置建筑层实例
 
 
 var 当前鼠标图块坐标:Vector2i
@@ -9,7 +8,8 @@ var 图块大小 := Vector2i(32, 32)
 
 var _当前手上的蓝图实例: 构筑物蓝图实例 ## 玩家手里拿着的蓝图. 即将用于部署.
 
-@export var 蓝图显示层:Node2D ## 蓝图在这里显示
+@export var 可放置建筑层: 可放置建筑层实例 ## 建筑模块. 所有建筑物的父节点.
+@export var 蓝图显示层:Node2D ## 蓝图在这里显示.
 
 
 func _process(_delta: float) -> void:

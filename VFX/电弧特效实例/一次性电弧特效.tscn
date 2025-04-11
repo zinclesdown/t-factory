@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddd85wjibeahf"]
+
+[ext_resource type="Script" uid="uid://cvn2hmiywdn12" path="res://VFX/电弧特效实例/一次性电弧特效.gd" id="1_a4tlk"]
+[ext_resource type="Shader" uid="uid://blovfcxy3oqcm" path="res://VFX/电弧特效实例/一次性电弧特效.gdshader" id="1_dmkkl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmkkl"]
+shader = ExtResource("1_dmkkl")
+shader_parameter/lightning_number = 3
+shader_parameter/amplitude = Vector2(3, 0.3)
+shader_parameter/offset = 0.5
+shader_parameter/thickness = 0.04
+shader_parameter/speed = 15.0
+shader_parameter/base_color = Color(1, 1, 1, 1)
+shader_parameter/glow_thickness = 0.3
+shader_parameter/glow_color = Color(0.59, 0.511333, 0, 0.0784314)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_a4tlk"]
+size = Vector2(300, 25)
+
+[node name="一次性电弧特效" type="Marker2D"]
+script = ExtResource("1_a4tlk")
+
+[node name="特效" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_dmkkl")
+position = Vector2(0, 0.25)
+scale = Vector2(1, 1.5)
+mesh = SubResource("QuadMesh_a4tlk")
