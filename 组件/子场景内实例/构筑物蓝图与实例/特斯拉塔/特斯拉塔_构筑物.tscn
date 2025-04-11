@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmugc0xu3wc5h"]
 
 [ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://组件/子场景内实例/构筑物蓝图与实例/构筑物.tscn" id="1_7h7ql"]
-[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/Tesla_tower.png" id="2_tt7vk"]
+[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/场景实例/Tesla_tower.png" id="2_tt7vk"]
 [ext_resource type="Script" uid="uid://dj73g1wokqvkc" path="res://组件/子场景内实例/构筑物蓝图与实例/特斯拉塔/特斯拉塔攻击源.gd" id="3_qoo72"]
 [ext_resource type="PackedScene" uid="uid://ddd85wjibeahf" path="res://VFX/电弧特效实例/一次性电弧特效.tscn" id="4_i07kv"]
 

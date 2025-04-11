@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp7jptc1f4jcv"
-path="res://.godot/imported/idle.png-3034d1da6e2dab06b4c7ee8efa0f7b09.ctex"
+uid="uid://dnyu0kot8kn5m"
+path="res://.godot/imported/flying_mob.png-dadae813845b1cb9441509f3283fe5f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/投射物兵/idle.png"
-dest_files=["res://.godot/imported/idle.png-3034d1da6e2dab06b4c7ee8efa0f7b09.ctex"]
+source_file="res://资源/图像/角色/flying_mob.png"
+dest_files=["res://.godot/imported/flying_mob.png-dadae813845b1cb9441509f3283fe5f1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df401atdnjypv"
-path="res://.godot/imported/spawn_fly_mob_egg.png-229358ca2e0972be29246593a8db2407.ctex"
+uid="uid://vyjw3ko28w8m"
+path="res://.godot/imported/firearm.png-ffd91bcb24ddceba5e3a4e38dd812c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/spawn_fly_mob_egg.png"
-dest_files=["res://.godot/imported/spawn_fly_mob_egg.png-229358ca2e0972be29246593a8db2407.ctex"]
+source_file="res://资源/图像/物品/firearm.png"
+dest_files=["res://.godot/imported/firearm.png-ffd91bcb24ddceba5e3a4e38dd812c81.ctex"]
 
 [params]
 

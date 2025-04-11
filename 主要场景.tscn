@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://beianhrhjwpmu" path="res://主要场景.gd" id="1_yh2sx"]
 [ext_resource type="PackedScene" uid="uid://cojnnr234nlqm" path="res://场景/简单世界场景/简单世界场景.tscn" id="2_rl00n"]
-[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://资源/图像/tiny_platform_house.png" id="3_bqmv4"]
-[ext_resource type="Texture2D" uid="uid://camu7sv38jn2k" path="res://资源/图像/Turret.png" id="4_v51dy"]
-[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/Tesla_tower.png" id="5_1vowt"]
-[ext_resource type="Texture2D" uid="uid://vyjw3ko28w8m" path="res://资源/图像/投射物兵/firearm.png" id="6_x4nyn"]
-[ext_resource type="Texture2D" uid="uid://df401atdnjypv" path="res://资源/图像/spawn_fly_mob_egg.png" id="7_3gtj4"]
+[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://资源/图像/场景实例/tiny_platform_house.png" id="3_bqmv4"]
+[ext_resource type="Texture2D" uid="uid://camu7sv38jn2k" path="res://资源/图像/场景实例/Turret.png" id="4_v51dy"]
+[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/场景实例/Tesla_tower.png" id="5_1vowt"]
+[ext_resource type="Texture2D" uid="uid://vyjw3ko28w8m" path="res://资源/图像/物品/firearm.png" id="6_x4nyn"]
+[ext_resource type="Texture2D" uid="uid://df401atdnjypv" path="res://资源/图像/怪物蛋/spawn_fly_mob_egg.png" id="7_3gtj4"]
 
 [sub_resource type="GDScript" id="GDScript_rl00n"]
 script/source = "extends Button

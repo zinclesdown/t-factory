@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://pwyohycwqejy"]
 
-[ext_resource type="Texture2D" uid="uid://ccu52kc577tkm" path="res://资源/图像/tileset_scrollview.png" id="1_rg4k4"]
+[ext_resource type="Texture2D" uid="uid://ccu52kc577tkm" path="res://资源/图像/Tileset/tileset_scrollview.png" id="1_xrg80"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_prq8m"]
-texture = ExtResource("1_rg4k4")
+texture = ExtResource("1_xrg80")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)

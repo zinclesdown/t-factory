@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://duf2vdf4iy6p5"
-path="res://.godot/imported/Tesla_tower.png-3e03238c000b418627f3b78f072617ec.ctex"
+path="res://.godot/imported/Tesla_tower.png-d0696a360db7413fa7f708f296a5f2d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/Tesla_tower.png"
-dest_files=["res://.godot/imported/Tesla_tower.png-3e03238c000b418627f3b78f072617ec.ctex"]
+source_file="res://资源/图像/场景实例/Tesla_tower.png"
+dest_files=["res://.godot/imported/Tesla_tower.png-d0696a360db7413fa7f708f296a5f2d4.ctex"]
 
 [params]
 

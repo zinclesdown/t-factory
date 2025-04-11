@@ -23,6 +23,7 @@ config/icon="uid://cm0svkod4g3ra"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 "资源管理器"="*res://全局/资源管理器.tscn"
+"对话组件"="*res://全局/对话OverLay/对话Overlay.tscn"
 
 [editor_plugins]
 
@@ -111,6 +112,10 @@ theme/custom_font="uid://bb5on3wmxes77"
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://荷取的测试对话.dialogue")
 
 [layer_names]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccu52kc577tkm"
-path="res://.godot/imported/tileset_scrollview.png-0141f2cd035fdc5cb02ffc661dc0260b.ctex"
+uid="uid://b7j24mx2e8n7d"
+path="res://.godot/imported/door.png-9066af76c010b7350598238115e01f6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/tileset_scrollview.png"
-dest_files=["res://.godot/imported/tileset_scrollview.png-0141f2cd035fdc5cb02ffc661dc0260b.ctex"]
+source_file="res://资源/图像/场景实例/door.png"
+dest_files=["res://.godot/imported/door.png-9066af76c010b7350598238115e01f6e.ctex"]
 
 [params]
 

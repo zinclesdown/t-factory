@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dai1c78r2rojg"
-path="res://.godot/imported/hand_tool.png-3cb2b630d1021d2725dc82f849ee2103.ctex"
+uid="uid://ys78hrvw4rle"
+path="res://.godot/imported/interact_identifier.png-60c98fb73015e41b8e2b09649229d2f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/hand_tool.png"
-dest_files=["res://.godot/imported/hand_tool.png-3cb2b630d1021d2725dc82f849ee2103.ctex"]
+source_file="res://资源/图像/UI/interact_identifier.png"
+dest_files=["res://.godot/imported/interact_identifier.png-60c98fb73015e41b8e2b09649229d2f2.ctex"]
 
 [params]
 

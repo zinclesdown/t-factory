@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blg2mk2d3m5ft"
-path="res://.godot/imported/bullet_enemy.png-f906aeeeb978eeb1865d6392edeae81f.ctex"
+uid="uid://wmnsyekchhix"
+path="res://.godot/imported/tesla_builder.png-b7127b8a0f5b9f429883f31523e6455b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/bullet_enemy.png"
-dest_files=["res://.godot/imported/bullet_enemy.png-f906aeeeb978eeb1865d6392edeae81f.ctex"]
+source_file="res://资源/图像/物品/tesla_builder.png"
+dest_files=["res://.godot/imported/tesla_builder.png-b7127b8a0f5b9f429883f31523e6455b.ctex"]
 
 [params]
 

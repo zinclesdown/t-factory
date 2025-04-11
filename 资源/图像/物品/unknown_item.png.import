@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ys78hrvw4rle"
-path="res://.godot/imported/interact_identifier.png-d5460eda56b70ad7937a18a7236f9569.ctex"
+uid="uid://b62efpba1nqgy"
+path="res://.godot/imported/unknown_item.png-3b2bc3d49395fbba1a34c898ee497277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/interact_identifier.png"
-dest_files=["res://.godot/imported/interact_identifier.png-d5460eda56b70ad7937a18a7236f9569.ctex"]
+source_file="res://资源/图像/物品/unknown_item.png"
+dest_files=["res://.godot/imported/unknown_item.png-3b2bc3d49395fbba1a34c898ee497277.ctex"]
 
 [params]
 

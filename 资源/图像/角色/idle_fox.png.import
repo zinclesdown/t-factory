@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fxgjcg0mm8xa"
-path="res://.godot/imported/tiny_platform_house.png-2bb9eb4abb1e48bf040926c3cca0e468.ctex"
+uid="uid://bp7jptc1f4jcv"
+path="res://.godot/imported/idle_fox.png-e2de9d1a4592f67a95fa6a1a56ee8505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/tiny_platform_house.png"
-dest_files=["res://.godot/imported/tiny_platform_house.png-2bb9eb4abb1e48bf040926c3cca0e468.ctex"]
+source_file="res://资源/图像/角色/idle_fox.png"
+dest_files=["res://.godot/imported/idle_fox.png-e2de9d1a4592f67a95fa6a1a56ee8505.ctex"]
 
 [params]
 

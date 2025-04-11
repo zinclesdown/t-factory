@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnyu0kot8kn5m"
-path="res://.godot/imported/flying_mob.png-14a74ec813876d952b9a8ff9a83448c1.ctex"
+uid="uid://cm0svkod4g3ra"
+path="res://.godot/imported/icon.png-dccce41a17ca9428b8c1dc49962b15b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/flying_mob.png"
-dest_files=["res://.godot/imported/flying_mob.png-14a74ec813876d952b9a8ff9a83448c1.ctex"]
+source_file="res://资源/图像/UI/icon.png"
+dest_files=["res://.godot/imported/icon.png-dccce41a17ca9428b8c1dc49962b15b3.ctex"]
 
 [params]
 

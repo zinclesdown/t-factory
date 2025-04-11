@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wmnsyekchhix"
-path="res://.godot/imported/tesla_builder.png-a9abb80804b4a980fd019491be428c8d.ctex"
+uid="uid://chf0283yq0poi"
+path="res://.godot/imported/idle.png-9dccea1456a63f7667cb28aee792c516.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/tesla_builder.png"
-dest_files=["res://.godot/imported/tesla_builder.png-a9abb80804b4a980fd019491be428c8d.ctex"]
+source_file="res://资源/图像/角色/idle.png"
+dest_files=["res://.godot/imported/idle.png-9dccea1456a63f7667cb28aee792c516.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4p0te8jin2th"]
 
 [ext_resource type="Script" uid="uid://cyy6qtfymei5g" path="res://组件/角色实体/飞行怪/飞行远程攻击敌人角色.gd" id="1_njgyt"]
-[ext_resource type="Texture2D" uid="uid://dnyu0kot8kn5m" path="res://资源/图像/flying_mob.png" id="2_uinak"]
+[ext_resource type="Texture2D" uid="uid://dnyu0kot8kn5m" path="res://资源/图像/角色/flying_mob.png" id="2_uinak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rcat"]
 radius = 253.126

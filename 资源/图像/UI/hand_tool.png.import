@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://camu7sv38jn2k"
-path="res://.godot/imported/Turret.png-f1c67ba79bad8122c25a666534e05094.ctex"
+uid="uid://dai1c78r2rojg"
+path="res://.godot/imported/hand_tool.png-7f7f377974c5edb57666c4cd566b8a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/Turret.png"
-dest_files=["res://.godot/imported/Turret.png-f1c67ba79bad8122c25a666534e05094.ctex"]
+source_file="res://资源/图像/UI/hand_tool.png"
+dest_files=["res://.godot/imported/hand_tool.png-7f7f377974c5edb57666c4cd566b8a5e.ctex"]
 
 [params]
 

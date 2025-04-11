@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dl8h2el2j75h2"]
 
 [ext_resource type="Script" uid="uid://di8t2shj03owx" path="res://组件/场景子弹实例/我方炮塔机枪子弹/我方炮塔机枪子弹.gd" id="1_g0tjo"]
-[ext_resource type="Texture2D" uid="uid://drpmh4noiihmf" path="res://资源/图像/turret_bullet.png" id="1_hnjcv"]
+[ext_resource type="Texture2D" uid="uid://drpmh4noiihmf" path="res://资源/图像/投射物/turret_bullet.png" id="1_hnjcv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_irks0"]
 radius = 5.0

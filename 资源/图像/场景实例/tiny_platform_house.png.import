@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bldlwylyeuj6d"
-path="res://.godot/imported/tileset_topview.png-c819e4a029317612dc006f97669c78bc.ctex"
+uid="uid://fxgjcg0mm8xa"
+path="res://.godot/imported/tiny_platform_house.png-3066237907dfe13dd90ca716067d8b60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/tileset_topview.png"
-dest_files=["res://.godot/imported/tileset_topview.png-c819e4a029317612dc006f97669c78bc.ctex"]
+source_file="res://资源/图像/场景实例/tiny_platform_house.png"
+dest_files=["res://.godot/imported/tiny_platform_house.png-3066237907dfe13dd90ca716067d8b60.ctex"]
 
 [params]
 

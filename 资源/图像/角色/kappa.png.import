@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vyjw3ko28w8m"
-path="res://.godot/imported/firearm.png-a406afc2fc4644e5434ada5b0448b595.ctex"
+uid="uid://bjrpmkrddcrmo"
+path="res://.godot/imported/kappa.png-53cbfe465fc4c2cb3131c1e79092a7ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/投射物兵/firearm.png"
-dest_files=["res://.godot/imported/firearm.png-a406afc2fc4644e5434ada5b0448b595.ctex"]
+source_file="res://资源/图像/角色/kappa.png"
+dest_files=["res://.godot/imported/kappa.png-53cbfe465fc4c2cb3131c1e79092a7ec.ctex"]
 
 [params]
 

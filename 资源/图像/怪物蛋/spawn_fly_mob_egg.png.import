@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm0svkod4g3ra"
-path="res://.godot/imported/icon.png-670cef56a8cac33d9c6802ba4d5971bf.ctex"
+uid="uid://df401atdnjypv"
+path="res://.godot/imported/spawn_fly_mob_egg.png-279ca6d1281749c19482236b0562abed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/icon.png"
-dest_files=["res://.godot/imported/icon.png-670cef56a8cac33d9c6802ba4d5971bf.ctex"]
+source_file="res://资源/图像/怪物蛋/spawn_fly_mob_egg.png"
+dest_files=["res://.godot/imported/spawn_fly_mob_egg.png-279ca6d1281749c19482236b0562abed.ctex"]
 
 [params]
 

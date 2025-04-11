@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chf0283yq0poi"
-path="res://.godot/imported/idle.png-3bebb92c53d69be88c68054affc03dc7.ctex"
+uid="uid://drpmh4noiihmf"
+path="res://.godot/imported/turret_bullet.png-ef9d060ace7c6b671a9c3c34acd0375f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://资源/图像/idle.png"
-dest_files=["res://.godot/imported/idle.png-3bebb92c53d69be88c68054affc03dc7.ctex"]
+source_file="res://资源/图像/投射物/turret_bullet.png"
+dest_files=["res://.godot/imported/turret_bullet.png-ef9d060ace7c6b671a9c3c34acd0375f.ctex"]
 
 [params]
 
