@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyq2va68mtwtk"]
+
+[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://组件/子场景内实例/构筑物蓝图与实例/构筑物.tscn" id="1_wnpid"]
+[ext_resource type="Script" uid="uid://da0eadtj45o0g" path="res://组件/子场景内实例/构筑物蓝图与实例/测试房子/测试房子_构筑物.gd" id="2_cv0ii"]
+[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://资源/图像/tiny_platform_house.png" id="2_wnpid"]
+[ext_resource type="PackedScene" uid="uid://cdp2jxrp863ea" path="res://组件/子场景内实例/构筑物蓝图与实例/测试房子/子场景/测试房子内.tscn" id="3_ypo8d"]
+[ext_resource type="PackedScene" uid="uid://dw32ovw2b50rf" path="res://组件/子场景内实例/特殊场景实例/交互式子场景连接门/交互式子场景连接门.tscn" id="5_khfaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnpid"]
+size = Vector2(128, 12)
+
+[node name="测试房子构筑物" instance=ExtResource("1_wnpid")]
+script = ExtResource("2_cv0ii")
+"房子的子场景预制件" = ExtResource("3_ypo8d")
+"构筑物大小" = Vector2i(4, 4)
+
+[node name="构筑物范围" parent="." index="0"]
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_wnpid")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(64, 38)
+shape = SubResource("RectangleShape2D_wnpid")
+one_way_collision = true
+
+[node name="角色退出的位置" type="Marker2D" parent="." index="3"]
+position = Vector2(81, 89)
+
+[node name="交互式子场景连接门" parent="." index="4" instance=ExtResource("5_khfaj")]
+unique_name_in_owner = true
+position = Vector2(64, 64)

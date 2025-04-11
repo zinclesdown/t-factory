@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwpj6r38ue67k"]
 
-[ext_resource type="Script" uid="uid://dbsm8bbiofnnr" path="res://组件/构筑物蓝图与实例/base/构筑物.gd" id="1_0tpjc"]
+[ext_resource type="Script" uid="uid://dbsm8bbiofnnr" path="res://组件/子场景内实例/构筑物蓝图与实例/构筑物.gd" id="1_0tpjc"]
 
 [node name="构筑物" type="Node2D" node_paths=PackedStringArray("构筑物范围矩形")]
 script = ExtResource("1_0tpjc")

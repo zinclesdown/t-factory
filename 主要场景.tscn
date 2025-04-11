@@ -94,7 +94,7 @@ offset_top = -119.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="显示子场景表" type="Label" parent="调试层/PanelContainer"]
+[node name="显示子场景表" type="RichTextLabel" parent="调试层/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "子场景表显示:"

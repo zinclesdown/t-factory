@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw32ovw2b50rf"]
+
+[ext_resource type="Script" uid="uid://dknmb56xbqyu3" path="res://组件/子场景内实例/特殊场景实例/交互式子场景连接门/交互式子场景连接门.gd" id="1_x8hnd"]
+[ext_resource type="Texture2D" uid="uid://b7j24mx2e8n7d" path="res://资源/图像/door.png" id="2_5hfwk"]
+[ext_resource type="PackedScene" uid="uid://bgothwysgi6wv" path="res://组件/交互HitboxAndHurtbox/交互HurtBox.tscn" id="3_ispdx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs5g4"]
+size = Vector2(32, 64)
+
+[node name="交互式子场景连接门" type="Node2D"]
+script = ExtResource("1_x8hnd")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(16, 32)
+texture = ExtResource("2_5hfwk")
+
+[node name="交互HurtBox" parent="." instance=ExtResource("3_ispdx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="交互HurtBox"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_fs5g4")
+
+[connection signal="被执行了交互" from="交互HurtBox" to="." method="_on_交互hurt_box_被执行了交互"]

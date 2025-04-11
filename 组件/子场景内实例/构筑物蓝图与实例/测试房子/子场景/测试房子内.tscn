@@ -1,23 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://cdp2jxrp863ea"]
+[gd_scene load_steps=4 format=4 uid="uid://cdp2jxrp863ea"]
 
 [ext_resource type="PackedScene" uid="uid://blllr8yma4ogw" path="res://组件/TileMap相关/通用世界TileMap组件/通用世界TileMap组件.tscn" id="1_b7p7k"]
-[ext_resource type="PackedScene" uid="uid://bgothwysgi6wv" path="res://组件/交互HitboxAndHurtbox/交互HurtBox.tscn" id="3_gprip"]
+[ext_resource type="PackedScene" uid="uid://dw32ovw2b50rf" path="res://组件/子场景内实例/特殊场景实例/交互式子场景连接门/交互式子场景连接门.tscn" id="2_rdd67"]
 
 [sub_resource type="GDScript" id="GDScript_gny31"]
 resource_name = "测试房子内的子场景"
 script/source = "extends 子场景
 
-
-
-	
-
-func _on_退出的门的交互hurtbox_被执行了交互(hitbox: 交互HitBox实例, args: Array) -> void:
-	hitbox.所有者实例.切换该角色所在子场景(上级子场景, 上级子场景的角色默认初始化位置)
-	print(\"退出的门被交互了!\")
+@onready var 出口连接门 = %\"交互式子场景连接门\"
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtots"]
-size = Vector2(50, 83)
 
 [node name="测试房子内" type="Node2D"]
 script = SubResource("GDScript_gny31")
@@ -25,17 +16,6 @@ script = SubResource("GDScript_gny31")
 [node name="通用世界TileMap组件" parent="." instance=ExtResource("1_b7p7k")]
 tile_map_data = PackedByteArray("AAAAAAQAAAABAAIAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAABAAIAAAAKAAAAAAABAAIAAAAKAAEAAAABAAIAAAAKAAIAAAABAAIAAAAKAAMAAAABAAIAAAAKAAQAAAABAAIAAAAKAAUAAAABAAIAAAAKAAYAAAABAAIAAAAKAAcAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAAAAAcAAAABAAIAAAABAAcAAAABAAEAAAACAAcAAAABAAEAAAADAAcAAAABAAEAAAAEAAcAAAABAAEAAAAFAAcAAAABAAEAAAAGAAcAAAABAAEAAAAHAAcAAAABAAEAAAAIAAcAAAABAAEAAAAJAAcAAAABAAEAAAAAAAgAAAABAAIAAAAAAAkAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAGAAgAAAABAAIAAAAGAAkAAAABAAIAAAAHAAgAAAABAAIAAAAHAAkAAAABAAIAAAAIAAgAAAABAAIAAAAIAAkAAAABAAIAAAAJAAgAAAABAAIAAAAJAAkAAAABAAIAAAAKAAgAAAABAAIAAAAKAAkAAAABAAIAAAD9/wQAAAABAAEAAAD+/wQAAAABAAEAAAD//wQAAAABAAEAAAA=")
 
-[node name="退出的门的交互Hurtbox" parent="." instance=ExtResource("3_gprip")]
-position = Vector2(222, 114)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="退出的门的交互Hurtbox"]
-position = Vector2(17, 65)
-shape = SubResource("RectangleShape2D_dtots")
-
-[node name="Label" type="Label" parent="退出的门的交互Hurtbox"]
-offset_right = 40.0
-offset_bottom = 16.0
-text = "EXIT"
-
-[connection signal="被执行了交互" from="退出的门的交互Hurtbox" to="." method="_on_退出的门的交互hurtbox_被执行了交互"]
+[node name="交互式子场景连接门" parent="." instance=ExtResource("2_rdd67")]
+unique_name_in_owner = true
+position = Vector2(205, 159)

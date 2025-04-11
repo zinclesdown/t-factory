@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cc34n7n7isjm0"]
 
-[ext_resource type="PackedScene" uid="uid://ciog2a0j8cbj0" path="res://组件/构筑物蓝图与实例/base/构筑物蓝图.tscn" id="1_2tufs"]
+[ext_resource type="PackedScene" uid="uid://ciog2a0j8cbj0" path="res://组件/子场景内实例/构筑物蓝图与实例/构筑物蓝图.tscn" id="1_2tufs"]
 [ext_resource type="Texture2D" uid="uid://camu7sv38jn2k" path="res://资源/图像/Turret.png" id="2_2tufs"]
-[ext_resource type="PackedScene" uid="uid://dxavnqyei1ecw" path="res://组件/构筑物蓝图与实例/机枪塔/机枪塔构筑物.tscn" id="2_t75fi"]
+[ext_resource type="PackedScene" uid="uid://dxavnqyei1ecw" path="res://组件/子场景内实例/构筑物蓝图与实例/机枪塔/机枪塔构筑物.tscn" id="2_t75fi"]
 
 [node name="构筑物蓝图" instance=ExtResource("1_2tufs")]
 modulate = Color(0.22, 0.623, 1, 0.745098)
