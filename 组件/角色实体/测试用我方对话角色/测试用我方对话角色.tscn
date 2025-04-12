@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://wmxmiw8v73j3"]
 
 [ext_resource type="Script" uid="uid://chli6bomlw7w3" path="res://组件/角色实体/测试用我方对话角色/测试用我方对话角色.gd" id="1_h65m2"]
-[ext_resource type="Resource" uid="uid://dkihodfihr71o" path="res://荷取的测试对话.dialogue" id="2_1seyy"]
+[ext_resource type="Resource" uid="uid://dkihodfihr71o" path="res://资源/对话/荷取的测试对话.dialogue" id="2_1seyy"]
 [ext_resource type="Texture2D" uid="uid://bjrpmkrddcrmo" path="res://资源/图像/角色/kappa.png" id="2_7o8gy"]
 [ext_resource type="PackedScene" uid="uid://bgothwysgi6wv" path="res://组件/交互HitboxAndHurtbox/交互HurtBox.tscn" id="3_4ny63"]
 
@@ -11,10 +11,11 @@ size = Vector2(20, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ny63"]
 size = Vector2(68, 24)
 
-[node name="测试用我方对话角色" type="CharacterBody2D" groups=["我方角色"]]
+[node name="测试用我方对话角色" type="CharacterBody2D" node_paths=PackedStringArray("被玩家对话交互hurt_box") groups=["我方角色"]]
 collision_layer = 8
 script = ExtResource("1_h65m2")
 "对话文件资源" = ExtResource("2_1seyy")
+"被玩家对话交互hurt_box" = NodePath("被玩家对话交互HurtBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7o8gy")

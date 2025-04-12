@@ -4,36 +4,56 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_ny45c"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_yhphm"]
 
-[node name="对话OverLay" type="Node2D" node_paths=PackedStringArray("说话者位置", "对话气球窗体", "角色名称Label", "对话内容Label", "回复选项列表")]
-z_index = 99
+[node name="对话OverLay" type="CanvasLayer" node_paths=PackedStringArray("角色名称Label", "对话内容Label", "回复选项列表", "覆盖层Camera", "说话者位置锚点", "主viewport")]
 script = ExtResource("1_xv4f1")
-"说话者位置" = NodePath("说话者位置")
-"对话气球窗体" = NodePath("说话者位置/对话气球窗体")
-"角色名称Label" = NodePath("说话者位置/对话气球窗体/对话框/Dialogue/VBoxContainer/角色名称Label")
-"对话内容Label" = NodePath("说话者位置/对话气球窗体/对话框/Dialogue/VBoxContainer/对话内容Label")
-"回复选项列表" = NodePath("说话者位置/对话气球窗体/回应列表/回复选项列表")
+"角色名称Label" = NodePath("主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框/Dialogue/VBoxContainer/角色名称Label")
+"对话内容Label" = NodePath("主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框/Dialogue/VBoxContainer/对话内容Label")
+"回复选项列表" = NodePath("主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表/回复选项列表")
+"覆盖层Camera" = NodePath("主Viewport/SubViewport/覆盖层Camera")
+"说话者位置锚点" = NodePath("主Viewport/SubViewport/说话者位置锚点")
+"主viewport" = NodePath("主Viewport")
 
-[node name="说话者位置" type="Marker2D" parent="."]
+[node name="主Viewport" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="对话气球窗体" type="HBoxContainer" parent="说话者位置"]
+[node name="SubViewport" type="SubViewport" parent="主Viewport"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 0
+
+[node name="覆盖层Camera" type="Camera2D" parent="主Viewport/SubViewport"]
+position = Vector2(682, 493)
+
+[node name="说话者位置锚点" type="Marker2D" parent="主Viewport/SubViewport"]
+position = Vector2(630, 381)
+
+[node name="对话气球窗体" type="HBoxContainer" parent="主Viewport/SubViewport/说话者位置锚点"]
 offset_left = -172.0
 offset_top = -224.0
 offset_right = 242.0
 offset_bottom = -99.0
 
-[node name="对话框" type="PanelContainer" parent="说话者位置/对话气球窗体"]
+[node name="对话框" type="PanelContainer" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="Dialogue" type="MarginContainer" parent="说话者位置/对话气球窗体/对话框"]
+[node name="Dialogue" type="MarginContainer" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="说话者位置/对话气球窗体/对话框/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框/Dialogue"]
 layout_mode = 2
 
-[node name="角色名称Label" type="RichTextLabel" parent="说话者位置/对话气球窗体/对话框/Dialogue/VBoxContainer"]
+[node name="角色名称Label" type="RichTextLabel" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框/Dialogue/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
@@ -42,24 +62,24 @@ text = "玩家角色"
 fit_content = true
 scroll_active = false
 
-[node name="对话内容Label" parent="说话者位置/对话气球窗体/对话框/Dialogue/VBoxContainer" instance=ExtResource("3_ny45c")]
+[node name="对话内容Label" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/对话框/Dialogue/VBoxContainer" instance=ExtResource("3_ny45c")]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue...asdahsaasdajiodjasjdasjiojzxcjzlkklscznckxnkckadaidiandaikxhuwhxdkahusdhshdajhskdajshdksahjdskh"
 
-[node name="回应列表" type="MarginContainer" parent="说话者位置/对话气球窗体"]
+[node name="回应列表" type="MarginContainer" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体"]
 layout_mode = 2
 size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
-[node name="ReferenceRect" type="ReferenceRect" parent="说话者位置/对话气球窗体/回应列表"]
+[node name="ReferenceRect" type="ReferenceRect" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表"]
 layout_mode = 2
 mouse_filter = 2
 border_color = Color(2.21401e-06, 0.59761, 0.707875, 1)
 border_width = 2.0
 
-[node name="回复选项列表" type="VBoxContainer" parent="说话者位置/对话气球窗体/回应列表" node_paths=PackedStringArray("response_template")]
+[node name="回复选项列表" type="VBoxContainer" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -67,16 +87,16 @@ theme_override_constants/separation = 2
 script = ExtResource("4_yhphm")
 response_template = NodePath("ResponseExample1")
 
-[node name="ResponseExample1" type="Button" parent="说话者位置/对话气球窗体/回应列表/回复选项列表"]
+[node name="ResponseExample1" type="Button" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表/回复选项列表"]
 layout_mode = 2
 text = "示例回复1"
 
-[node name="ResponseExample2" type="Button" parent="说话者位置/对话气球窗体/回应列表/回复选项列表"]
+[node name="ResponseExample2" type="Button" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表/回复选项列表"]
 layout_mode = 2
 text = "示例回复2"
 
-[node name="Line2D" type="Line2D" parent="说话者位置/对话气球窗体"]
+[node name="Line2D" type="Line2D" parent="主Viewport/SubViewport/说话者位置锚点/对话气球窗体"]
 position = Vector2(172, 224)
 points = PackedVector2Array(-100, -100, -1, 0, 81, -106)
 
-[connection signal="response_selected" from="说话者位置/对话气球窗体/回应列表/回复选项列表" to="." method="_on_responses_menu_response_selected"]
+[connection signal="response_selected" from="主Viewport/SubViewport/说话者位置锚点/对话气球窗体/回应列表/回复选项列表" to="." method="_on_responses_menu_response_selected"]

@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://wmxmiw8v73j3" path="res://组件/角色实体/测试用我方对话角色/测试用我方对话角色.tscn" id="9_vresp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_aph50"]
-vertices = PackedVector2Array(1066, 554, 1404.55, 779, -157.617, 779, 22, 554, -121.367, -191.961, -10, 234, 1362.42, -186.031, 1066, 246, 330, 42, 330, -10, -10, -10, 42, 234, 42, 42, 22, 246)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(4, 6, 9, 10), PackedInt32Array(11, 12, 8, 7), PackedInt32Array(11, 7, 13, 5), PackedInt32Array(5, 13, 3), PackedInt32Array(4, 10, 5)])
+vertices = PackedVector2Array(1066, 554, 1404.55, 779, -157.617, 779, 22, 554, -121.367, -191.961, -10, 234, 1362.42, -186.031, 1066, 246, 330, 42, 330, -10, 694, 246, -10, -10, 650, 246, 42, 234, 42, 42, 694, 374, 650, 374, 22, 246)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(8, 9, 6, 7, 10), PackedInt32Array(4, 6, 9, 11), PackedInt32Array(12, 13, 14, 8, 10), PackedInt32Array(10, 15, 16, 12), PackedInt32Array(13, 12, 17, 5), PackedInt32Array(5, 17, 3), PackedInt32Array(4, 11, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-131, -202, -168, 789, 1415, 789, 1372, -196)])
 
 [node name="简单场景" type="Node2D" node_paths=PackedStringArray("可放置建筑层", "蓝图显示层")]
@@ -35,6 +35,7 @@ unique_name_in_owner = true
 position = Vector2(659, 197)
 
 [node name="调试层" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="调试层"]
 anchors_preset = 1

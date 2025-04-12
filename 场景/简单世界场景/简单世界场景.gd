@@ -1,8 +1,6 @@
 extends 子场景
 
 
-
-
 var 当前鼠标图块坐标:Vector2i
 var 图块大小 := Vector2i(32, 32)
 

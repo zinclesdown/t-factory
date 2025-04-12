@@ -19,8 +19,48 @@ var _子场景对应容器 :Dictionary = {}
 var 当前玩家所在的子场景:子场景 = null
 
 
+enum 操作状态 {
+	自由活动,
+	对话中,
+	交互中,
+	建筑中,
+}
+var _当前操作状态:操作状态 = 操作状态.自由活动
+
+
+func 是自由活动状态()->bool:
+	return _当前操作状态 == 操作状态.自由活动
+
+func 是对话中状态()->bool:
+	return _当前操作状态 == 操作状态.对话中
+
+func 是交互中状态()->bool:
+	return _当前操作状态 == 操作状态.交互中
+
+func 是建筑中状态()->bool:
+	return _当前操作状态 == 操作状态.建筑中
+	
+
+func 操作状态设置为自由活动():
+	_当前操作状态 = 操作状态.自由活动
+
+func 操作状态设置为对话中():
+	_当前操作状态 = 操作状态.对话中
+
+func 操作状态设置为交互中():
+	_当前操作状态 = 操作状态.交互中
+
+func 操作状态设置为建筑中():
+	_当前操作状态 = 操作状态.建筑中
+
 
 func _ready() -> void:
+	_ready_处理场景内已有子场景的初始化()
+	_ready_处理玩家对话开始结束的操作状态切换()
+
+
+
+func _ready_处理场景内已有子场景的初始化():
 	# 先对子场景进行初始化. 假设我们预先定义了已有的子场景:
 	for container:SubViewportContainer in 子场景所在根节点.get_children():
 		# 移除不合法容器
@@ -37,18 +77,24 @@ func _ready() -> void:
 			continue
 		
 		var 待初始化子场景 :子场景 = subViewport.get_child(0) as 子场景
-		_子场景表.append(待初始化子场景) 
+		_子场景表.append(待初始化子场景)
 		_子场景对应容器[待初始化子场景] = container
 		print("初始化了合法的容器: ", 待初始化子场景, "  容器:", container)
 
 
-### 
-#func 根据子场景获取所在SubViewportContainer(_子场景:子场景) -> SubViewportContainer:
-	#var container := _子场景.get_parent().get_parent()
-	#if container is SubViewportContainer:
-		#return container
-	#else:
-		#return null
+
+func _ready_处理玩家对话开始结束的操作状态切换():
+	# 处理对话相关状态
+	对话组件.对话开始.connect(
+		func():
+			操作状态设置为交互中()
+	)
+	对话组件.对话结束.connect(
+		func():
+			操作状态设置为自由活动()
+	)
+
+
 
 
 func _process(delta: float) -> void:
@@ -75,10 +121,13 @@ func 添加子场景(追加的子场景:子场景):
 	子视图容器.add_child(子视图)
 	子视图容器.name = 追加的子场景.name
 	子视图.add_child(追加的子场景)
-	
+
+	# Nearest, 方便像素渲染
+	子视图.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
+
 
 	## 添加表记录.
-	_子场景表.append(追加的子场景) 
+	_子场景表.append(追加的子场景)
 	_子场景对应容器[追加的子场景] = 子视图容器
 	
 	子场景所在根节点.add_child(子视图容器)

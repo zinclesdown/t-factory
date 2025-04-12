@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dkihodfihr71o"
+path="res://.godot/imported/荷取的测试对话.dialogue-151d297fc4a37107daa6b27a3a3a1757.tres"
+
+[deps]
+
+source_file="res://资源/对话/荷取的测试对话.dialogue"
+dest_files=["res://.godot/imported/荷取的测试对话.dialogue-151d297fc4a37107daa6b27a3a3a1757.tres"]
+
+[params]
+
+defaults=true

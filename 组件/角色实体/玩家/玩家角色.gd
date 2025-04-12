@@ -12,6 +12,9 @@ class_name 玩家角色
 var 当前手持物品 : 可使用物品
 
 
+
+
+
 func _physics_process(_delta: float) -> void:
 	# 处理重力
 	if is_on_floor():
@@ -19,13 +22,27 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity += 全局.重力加速度
 	
+	
+	if 获取主要场景().是自由活动状态():
+		_physics_自由控制(_delta)
+	elif 获取主要场景().是交互中状态():
+		_physics_交互中(_delta)
+	elif 获取主要场景().是对话中状态():
+		_physics_对话中(_delta)
+
+func _physics_交互中(_delta:float):
+	pass
+
+func _physics_对话中(_delta:float):
+	pass
+
+func _physics_自由控制(_delta:float):
 	# 施加玩家控制
 	var inputDir := Input.get_axis("左移", "右移")
 	if Input.is_action_pressed("跑步"):
 		velocity.x = 跑步速度 * inputDir
 	else:
 		velocity.x = 行走速度 * inputDir
-	
 	
 	# 施加跳跃检测
 	if Input.is_action_just_pressed("跳跃"):
