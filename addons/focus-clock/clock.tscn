@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd7pnekctbkl8"]
 
-[ext_resource type="Script" uid="uid://ckn2eeoxt1k3o" path="res://addons/godot_owl/focus-clock/clock.gd" id="1_yppao"]
+[ext_resource type="Script" uid="uid://ckn2eeoxt1k3o" path="res://addons/focus-clock/clock.gd" id="1_yppao"]
 [ext_resource type="Texture2D" uid="uid://cquub6reufcxr" path="res://addons/focus-clock/fullscreen_icon.png" id="2_8ou8j"]
 
 [node name="Clock" type="MarginContainer"]
@@ -23,7 +23,7 @@ layout_mode = 2
 [node name="ClockDisplayer" type="MenuButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = " 2025年4月11日星期五  11:55:22 "
+text = " 2025年4月17日星期四  11:54:59 "
 flat = false
 item_count = 2
 popup/item_0/text = "长日期"

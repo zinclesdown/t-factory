@@ -13,8 +13,6 @@ var 当前手持物品 : 可使用物品
 
 
 
-
-
 func _physics_process(_delta: float) -> void:
 	# 处理重力
 	if is_on_floor():
@@ -22,12 +20,11 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity += 全局.重力加速度
 	
-	
-	if 获取主要场景().是自由活动状态():
+	if 玩家全局状态.是自由活动状态():
 		_physics_自由控制(_delta)
-	elif 获取主要场景().是交互中状态():
+	elif 玩家全局状态.是交互中状态():
 		_physics_交互中(_delta)
-	elif 获取主要场景().是对话中状态():
+	elif 玩家全局状态.是对话中状态():
 		_physics_对话中(_delta)
 
 func _physics_交互中(_delta:float):

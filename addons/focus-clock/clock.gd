@@ -26,9 +26,9 @@ func _process(delta: float) -> void:
 	
 	match date_type:
 		DateFormatType.LONG_DATE:
-			%ClockDisplayer.text = " %4d年%d月%d日星期%s  %2d:%2d:%2d " % [year, month, day, capitalize_weekday_zh_cn(weekday), hour, minute, second]
+			%ClockDisplayer.text = " %d年%d月%d日星期%s  %02d:%02d:%02d " % [year, month, day, capitalize_weekday_zh_cn(weekday), hour, minute, second]
 		DateFormatType.SHORT_DATE:
-			%ClockDisplayer.text = " %4d/%d/%d  %2d:%2d:%2d " % [year, month, day, hour, minute, second]
+			%ClockDisplayer.text = " %4d/%d/%d  %02d:%02d:%02d " % [year, month, day, hour, minute, second]
 
 
 func _on_clock_displayer_pressed() -> void:
@@ -61,3 +61,13 @@ func capitalize_weekday_zh_cn(num:int)->String:
 			return "日"
 		_:
 			return "ERROR"
+
+
+func _on_full_screen_toggle_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		EditorInterface.get_editor_main_screen().get_viewport().mode = Window.MODE_FULLSCREEN
+	else:
+		EditorInterface.get_editor_main_screen().get_viewport().mode = Window.MODE_WINDOWED
+		await get_tree().process_frame
+		EditorInterface.get_editor_main_screen().set_size(DisplayServer.screen_get_size())
+		
