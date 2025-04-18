@@ -16,5 +16,9 @@ text = "Tick!"
 wait_time = 0.5
 autostart = true
 
+[node name="BoosterTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+editor_description = "当按下“Down”时，多久会"
+
 [connection signal="pressed" from="Tick" to="." method="_on_tick_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

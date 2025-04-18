@@ -15,7 +15,7 @@ imgui/config="uid://de1w7ypl72qu4"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://bc2c8rjnu7dav"
+run/main_scene="uid://dylyav7k6bdsk"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://cm0svkod4g3ra"
 

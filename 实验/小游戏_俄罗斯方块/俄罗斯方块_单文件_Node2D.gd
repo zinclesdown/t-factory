@@ -94,7 +94,7 @@ func _tick_游戏帧():
 				break
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_left"):
 		var 可以左移 := true
 		for x in 当前地图大小_getter.x:
@@ -171,7 +171,16 @@ func _随机设置当前活动方块():
 			[0, 1],
 			[1, 1],
 		],
-		[[0, 1, 0], [1, 1, 1]]
+		[
+			[0, 1, 0],
+			[1, 1, 1],
+		],
+		[
+			[1],
+			[1],
+			[1],
+			[1],
+		],
 	]
 
 	var 当前选中的方块: Array = 可能的方块.pick_random()
@@ -186,8 +195,6 @@ func _随机设置当前活动方块():
 				当前活动方块[x][y] = 当前选中的方块[x][y - v_offset]
 			else:
 				当前活动方块[x][y] = 0
-
-	pass
 
 
 func _draw_绘制网格():
@@ -226,6 +233,9 @@ func _on_tick_pressed() -> void:
 
 func _process(_delta: float) -> void:
 	queue_redraw()
+
+	if Input.is_action_pressed("ui_down"):
+		_tick_游戏帧()
 
 
 func _on_timer_timeout() -> void:
