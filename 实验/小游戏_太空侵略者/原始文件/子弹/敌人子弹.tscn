@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://qycp5rpiko8a"]
+
+[ext_resource type="Texture2D" uid="uid://bow77fntpumey" path="res://实验/小游戏_太空侵略者/原始文件/资产/bullet_enemy.png" id="1_75e1l"]
+[ext_resource type="Script" uid="uid://4vkuql24t7mu" path="res://实验/小游戏_太空侵略者/原始文件/子弹/敌人子弹.gd" id="1_vdlbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75e1l"]
+radius = 3.0
+
+[node name="敌人子弹" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_vdlbv")
+
+[node name="BulletEnemy" type="Sprite2D" parent="."]
+texture = ExtResource("1_75e1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_75e1l")
