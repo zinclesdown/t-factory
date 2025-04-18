@@ -86,7 +86,8 @@ func 开始对话(玩家:Node2D, 对方:Node2D, 对话资源:DialogueResource, �
 
 func _ready() -> void:
 	正处在对话中 = false
-	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
+	DialogueManager.mutated.connect(_on_mutated)
+	#Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# 如果响应菜单没有设置下一步操作，则使用此操作
 	if 回复选项列表.next_action.is_empty():

@@ -23,7 +23,7 @@ layout_mode = 2
 [node name="ClockDisplayer" type="MenuButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = " 2025年4月17日星期四  11:54:59 "
+text = " 2025年4月17日星期四  11:59:30 "
 flat = false
 item_count = 2
 popup/item_0/text = "长日期"

@@ -12,4 +12,9 @@ offset_right = 611.0
 offset_bottom = 144.0
 text = "Tick!"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="pressed" from="Tick" to="." method="_on_tick_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
