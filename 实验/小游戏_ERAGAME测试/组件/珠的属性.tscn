@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://55cvn3ujgajm"]
+
+[node name="珠的属性" type="VBoxContainer"]
+
+[node name="====珠的属性====" type="Label" parent="."]
+layout_mode = 2
+text = "================ 珠的属性 ================"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "测试的珠 : 0012"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "池沼的珠 : 0000"
+
+[node name="Label3" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "野兽的珠 : 1000"

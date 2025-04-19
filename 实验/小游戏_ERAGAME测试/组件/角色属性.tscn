@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://w0mywyjt61hu"]
+
+[node name="角色属性" type="VBoxContainer"]
+
+[node name="====角色属性====" type="Label" parent="."]
+layout_mode = 2
+text = "================ 角色属性 ================"
+horizontal_alignment = 1
+
+[node name="角色属性显示容器" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="你" type="HBoxContainer" parent="角色属性显示容器"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="你" type="Label" parent="角色属性显示容器/你"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "你"
+
+[node name="体力" type="Label" parent="角色属性显示容器/你"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "体力：2000/2000"
+
+[node name="气力" type="Label" parent="角色属性显示容器/你"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "气力：2000/2000"
+
+[node name="精力" type="Label" parent="角色属性显示容器/你"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "精力 1000/1000"
+
+[node name="对方" type="HBoxContainer" parent="角色属性显示容器"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="你" type="Label" parent="角色属性显示容器/对方"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "群友"
+
+[node name="体力" type="Label" parent="角色属性显示容器/对方"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "体力：2000/2000"
+
+[node name="气力" type="Label" parent="角色属性显示容器/对方"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "气力：2000/2000"
+
+[node name="精力" type="Label" parent="角色属性显示容器/对方"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "精力 1000/1000"

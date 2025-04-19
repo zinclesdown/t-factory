@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d37mlerwio3lk"]
+
+[node name="可用操作" type="VBoxContainer"]
+
+[node name="====可用操作====" type="Label" parent="."]
+layout_mode = 2
+text = "================ 可用操作 ================"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="动作按钮容器的容器" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/动作按钮容器的容器"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="Button" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "对话"
+
+[node name="Button2" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "交流"
+
+[node name="Button3" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "雷普"
+
+[node name="Button4" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "对决"
+
+[node name="Button5" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "接触"
+
+[node name="Button6" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "信息"
+
+[node name="Button7" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "道具"
+
+[node name="Button8" type="Button" parent="VBoxContainer/动作按钮容器的容器/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "外出"

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj8ojdy4h12e8"]
+
+[ext_resource type="Script" uid="uid://cltyjth3dmscy" path="res://实验/小游戏_ERAGAME测试/eragame.gd" id="1_3fmco"]
+[ext_resource type="FontFile" uid="uid://ct4uhxp5mypor" path="res://资源/字体/MapleMono-SC-NF-Regular.ttf" id="1_dwj43"]
+[ext_resource type="PackedScene" uid="uid://d37mlerwio3lk" path="res://实验/小游戏_ERAGAME测试/组件/可用操作.tscn" id="3_chl51"]
+[ext_resource type="PackedScene" uid="uid://dpujb57kpvdyo" path="res://实验/小游戏_ERAGAME测试/组件/情况.tscn" id="4_t7jt8"]
+[ext_resource type="PackedScene" uid="uid://55cvn3ujgajm" path="res://实验/小游戏_ERAGAME测试/组件/珠的属性.tscn" id="5_6fw50"]
+[ext_resource type="PackedScene" uid="uid://w0mywyjt61hu" path="res://实验/小游戏_ERAGAME测试/组件/角色属性.tscn" id="6_3etsc"]
+
+[sub_resource type="Theme" id="Theme_2abt4"]
+default_font = ExtResource("1_dwj43")
+default_font_size = 16
+
+[node name="ERAGame" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2abt4")
+script = ExtResource("1_3fmco")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="主要容器" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="角色属性" parent="MarginContainer/ScrollContainer/主要容器" instance=ExtResource("6_3etsc")]
+layout_mode = 2
+
+[node name="珠的属性" parent="MarginContainer/ScrollContainer/主要容器" instance=ExtResource("5_6fw50")]
+layout_mode = 2
+
+[node name="可用操作" parent="MarginContainer/ScrollContainer/主要容器" instance=ExtResource("3_chl51")]
+layout_mode = 2
+
+[node name="情况" parent="MarginContainer/ScrollContainer/主要容器" instance=ExtResource("4_t7jt8")]
+layout_mode = 2
