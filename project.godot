@@ -24,6 +24,7 @@ config/icon="uid://cm0svkod4g3ra"
 "资源管理器"="*res://全局/资源管理器.tscn"
 "对话组件"="*res://全局/对话OverLay/对话Overlay.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+"全局Toast层"="*res://全局/全局Toast层/全局toast层.tscn"
 
 [editor_plugins]
 

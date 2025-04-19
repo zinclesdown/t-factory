@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtiyadq6qvr11"]
+
+[ext_resource type="Script" uid="uid://dbr2pe0vwq3tk" path="res://全局/全局Toast层/全局toast层.gd" id="1_ox077"]
+[ext_resource type="PackedScene" uid="uid://dq34tyoogd7l2" path="res://全局/全局Toast层/实例/右下角toast消息实例.tscn" id="2_2c1jj"]
+[ext_resource type="Shader" uid="uid://lc0168vkodhn" path="res://全局/全局Toast层/实例/右下角toast消息实例.gdshader" id="3_yvogl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdplm"]
+resource_local_to_scene = true
+shader = ExtResource("3_yvogl")
+shader_parameter/fadeout_progress = 0.0
+shader_parameter/h_move_offset = 300.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkyg6"]
+resource_local_to_scene = true
+shader = ExtResource("3_yvogl")
+shader_parameter/fadeout_progress = 0.0
+shader_parameter/h_move_offset = 300.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nsaa"]
+resource_local_to_scene = true
+shader = ExtResource("3_yvogl")
+shader_parameter/fadeout_progress = 0.0
+shader_parameter/h_move_offset = 300.0
+
+[node name="全局Toast层" type="CanvasLayer"]
+script = ExtResource("1_ox077")
+"右下角Toast消息预制件" = ExtResource("2_2c1jj")
+
+[node name="右下角容器" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -240.0
+offset_right = -56.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="右下角Toast消息实例" parent="右下角容器" instance=ExtResource("2_2c1jj")]
+material = SubResource("ShaderMaterial_bdplm")
+layout_mode = 2
+
+[node name="右下角Toast消息实例2" parent="右下角容器" instance=ExtResource("2_2c1jj")]
+material = SubResource("ShaderMaterial_tkyg6")
+layout_mode = 2
+
+[node name="右下角Toast消息实例3" parent="右下角容器" instance=ExtResource("2_2c1jj")]
+material = SubResource("ShaderMaterial_5nsaa")
+layout_mode = 2
+
+[node name="测试发送Toast消息" type="Button" parent="."]
+visible = false
+offset_left = 504.0
+offset_top = 248.0
+offset_right = 696.0
+offset_bottom = 312.0
+text = "发送Toast消息！"
+
+[connection signal="pressed" from="测试发送Toast消息" to="." method="_on_测试发送toast消息_pressed"]

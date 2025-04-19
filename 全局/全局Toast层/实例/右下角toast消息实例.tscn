@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq34tyoogd7l2"]
+
+[ext_resource type="Script" uid="uid://dk17kenf5lu21" path="res://全局/全局Toast层/实例/右下角toast消息实例.gd" id="1_orwtt"]
+[ext_resource type="Shader" uid="uid://lc0168vkodhn" path="res://全局/全局Toast层/实例/右下角toast消息实例.gdshader" id="1_wcnup"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcnup"]
+resource_local_to_scene = true
+shader = ExtResource("1_wcnup")
+shader_parameter/fadeout_progress = 0.0
+shader_parameter/h_move_offset = 300.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23c0v"]
+bg_color = Color(0, 0, 0, 0.588235)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52set"]
+
+[node name="右下角Toast消息实例" type="MarginContainer" node_paths=PackedStringArray("文本容器")]
+material = SubResource("ShaderMaterial_wcnup")
+offset_right = 256.0
+offset_bottom = 64.0
+script = ExtResource("1_orwtt")
+"文本容器" = NodePath("PanelContainer/MarginContainer/文本")
+metadata/_edit_group_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_23c0v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="文本" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_52set")
+use_parent_material = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Test Message Please Ignore!"
+fit_content = true
+scroll_active = false
