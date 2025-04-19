@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dmgjsi52adb0k"]
-
-[ext_resource type="StyleBox" uid="uid://dj51lencm0lpl" path="res://全局/主题/panel.tres" id="1_ux7np"]
-
-[resource]
-Panel/styles/panel = ExtResource("1_ux7np")
-PanelContainer/styles/panel = ExtResource("1_ux7np")

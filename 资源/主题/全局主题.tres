@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dmgjsi52adb0k"]
+
+[ext_resource type="StyleBox" uid="uid://351x1xetrm5s" path="res://资源/主题/按钮主题/按钮主题_正常.tres" id="1_7x8sk"]
+[ext_resource type="StyleBox" uid="uid://dj51lencm0lpl" path="res://资源/主题/面板主题.tres" id="2_04dd0"]
+[ext_resource type="StyleBox" uid="uid://d2paevgi7soyx" path="res://资源/主题/按钮主题/按钮主题_悬浮.tres" id="2_7la4a"]
+[ext_resource type="StyleBox" uid="uid://b303fbhshq4sy" path="res://资源/主题/按钮主题/按钮主题_聚焦.tres" id="2_rgr40"]
+[ext_resource type="StyleBox" uid="uid://ch0r8l4vs140s" path="res://资源/主题/按钮主题/按钮主题_按下.tres" id="3_7la4a"]
+[ext_resource type="StyleBox" uid="uid://djhd0dvrwi2wc" path="res://资源/主题/TabContainer主题/TabContainer_面板主题.tres" id="6_8vwv8"]
+[ext_resource type="StyleBox" uid="uid://0y5bpl41k36d" path="res://资源/主题/TabContainer主题/TabContainer_选项卡未选.tres" id="6_akmc0"]
+[ext_resource type="StyleBox" uid="uid://yqdmou72tf0g" path="res://资源/主题/TabContainer主题/TabContainer_选项卡悬浮.tres" id="7_8ocs2"]
+[ext_resource type="StyleBox" uid="uid://daaw78w3h35hg" path="res://资源/主题/TabContainer主题/TabContainer_选项卡禁用.tres" id="7_cwuwe"]
+[ext_resource type="StyleBox" uid="uid://b4bvvfab7rjib" path="res://资源/主题/TabContainer主题/TabContainer_选项卡按下.tres" id="8_cwuwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vwv8"]
+
+[resource]
+Button/styles/disabled = ExtResource("1_7x8sk")
+Button/styles/focus = ExtResource("2_rgr40")
+Button/styles/hover = ExtResource("2_7la4a")
+Button/styles/normal = ExtResource("1_7x8sk")
+Button/styles/pressed = ExtResource("3_7la4a")
+HBoxContainer/constants/separation = 8
+Panel/styles/panel = ExtResource("2_04dd0")
+PanelContainer/styles/panel = ExtResource("2_04dd0")
+TabContainer/constants/tab_separation = 24
+TabContainer/styles/panel = ExtResource("6_8vwv8")
+TabContainer/styles/tab_disabled = ExtResource("7_cwuwe")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_8vwv8")
+TabContainer/styles/tab_hovered = ExtResource("7_8ocs2")
+TabContainer/styles/tab_selected = ExtResource("8_cwuwe")
+TabContainer/styles/tab_unselected = ExtResource("6_akmc0")
+VBoxContainer/constants/separation = 8
