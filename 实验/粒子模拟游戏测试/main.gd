@@ -13,13 +13,16 @@ func _ready():
 	$UI/EraseButton.pressed.connect(func(): current_particle = ParticleType.ERASER)
 	
 	# 设置速度调节器
-	$UI/SpeedSlider.value_changed.connect(func(value): particle_system.simulation_speed = int(value))
+	$UI/CenterContainer/SpeedSlider.value_changed.connect(func(value): particle_system.simulation_speed = int(value))
 
 func _process(_delta):
 	# 鼠标处理
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var mouse_pos = get_global_mouse_position()
-		if mouse_pos.y > $UI.size.y:  # 避免在UI区域放置粒子
+		
+		# 检查鼠标是否在UI区域外
+		var ui_rect = Rect2(Vector2.ZERO, $UI.size)
+		if not ui_rect.has_point(mouse_pos):
 			match current_particle:
 				ParticleType.SAND:
 					particle_system.spawn_sand(mouse_pos)
@@ -32,3 +35,4 @@ func _process(_delta):
 	
 	# 更新当前工具显示
 	$UI/CurrentTool.text = "当前工具: " + ["沙子", "水", "墙壁", "橡皮擦"][current_particle]
+	$UI/FPSLabel.text = "FPS: %s" % [1.0/_delta]

@@ -17,6 +17,7 @@ imgui/config="uid://de1w7ypl72qu4"
 config/name="t-factory"
 run/main_scene="uid://shudi8o1a2k2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"
 
 [autoload]
@@ -187,3 +188,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.140447, 0.140447, 0.140447, 1)
