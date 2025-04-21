@@ -15,7 +15,7 @@ imgui/config="uid://de1w7ypl72qu4"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://shudi8o1a2k2"
+run/main_scene="uid://c6kcxea526ovj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"
