@@ -13,6 +13,8 @@ var 当前手持物品 : 可使用物品
 
 
 
+
+
 func _physics_process(_delta: float) -> void:
 	# 处理重力
 	if is_on_floor():
@@ -26,6 +28,15 @@ func _physics_process(_delta: float) -> void:
 		_physics_交互中(_delta)
 	elif 玩家全局状态.是对话中状态():
 		_physics_对话中(_delta)
+	
+	# 处理交互HurtBox, 标记箭头
+	var 最近的交互hurtbox := 交互HitBox.获取最近的交互HurtBox()
+	if 最近的交互hurtbox:
+		%"UI_交互指示器".show()
+		%"UI_交互指示器".global_position = 最近的交互hurtbox.global_position
+	else:
+		%"UI_交互指示器".hide()
+
 
 func _physics_交互中(_delta:float):
 	pass

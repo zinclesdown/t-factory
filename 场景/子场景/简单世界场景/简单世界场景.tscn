@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://cojnnr234nlqm"]
 
-[ext_resource type="Script" uid="uid://bbd1aw0y8s34s" path="res://场景/简单世界场景/简单世界场景.gd" id="1_iys2p"]
+[ext_resource type="Script" uid="uid://bbd1aw0y8s34s" path="res://场景/子场景/简单世界场景/简单世界场景.gd" id="1_iys2p"]
 [ext_resource type="PackedScene" uid="uid://blllr8yma4ogw" path="res://组件/TileMap相关/通用世界TileMap组件/通用世界TileMap组件.tscn" id="2_8aw1f"]
 [ext_resource type="PackedScene" uid="uid://57px8disfvqf" path="res://组件/TileMap相关/通用建筑物TileMap组件/通用建筑物TileMap组件.tscn" id="3_aph50"]
 [ext_resource type="PackedScene" uid="uid://br2y11xrqotgj" path="res://组件/角色实体/玩家/玩家角色.tscn" id="4_7oudw"]
@@ -35,7 +35,6 @@ unique_name_in_owner = true
 position = Vector2(659, 197)
 
 [node name="调试层" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="调试层"]
 anchors_preset = 1

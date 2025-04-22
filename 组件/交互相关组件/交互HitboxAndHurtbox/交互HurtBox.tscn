@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgothwysgi6wv"]
 
-[ext_resource type="Script" uid="uid://n20yimiylp45" path="res://组件/交互HitboxAndHurtbox/交互hurt_box.gd" id="1_sf2es"]
+[ext_resource type="Script" uid="uid://n20yimiylp45" path="res://组件/交互相关组件/交互HitboxAndHurtbox/交互hurt_box.gd" id="1_sf2es"]
 
 [node name="交互HurtBox" type="Area2D"]
 collision_layer = 4

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://br2y11xrqotgj"]
+[gd_scene load_steps=7 format=3 uid="uid://br2y11xrqotgj"]
 
 [ext_resource type="Script" uid="uid://drjnt4vkmbhx3" path="res://组件/角色实体/玩家/玩家角色.gd" id="1_m806w"]
 [ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://资源/图像/角色/idle.png" id="3_uykip"]
-[ext_resource type="PackedScene" uid="uid://clu02vm72blgu" path="res://组件/交互HitboxAndHurtbox/交互HitBox.tscn" id="4_xbjtl"]
+[ext_resource type="Texture2D" uid="uid://ys78hrvw4rle" path="res://资源/图像/UI/interact_identifier.png" id="4_t64mh"]
+[ext_resource type="PackedScene" uid="uid://clu02vm72blgu" path="res://组件/交互相关组件/交互HitboxAndHurtbox/交互HitBox.tscn" id="4_xbjtl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eth3"]
 size = Vector2(21, 36)
@@ -36,3 +37,14 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_uykip")
 debug_color = Color(0, 0.64, 0.362667, 0.192157)
+
+[node name="世界内UI效果" type="Node2D" parent="."]
+
+[node name="UI_交互指示器" type="Marker2D" parent="世界内UI效果"]
+unique_name_in_owner = true
+position = Vector2(121, -27)
+metadata/_edit_group_ = true
+
+[node name="InteractIdentifier" type="Sprite2D" parent="世界内UI效果/UI_交互指示器"]
+position = Vector2(-1, -55)
+texture = ExtResource("4_t64mh")

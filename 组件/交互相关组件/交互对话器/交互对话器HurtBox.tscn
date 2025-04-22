@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djm3c1vkllguh"]
+
+[ext_resource type="Script" uid="uid://dipybiukujlvp" path="res://组件/交互相关组件/交互对话器/交互对话器hurt_box.gd" id="1_ixj6o"]
+
+[node name="交互HurtBox" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ixj6o")
