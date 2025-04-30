@@ -9,11 +9,12 @@ class_name 玩家角色
 @export var 交互HitBox:交互HitBox实例
 
 
-var 当前手持物品 : 可使用物品
+@export var 建筑物建造者组件: 组件_建筑物建造者
 
 
 
-
+func _process(delta: float) -> void:
+	玩家全局状态.设置当前玩家角色(self)
 
 func _physics_process(_delta: float) -> void:
 	# 处理重力

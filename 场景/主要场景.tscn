@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://euhcuj8a7s3q"]
+[gd_scene load_steps=14 format=3 uid="uid://euhcuj8a7s3q"]
 
 [ext_resource type="Script" uid="uid://beianhrhjwpmu" path="res://场景/主要场景.gd" id="1_yh2sx"]
 [ext_resource type="PackedScene" uid="uid://cojnnr234nlqm" path="res://场景/子场景/简单世界场景/简单世界场景.tscn" id="2_rl00n"]
@@ -33,6 +33,14 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
+[sub_resource type="GDScript" id="GDScript_vrxie"]
+script/source = "extends Label
+
+
+func _process(delta: float) -> void:
+	text = \"状态: %s \" % 玩家全局状态.操作状态_to_string(玩家全局状态._当前玩家操作状态)
+"
+
 [sub_resource type="GDScript" id="GDScript_bqmv4"]
 script/source = "extends Button
 
@@ -46,6 +54,35 @@ script/source = "extends Button
 
 func _pressed() -> void:
 	玩家全局状态.操作状态设置为自由活动()
+"
+
+[sub_resource type="GDScript" id="GDScript_cud66"]
+resource_name = "_玩家建筑物相关"
+script/source = "extends VBoxContainer
+
+
+func 获取玩家建筑物建造者组件() -> 组件_建筑物建造者:
+	return 玩家全局状态._当前操作者玩家全局单例.建筑物建造者组件
+
+
+func _on_机枪塔_pressed() -> void:
+	if 获取玩家建筑物建造者组件():
+		获取玩家建筑物建造者组件().设置当前手上的蓝图实例(资源管理器.蓝图预制件_机枪塔.instantiate())
+
+
+func _on_特斯拉塔_pressed() -> void:
+	if 获取玩家建筑物建造者组件():
+		获取玩家建筑物建造者组件().设置当前手上的蓝图实例(资源管理器.蓝图预制件_特斯拉塔.instantiate())
+
+
+func _on_测试房屋_pressed() -> void:
+	if 获取玩家建筑物建造者组件():
+		获取玩家建筑物建造者组件().设置当前手上的蓝图实例(资源管理器.蓝图预制件_测试房子.instantiate())
+
+
+func _on_无蓝图_pressed() -> void:
+	if 获取玩家建筑物建造者组件():
+		获取玩家建筑物建造者组件().设置当前手上的蓝图实例(null)
 "
 
 [node name="主要场景" type="Node" node_paths=PackedStringArray("子场景所在根节点")]
@@ -160,7 +197,7 @@ script = SubResource("GDScript_rl00n")
 
 [node name="暂定UI层" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="暂定UI层"]
+[node name="下侧面板" type="PanelContainer" parent="暂定UI层"]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -174,75 +211,75 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="暂定UI层/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="暂定UI层/下侧面板"]
 layout_mode = 2
 
-[node name="血条" type="ProgressBar" parent="暂定UI层/PanelContainer/VBoxContainer"]
+[node name="血条" type="ProgressBar" parent="暂定UI层/下侧面板/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_rl00n")
 value = 51.4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="暂定UI层/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="暂定UI层/下侧面板/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="设置为房子" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="设置为房子" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("3_bqmv4")
 icon_alignment = 1
 expand_icon = true
 
-[node name="设置为机枪炮塔" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="设置为机枪炮塔" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("4_v51dy")
 icon_alignment = 1
 expand_icon = true
 
-[node name="设置为特斯拉塔" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="设置为特斯拉塔" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("5_1vowt")
 icon_alignment = 1
 expand_icon = true
 
-[node name="设置为轻机枪" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="设置为轻机枪" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("6_x4nyn")
 icon_alignment = 1
 expand_icon = true
 
-[node name="设置为飞行物刷怪蛋" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="设置为飞行物刷怪蛋" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("7_3gtj4")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button6" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button6" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button7" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button7" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button8" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button8" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button9" type="Button" parent="暂定UI层/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Button9" type="Button" parent="暂定UI层/下侧面板/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer2" type="PanelContainer" parent="暂定UI层"]
+[node name="右侧建筑和状态面板" type="PanelContainer" parent="暂定UI层"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -254,41 +291,56 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="暂定UI层/PanelContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="暂定UI层/右侧建筑和状态面板"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="暂定UI层/PanelContainer2/VBoxContainer"]
+[node name="_状态Label" type="Label" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer"]
+layout_mode = 2
+text = "状态: "
+script = SubResource("GDScript_vrxie")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer"]
 layout_mode = 2
 
-[node name="切换到建筑状态" type="Button" parent="暂定UI层/PanelContainer2/VBoxContainer/HBoxContainer"]
+[node name="切换到建筑状态" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "建筑状态"
 script = SubResource("GDScript_bqmv4")
 
-[node name="切换到自由状态" type="Button" parent="暂定UI层/PanelContainer2/VBoxContainer/HBoxContainer"]
+[node name="切换到自由状态" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "自由状态"
 script = SubResource("GDScript_v51dy")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="暂定UI层/PanelContainer2/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="暂定UI层/PanelContainer2/VBoxContainer/ScrollContainer"]
+[node name="_玩家建筑物相关" type="VBoxContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = SubResource("GDScript_cud66")
 
-[node name="机枪塔" type="Button" parent="暂定UI层/PanelContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="机枪塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造机枪塔 10G"
 
-[node name="特斯拉塔" type="Button" parent="暂定UI层/PanelContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="特斯拉塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造特斯拉塔 10G"
 
-[node name="测试房屋" type="Button" parent="暂定UI层/PanelContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="测试房屋" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造测试房屋 10G"
+
+[node name="无蓝图" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
+layout_mode = 2
+text = "无蓝图"
+
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/机枪塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_机枪塔_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/特斯拉塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_特斯拉塔_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/测试房屋" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_测试房屋_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/无蓝图" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_无蓝图_pressed"]

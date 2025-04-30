@@ -15,6 +15,18 @@ enum 操作状态 {
 }
 
 
+static func 操作状态_to_string(状态: 操作状态):
+	match 状态:
+		操作状态.自由活动:
+			return "自由活动"
+		操作状态.对话中:
+			return "对话中"
+		操作状态.交互中:
+			return "交互中"
+		操作状态.建筑中:
+			return "建筑中"
+
+
 static var _当前玩家操作状态:操作状态 = 操作状态.自由活动
 
 static func 是自由活动状态()->bool:

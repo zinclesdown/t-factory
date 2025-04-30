@@ -34,9 +34,14 @@ unique_name_in_owner = true
 [node name="玩家角色" parent="." instance=ExtResource("4_7oudw")]
 position = Vector2(659, 197)
 
+[node name="建筑物建造者组件" parent="玩家角色" index="5" node_paths=PackedStringArray("构筑物蓝图显示层", "构筑物放置层")]
+"构筑物蓝图显示层" = NodePath("../../蓝图显示层")
+"构筑物放置层" = NodePath("../../NavigationRegion2D/通用建筑物TileMap组件")
+
 [node name="调试层" type="CanvasLayer" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="调试层"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -54,6 +59,7 @@ zaw"
 autowrap_mode = 1
 
 [node name="手持建筑物" type="VBoxContainer" parent="调试层"]
+visible = false
 offset_right = 280.0
 offset_bottom = 130.0
 metadata/_edit_group_ = true
@@ -80,6 +86,7 @@ text = "当前手持建筑物： {0}"
 
 [node name="鼠标跟随" type="Marker2D" parent="调试层"]
 unique_name_in_owner = true
+visible = false
 metadata/_edit_group_ = true
 
 [node name="鼠标Label" type="Label" parent="调试层/鼠标跟随"]
@@ -117,3 +124,5 @@ position = Vector2(846, 150)
 [connection signal="pressed" from="调试层/手持建筑物/切换到_试作型电弧防御塔" to="." method="_on_切换到_试作型电弧防御塔_pressed"]
 [connection signal="pressed" from="调试层/手持建筑物/切换到_建筑房子" to="." method="_on_切换到_建筑房子_pressed"]
 [connection signal="pressed" from="调试层/手持建筑物/切换到_无蓝图" to="." method="_on_切换到_无蓝图_pressed"]
+
+[editable path="玩家角色"]
