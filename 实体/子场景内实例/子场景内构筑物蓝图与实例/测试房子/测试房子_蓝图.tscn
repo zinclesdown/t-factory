@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh5ymy4y52cq0"]
+
+[ext_resource type="PackedScene" uid="uid://ciog2a0j8cbj0" path="res://实体/子场景内实例/子场景内构筑物蓝图与实例/构筑物蓝图.tscn" id="1_0v8ii"]
+[ext_resource type="PackedScene" uid="uid://dyq2va68mtwtk" path="res://实体/子场景内实例/子场景内构筑物蓝图与实例/测试房子/测试房子_构筑物.tscn" id="2_0v8ii"]
+[ext_resource type="Texture2D" uid="uid://fxgjcg0mm8xa" path="res://资源/图像/场景实例/tiny_platform_house.png" id="3_0v8ii"]
+
+[node name="测试房子蓝图" instance=ExtResource("1_0v8ii")]
+"对应的构筑物预制件" = ExtResource("2_0v8ii")
+"构筑物大小" = Vector2i(4, 4)
+
+[node name="构筑物范围" parent="." index="0"]
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+modulate = Color(0.22, 0.623, 1, 0.745098)
+texture = ExtResource("3_0v8ii")
+centered = false

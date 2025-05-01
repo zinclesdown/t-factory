@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://duu2mk5cyrtit"]
+
+[ext_resource type="Texture2D" uid="uid://blg2mk2d3m5ft" path="res://资源/图像/投射物/bullet_enemy.png" id="1_2jruu"]
+[ext_resource type="Script" uid="uid://c3u6g8tmq53xj" path="res://实体/场景子弹实例/敌方普通子弹/敌方普通子弹.gd" id="1_u4wer"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_irks0"]
+radius = 5.0
+
+[node name="敌方普通子弹" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_u4wer")
+
+[node name="BulletEnemy" type="Sprite2D" parent="."]
+texture = ExtResource("1_2jruu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_irks0")

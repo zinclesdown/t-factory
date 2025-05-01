@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4p0te8jin2th"]
+
+[ext_resource type="Script" uid="uid://cyy6qtfymei5g" path="res://实体/人形实体/飞行怪/飞行远程攻击敌人角色.gd" id="1_njgyt"]
+[ext_resource type="Texture2D" uid="uid://dnyu0kot8kn5m" path="res://资源/图像/角色/flying_mob.png" id="2_uinak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rcat"]
+radius = 253.126
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clldj"]
+radius = 16.0
+
+[node name="飞行远程攻击敌人角色" type="CharacterBody2D" node_paths=PackedStringArray("导航Agent") groups=["敌人角色"]]
+collision_layer = 8
+script = ExtResource("1_njgyt")
+"导航Agent" = NodePath("NavigationAgent2D")
+
+[node name="FlyingMob" type="Sprite2D" parent="."]
+texture = ExtResource("2_uinak")
+
+[node name="远程攻击索敌区域" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="远程攻击索敌区域"]
+shape = SubResource("CircleShape2D_8rcat")
+debug_color = Color(0.937599, 0, 0.202831, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_clldj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="选取随机漫步位置的Timer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[connection signal="timeout" from="选取随机漫步位置的Timer" to="." method="_on_选取随机漫步位置的timer_timeout"]

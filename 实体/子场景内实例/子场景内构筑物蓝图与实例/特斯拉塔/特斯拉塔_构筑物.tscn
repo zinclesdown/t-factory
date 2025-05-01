@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmugc0xu3wc5h"]
+
+[ext_resource type="PackedScene" uid="uid://dwpj6r38ue67k" path="res://实体/子场景内实例/子场景内构筑物蓝图与实例/构筑物.tscn" id="1_7h7ql"]
+[ext_resource type="Texture2D" uid="uid://duf2vdf4iy6p5" path="res://资源/图像/场景实例/Tesla_tower.png" id="2_tt7vk"]
+[ext_resource type="Script" uid="uid://dj73g1wokqvkc" path="res://实体/子场景内实例/子场景内构筑物蓝图与实例/特斯拉塔/特斯拉塔攻击源.gd" id="3_qoo72"]
+[ext_resource type="PackedScene" uid="uid://ddd85wjibeahf" path="res://资源/VFX/电弧特效实例/一次性电弧特效.tscn" id="4_i07kv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl3c3"]
+radius = 191.588
+
+[node name="特斯拉塔构筑物" instance=ExtResource("1_7h7ql")]
+"构筑物大小" = Vector2i(1, 3)
+
+[node name="构筑物范围" parent="." index="0"]
+offset_right = 32.0
+offset_bottom = 96.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_tt7vk")
+centered = false
+
+[node name="特斯拉塔攻击源" type="Node2D" parent="." index="2" node_paths=PackedStringArray("攻击范围Area2D", "攻击CD计时器", "攻击源所有者")]
+position = Vector2(17, 15)
+script = ExtResource("3_qoo72")
+"攻击范围Area2D" = NodePath("攻击范围")
+"攻击CD计时器" = NodePath("攻击CD计时器")
+"电弧特效实例_预制件" = ExtResource("4_i07kv")
+"攻击源所有者" = NodePath("..")
+
+[node name="攻击范围" type="Area2D" parent="特斯拉塔攻击源" index="0"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="特斯拉塔攻击源/攻击范围" index="0"]
+shape = SubResource("CircleShape2D_pl3c3")
+debug_color = Color(1, 0.95, 0, 0)
+
+[node name="攻击CD计时器" type="Timer" parent="特斯拉塔攻击源" index="1"]
+process_callback = 0
+wait_time = 0.5
+one_shot = true

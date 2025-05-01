@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://br2y11xrqotgj"]
+
+[ext_resource type="Script" uid="uid://drjnt4vkmbhx3" path="res://实体/人形实体/玩家/玩家角色.gd" id="1_m806w"]
+[ext_resource type="Texture2D" uid="uid://chf0283yq0poi" path="res://资源/图像/角色/idle.png" id="3_uykip"]
+[ext_resource type="Texture2D" uid="uid://ys78hrvw4rle" path="res://资源/图像/UI/interact_identifier.png" id="4_t64mh"]
+[ext_resource type="PackedScene" uid="uid://clu02vm72blgu" path="res://组件/交互相关组件/交互HitboxAndHurtbox/交互HitBox.tscn" id="4_xbjtl"]
+[ext_resource type="Script" uid="uid://dokvbfkyldo2r" path="res://组件/建筑物建造者组件/建筑物建造者组件.gd" id="5_6w2m4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0eth3"]
+size = Vector2(21, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uykip"]
+size = Vector2(36, 27)
+
+[node name="玩家角色" type="CharacterBody2D" node_paths=PackedStringArray("交互HitBox", "建筑物建造者组件") groups=["我方角色"]]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_m806w")
+"交互HitBox" = NodePath("交互HitBox")
+"建筑物建造者组件" = NodePath("建筑物建造者组件")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-6.19888e-06, -0.999999)
+texture = ExtResource("3_uykip")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_0eth3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+metadata/_edit_lock_ = true
+
+[node name="交互HitBox" parent="." instance=ExtResource("4_xbjtl")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="交互HitBox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_uykip")
+debug_color = Color(0, 0.64, 0.362667, 0.192157)
+
+[node name="世界内UI效果" type="Node2D" parent="."]
+
+[node name="UI_交互指示器" type="Marker2D" parent="世界内UI效果"]
+unique_name_in_owner = true
+position = Vector2(121, -27)
+metadata/_edit_group_ = true
+
+[node name="InteractIdentifier" type="Sprite2D" parent="世界内UI效果/UI_交互指示器"]
+position = Vector2(-1, -55)
+texture = ExtResource("4_t64mh")
+
+[node name="建筑物建造者组件" type="Node2D" parent="."]
+script = ExtResource("5_6w2m4")

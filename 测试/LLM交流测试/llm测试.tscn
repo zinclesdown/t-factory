@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dylyav7k6bdsk"]
+
+[ext_resource type="Script" uid="uid://8nl7bgohvdeq" path="res://测试/LLM交流测试/llm测试.gd" id="1_kkrmu"]
+
+[node name="LLM测试" type="Node2D"]
+script = ExtResource("1_kkrmu")

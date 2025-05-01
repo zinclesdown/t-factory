@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c01oduskuw4xh"]
-
-[ext_resource type="Script" uid="uid://cg75dlm1p3jv" path="res://实验/粒子模拟游戏测试/particle.gd" id="1_vbfso"]
-
-[node name="测试用例子模拟" type="Node2D"]
-script = ExtResource("1_vbfso")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

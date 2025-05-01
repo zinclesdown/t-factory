@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciog2a0j8cbj0"]
+
+[ext_resource type="Script" uid="uid://chhcsoc84buu3" path="res://实体/子场景内实例/子场景内构筑物蓝图与实例/构筑物蓝图.gd" id="1_otgvt"]
+
+[node name="构筑物蓝图" type="Node2D" node_paths=PackedStringArray("构筑物范围矩形")]
+script = ExtResource("1_otgvt")
+"构筑物大小" = Vector2i(2, 1)
+"构筑物范围矩形" = NodePath("构筑物范围")
+
+[node name="构筑物范围" type="ReferenceRect" parent="."]
+offset_right = 64.0
+offset_bottom = 32.0
+mouse_filter = 2
+metadata/_edit_lock_ = true

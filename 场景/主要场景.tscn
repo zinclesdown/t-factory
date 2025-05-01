@@ -318,29 +318,38 @@ script = SubResource("GDScript_v51dy")
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="_玩家建筑物相关" type="VBoxContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="_玩家建筑物相关" type="VBoxContainer" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("GDScript_cud66")
 
-[node name="机枪塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
+[node name="机枪塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造机枪塔 10G"
 
-[node name="特斯拉塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
+[node name="特斯拉塔" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造特斯拉塔 10G"
 
-[node name="测试房屋" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
+[node name="测试房屋" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "建造测试房屋 10G"
 
-[node name="无蓝图" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关"]
+[node name="无蓝图" type="Button" parent="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关"]
 layout_mode = 2
 text = "无蓝图"
 
-[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/机枪塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_机枪塔_pressed"]
-[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/特斯拉塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_特斯拉塔_pressed"]
-[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/测试房屋" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_测试房屋_pressed"]
-[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关/无蓝图" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/_玩家建筑物相关" method="_on_无蓝图_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关/机枪塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关" method="_on_机枪塔_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关/特斯拉塔" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关" method="_on_特斯拉塔_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关/测试房屋" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关" method="_on_测试房屋_pressed"]
+[connection signal="pressed" from="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关/无蓝图" to="暂定UI层/右侧建筑和状态面板/VBoxContainer/ScrollContainer/MarginContainer/_玩家建筑物相关" method="_on_无蓝图_pressed"]
