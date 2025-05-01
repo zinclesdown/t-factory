@@ -15,7 +15,7 @@ imgui/config="uid://de1w7ypl72qu4"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://euhcuj8a7s3q"
+run/main_scene="uid://46akf7qlggek"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"
@@ -26,6 +26,11 @@ config/icon="uid://cm0svkod4g3ra"
 "对话组件"="*res://全局/对话OverLay/对话Overlay.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 "全局Toast层"="*res://全局/全局Toast层/全局toast层.tscn"
+
+[display]
+
+window/size/viewport_width=1120
+window/size/viewport_height=640
 
 [editor_plugins]
 
