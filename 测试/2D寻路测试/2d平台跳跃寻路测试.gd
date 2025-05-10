@@ -1,17 +1,15 @@
 extends Node2D
 
 @onready var 瓦片层: TileMapLayer = $TileMapLayer
+@onready var AX := AStar2D.new() # 测试用寻路系统.
 
 const GRID_SIZE := Vector2(32, 32)
 
-# 测试用寻路系统.
-@onready var AX := AStar2D.new()
 
 
 func _ready() -> void:
 	烘焙导航()
 	_ready_调试()
-	
 	ImGuiGD.Connect(_imgui_调试面板)
 
 
@@ -118,7 +116,6 @@ func 烘焙导航():
 		AX.add_point(id, Vector2(特异点[id]))
 	var ids := AX.get_point_ids()
 	ids.sort()
-	print(ids)
 	
 	# 第二遍遍历: 连接特异点
 	for id: int in ids:
@@ -324,10 +321,13 @@ func 烘焙导航():
 
 		# TODO 规则4: 关于 "梯子": 如果x相同,y不同, 中间的节点全是梯子, 则建立梯子的双向连接.
 		for target_id: int in ids:
+			var 自己位置   :Vector2 = AX.get_point_position(id)
+			var 目标点位置 :Vector2 = AX.get_point_position(target_id)
 
 			# 规则1: 完整梯子的下方\和上方的一格 都是特异点.
 			# 如果自己是“完整的梯子的上方”， 则尝试与完整梯子下方建立双向连接
-			pass
+
+			
 			#if 是梯子 == true:
 				#if 上方是梯子 == true and 下方是梯子 == false: # 该点上方是梯子, 下方不是梯子: 则属于梯子底端, 是特异点.
 					#特异点.append(coord)
@@ -348,15 +348,7 @@ func 烘焙导航():
 		AX.set_point_position(id, AX.get_point_position(id) * GRID_SIZE + GRID_SIZE/2.0)
 
 
-
-
-
 func _draw() -> void:
-	_draw_调试层()
-
-
-
-func _draw_绘制连接线():
 	for id: int in AX.get_point_ids(): # 遍历所有ID
 		# 先绘制所有点
 		var coord: Vector2 = AX.get_point_position(id)
@@ -382,39 +374,21 @@ func _draw_绘制连接线():
 				var 箭头线1终点 := 箭头线长 * 方向向量.rotated(PI * ( 19.0/20.0)) + 终点位置
 				var 箭头线2终点 := 箭头线长 * 方向向量.rotated(PI * (-19.0/20.0)) + 终点位置
 				draw_polygon([箭头线1终点, 箭头线2终点, 终点位置],[颜色])
-				
 
 
-
-
-
-
-func _draw_绘制鼠标到最近特异点():
+	# 鼠标到最近点
 	draw_line(
 		get_global_mouse_position(), 
 		AX.get_point_position(AX.get_closest_point(get_global_mouse_position())), Color.WHITE, 1.0)
 
-func _draw_绘制鼠标到最近点连接的线段():
+	# 鼠标到最近线段
 	draw_line(
 		get_global_mouse_position(), 
 		AX.get_closest_position_in_segment(get_global_mouse_position()),
 		Color.WHITE, 1.0)
 
-
-func _draw_绘制示例角色位置():
+	# 绘制示例角色位置
 	draw_circle(测试角色位置, 16.0, Color.GREEN)
-
-
-func _draw_调试层():
-	_draw_绘制鼠标到最近点连接的线段()
-	_draw_绘制鼠标到最近特异点()
-	_draw_绘制示例角色位置()
-	_draw_绘制连接线()
-
-
-func 寻路(所在位置:Vector2, 目标位置:Vector2):
-	pass
-
 
 
 
@@ -425,44 +399,32 @@ func _ready_调试() -> void:
 
 
 func _imgui_调试面板():
-	
 	ImGui.Begin("寻路调试")
 	ImGui.TextWrapped("位置: " + str(测试角色位置))
 	ImGui.TextWrapped("移动队列：" + str(测试角色移动队列))
-	#
-	#if ImGui.Button("测试寻路"):
-		#获取最近的特异点(Vector2.ZERO)
-	
 	ImGui.End()
 
 
-
-func _input(event: InputEvent) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		移动测试角色到鼠标()
-
 var 测试角色位置 := Vector2.ZERO
-
 var 测试角色移动队列 := []
 
-func 移动测试角色到鼠标():
-	# TODO 实现此函数。
-	var 鼠标最近ID :=  AX.get_closest_point(get_global_mouse_position())
-	var 测试角色最近ID := AX.get_closest_point(测试角色位置)
-	print("尝试移动角色到 ID:[%s] 位置" % [鼠标最近ID])
-	
-	
-	var 路径 := AX.get_id_path(测试角色最近ID, 鼠标最近ID, true)
-	测试角色移动队列 = 路径
-	print(路径)
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		# TEST 实现寻路。
+		var 鼠标最近ID :=  AX.get_closest_point(get_global_mouse_position())
+		var 测试角色最近ID := AX.get_closest_point(测试角色位置)
+		print("尝试移动角色到 ID:[%s] 位置" % [鼠标最近ID])
+		
+		var 路径 := AX.get_id_path(测试角色最近ID, 鼠标最近ID, true)
+		测试角色移动队列 = 路径
+		print(路径)
+
 
 func _process_测试角色移动路径():
 	if 测试角色移动队列.size()>=2:
-		#测试角色位置 = AX.get_point_position(测试角色移动队列[1])
-		
 		测试角色位置.x = move_toward(测试角色位置.x, AX.get_point_position(测试角色移动队列[1]).x, 3.0)
 		测试角色位置.y = move_toward(测试角色位置.y, AX.get_point_position(测试角色移动队列[1]).y, 3.0)
 		
 		if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[1])) <= 1.0:
 			测试角色移动队列.pop_at(0)
-		
