@@ -10,7 +10,7 @@ config_version=5
 
 [addons]
 
-imgui/config="uid://de1w7ypl72qu4"
+imgui/config="uid://bgl8xasd6jasx"
 
 [application]
 
@@ -26,6 +26,7 @@ config/icon="uid://cm0svkod4g3ra"
 "对话组件"="*res://全局/对话OverLay/对话Overlay.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 "全局Toast层"="*res://全局/全局Toast层/全局toast层.tscn"
+ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
 
 [display]
 
@@ -34,7 +35,7 @@ window/size/viewport_height=640
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/godot_owl/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/godot_owl/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/imgui-godot/plugin.cfg")
 
 [global_group]
 

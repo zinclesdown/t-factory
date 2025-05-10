@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ImGuiConfig" load_steps=5 format=3 uid="uid://bgl8xasd6jasx"]
+
+[ext_resource type="Script" uid="uid://bksrt5btjjea7" path="res://addons/imgui-godot/scripts/ImGuiConfig.gd" id="1_ggv3v"]
+[ext_resource type="FontFile" uid="uid://ct4uhxp5mypor" path="res://资源/字体/MapleMono-SC-NF-Regular.ttf" id="1_xils1"]
+[ext_resource type="Script" uid="uid://wymvn3ptnhda" path="res://addons/imgui-godot/scripts/ImGuiFont.gd" id="2_ew1l2"]
+
+[sub_resource type="Resource" id="Resource_ns6er"]
+script = ExtResource("2_ew1l2")
+FontData = ExtResource("1_xils1")
+FontSize = 18
+Merge = true
+metadata/_custom_type_script = "uid://wymvn3ptnhda"
+
+[resource]
+script = ExtResource("1_ggv3v")
+Scale = 1.0
+IniFilename = "user://imgui.ini"
+Renderer = "Canvas"
+Layer = 128
+AddDefaultFont = true
+Fonts = [SubResource("Resource_ns6er")]
+metadata/_custom_type_script = "uid://bksrt5btjjea7"
