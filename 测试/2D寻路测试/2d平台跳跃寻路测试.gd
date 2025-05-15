@@ -10,7 +10,6 @@ const 默认允许坠落高度 := 8
 func _ready() -> void:
 	烘焙导航()
 	_ready_调试()
-	ImGuiGD.Connect(_imgui_调试面板)
 
 
 func _process(_delta: float) -> void:
@@ -280,6 +279,8 @@ func _imgui_检测瓦片属性():
 	ImGui.Text("_瓦片是墙壁特异点: %s" % [_瓦片是墙壁特异点(coord)])
 	ImGui.Text("_瓦片是坠落特异点: %s" % [_瓦片是坠落特异点(coord)])
 	
+	ImGui.Text("移动数组： %s" % [测试角色移动队列])
+	
 	ImGui.End()
 
 
@@ -408,12 +409,6 @@ func _ready_调试() -> void:
 	测试角色位置 = 随机位置
 
 
-func _imgui_调试面板():
-	ImGui.Begin("寻路调试")
-	ImGui.TextWrapped("位置: " + str(测试角色位置))
-	ImGui.TextWrapped("移动队列：" + str(测试角色移动队列))
-	ImGui.End()
-
 
 var 测试角色位置 := Vector2.ZERO
 var 测试角色移动队列 := []
@@ -433,8 +428,11 @@ func _input(_event: InputEvent) -> void:
 
 func _process_测试角色移动路径():
 	if 测试角色移动队列.size()>=2:
-		测试角色位置.x = move_toward(测试角色位置.x, AX.get_point_position(测试角色移动队列[1]).x, 3.0)
-		测试角色位置.y = move_toward(测试角色位置.y, AX.get_point_position(测试角色移动队列[1]).y, 3.0)
+		#测试角色位置.x = move_toward(测试角色位置.x, AX.get_point_position(测试角色移动队列[1]).x, 3.0)
+		#测试角色位置.y = move_toward(测试角色位置.y, AX.get_point_position(测试角色移动队列[1]).y, 3.0)
 		
-		if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[1])) <= 1.0:
+		var dir :Vector2 = (AX.get_point_position(测试角色移动队列[1])-测试角色位置).normalized()
+		测试角色位置 += dir * 3.0
+		
+		if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[1])) <= 4.0:
 			测试角色移动队列.pop_at(0)
