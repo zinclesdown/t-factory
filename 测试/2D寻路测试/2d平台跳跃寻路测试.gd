@@ -3,13 +3,75 @@ extends Node2D
 @onready var 瓦片层: TileMapLayer = $TileMapLayer
 @onready var AX := AStar2D.new() # 测试用寻路系统.
 
-const GRID_SIZE := Vector2(32, 32)
+@export var GRID_SIZE := Vector2(32, 32)
+@export var 默认允许坠落高度 := 8
 
-const 默认允许坠落高度 := 8
+
+var 测试角色位置 := Vector2.ZERO
+var 测试角色移动队列 := []
+var 测试角色精确目的地 := Vector2.ZERO ## 精确的,两个ID之间的目的地.
+
+#var 当前移动类型
+
+
+func 获取吸附到网格中心后点(local_pos:Vector2) -> Vector2:
+	return 瓦片层.map_to_local(瓦片层.local_to_map(local_pos))
+
+func 获取Map坐标(local_pos:Vector2) -> Vector2i:
+	return 瓦片层.local_to_map(local_pos)
+
+func 获取ID位置(点:int)->Vector2:
+	return AX.get_point_position(点)
+
+
+enum Enum移动方式 {
+	水平移动,
+	跳跃移动,
+	攀爬梯子,
+}
+
+
+func Enum移动方式_to_string(枚举值:Enum移动方式)->String:
+	match 枚举值:
+		Enum移动方式.水平移动:
+			return "水平移动"
+		Enum移动方式.跳跃移动:
+			return "跳跃移动"
+		Enum移动方式.攀爬梯子:
+			return "攀爬梯子"
+		_:
+			assert(false, "错误!")
+			return "错误!!!"
+	
+## 根据点1到点2,获取移动方式,从而获取该播放的动画. 
+## TEST 不确定这么写有没有问题
+func 获取点到点移动方式(点1_开始:int, 点2_结束:int) -> Enum移动方式:
+	var 位置1 :Vector2 = 获取ID位置(点1_开始)
+	var 位置2 :Vector2 = 获取ID位置(点2_结束)
+	var dir := 位置2 - 位置1
+	
+	## 水平跳跃.
+	if dir.y == 0: ## 水平移动
+		
+		# 假设两点之间可以行走,则行走
+		return Enum移动方式.水平移动
+		
+		var coord1 := 瓦片层.local_to_map(位置1)
+		if _瓦片是悬崖特异点(coord1):
+			return Enum移动方式.跳跃移动
+		else:
+			return Enum移动方式.水平移动
+		
+	elif dir.y != 0 and dir.x == 0: ## 竖直移动. 目前有且只有跳跃一条方法.
+		return Enum移动方式.攀爬梯子
+	else: ## 竖直移动. 目前有且只有跳跃一条方法.
+		return Enum移动方式.跳跃移动
+
 
 func _ready() -> void:
 	烘焙导航()
 	_ready_调试()
+
 
 
 func _process(_delta: float) -> void:
@@ -260,26 +322,56 @@ func _特异点_AB之间是直接垂直相连的梯子_没有其他梯子(coordA
 
 #endregion
 
+var _imgui状态 := "瓦片调试"
+
 func _imgui_检测瓦片属性():
-	ImGui.Begin("瓦片属性")
+	ImGui.Begin("瓦片属性", [], ImGui.WindowFlags_MenuBar)
 	var coord := 瓦片层.local_to_map(get_global_mouse_position())
-	ImGui.Text("位置： %s" % [coord])
-	ImGui.Text("瓦片数据: %s" % [获取瓦片数据(coord)])
-	ImGui.Text("占据空间: %s" % [_瓦片占据空间(coord)])
-	ImGui.Text("是有空间区域： %s" % [_瓦片为有空间区域(coord)])
-	ImGui.Text("位置可站立: %s" % [_瓦片位置可站立(coord)])
-	ImGui.Text("正下方有支撑: %s" % [_瓦片正下方有支撑(coord)])
-	ImGui.Text("是梯子: %s" % [_瓦片是梯子(coord)])
-	ImGui.Text("是梯子顶部: %s" % [_瓦片是梯子顶端(coord)])
-	ImGui.Text("是梯子底部: %s" % [_瓦片是梯子底部(coord)])
-	ImGui.Text("_瓦片位置有容纳人形空间: %s" % [_瓦片位置有容纳人形空间(coord)])
-	ImGui.Text("_瓦片是悬崖特异点: %s" % [_瓦片是悬崖特异点(coord)])
-	ImGui.Text("_瓦片是梯子特异点: %s" % [_瓦片是梯子特异点(coord)])
-	ImGui.Text("_瓦片是梯子上方一格的特异点: %s" % [_瓦片是梯子上方一格的特异点(coord)])
-	ImGui.Text("_瓦片是墙壁特异点: %s" % [_瓦片是墙壁特异点(coord)])
-	ImGui.Text("_瓦片是坠落特异点: %s" % [_瓦片是坠落特异点(coord)])
 	
-	ImGui.Text("移动数组： %s" % [测试角色移动队列])
+	ImGui.BeginMenuBar()
+	if ImGui.MenuItem("瓦片调试"):
+		_imgui状态 = "瓦片调试"
+	if ImGui.MenuItem("其他调试"):     
+		_imgui状态 = "其他调试"
+	ImGui.EndMenuBar()
+
+	if _imgui状态 == "瓦片调试":
+		if ImGui.CollapsingHeader("属性相关", ImGui.TreeNodeFlags_DefaultOpen):
+			ImGui.Text("位置： %s" % [coord])
+			ImGui.Text("瓦片数据: %s" % [获取瓦片数据(coord)])
+			ImGui.Text("占据空间: %s" % [_瓦片占据空间(coord)])
+			ImGui.Text("是有空间区域： %s" % [_瓦片为有空间区域(coord)])
+			ImGui.Text("位置可站立: %s" % [_瓦片位置可站立(coord)])
+			ImGui.Text("正下方有支撑: %s" % [_瓦片正下方有支撑(coord)])
+			ImGui.Text("是梯子: %s" % [_瓦片是梯子(coord)])
+			ImGui.Text("是梯子顶部: %s" % [_瓦片是梯子顶端(coord)])
+			ImGui.Text("是梯子底部: %s" % [_瓦片是梯子底部(coord)])
+			ImGui.Text("位置有容纳人形空间: %s" % [_瓦片位置有容纳人形空间(coord)])
+		
+		if ImGui.CollapsingHeader("特异点相关", ImGui.TreeNodeFlags_DefaultOpen):
+			ImGui.Text("_瓦片是悬崖特异点: %s" % [_瓦片是悬崖特异点(coord)])
+			ImGui.Text("_瓦片是梯子特异点: %s" % [_瓦片是梯子特异点(coord)])
+			ImGui.Text("_瓦片是梯子上方一格的特异点: %s" % [_瓦片是梯子上方一格的特异点(coord)])
+			ImGui.Text("_瓦片是墙壁特异点: %s" % [_瓦片是墙壁特异点(coord)])
+			ImGui.Text("_瓦片是坠落特异点: %s" % [_瓦片是坠落特异点(coord)])
+		
+		if ImGui.CollapsingHeader("导航相关", ImGui.TreeNodeFlags_DefaultOpen):
+			ImGui.SeparatorText("导航信息")
+			ImGui.Text("测试角色位置 %s" % [测试角色位置])
+			ImGui.Text("移动数组： %s" % [测试角色移动队列])
+
+		ImGui.Text("尚未抵达目的地: %s" % [尚未抵达目的地()])
+		ImGui.Text("目的地是特异点: %s" % [目的地是特异点()])
+		ImGui.Text("角色当前路径位于两水平连接特异点之间: %s" % [角色当前路径位于两水平连接特异点之间()])
+		
+		
+		if 测试角色移动队列.size() >= 2:
+			ImGui.Text("当前角色移动状态: %s" % [Enum移动方式_to_string(获取点到点移动方式(测试角色移动队列[0], 测试角色移动队列[1]))])
+		else:
+			ImGui.Text("当前没有在移动")
+			
+		if ImGui.Button("烘焙导航"):
+			烘焙导航()
 	
 	ImGui.End()
 
@@ -384,17 +476,25 @@ func _draw() -> void:
 				var 箭头线2终点 := 箭头线长 * 方向向量.rotated(PI * (-19.0/20.0)) + 终点位置
 				draw_polygon([箭头线1终点, 箭头线2终点, 终点位置],[颜色])
 
-
-	# 鼠标到最近点
+	
+	 
+	
 	draw_line(
 		get_global_mouse_position(), 
-		AX.get_point_position(AX.get_closest_point(get_global_mouse_position())), Color.WHITE, 1.0)
+		获取最近可行目的地(get_global_mouse_position())
+		, Color.WHITE, 1.0)
 
-	# 鼠标到最近线段
-	draw_line(
-		get_global_mouse_position(), 
-		AX.get_closest_position_in_segment(get_global_mouse_position()),
-		Color.WHITE, 1.0)
+	
+	## 鼠标到最近点
+	#draw_line(
+		#get_global_mouse_position(), 
+		#AX.get_point_position(AX.get_closest_point(get_global_mouse_position())), Color.WHITE, 1.0)
+#
+	## 鼠标到最近线段
+	#draw_line(
+		#get_global_mouse_position(), 
+		#AX.get_closest_position_in_segment(get_global_mouse_position()),
+		#Color.WHITE, 1.0)
 
 	# 绘制示例角色位置
 	draw_circle(测试角色位置, 16.0, Color.GREEN)
@@ -403,36 +503,144 @@ func _draw() -> void:
 	var rect := Rect2(瓦片层.map_to_local(瓦片层.local_to_map(get_global_mouse_position()))-GRID_SIZE/2.0, GRID_SIZE)
 	draw_rect(rect, Color.RED, false, 1.0)
 
+
+	# 绘制目的地.
+	if 测试角色移动队列.size() >= 1:
+		var 位置 := 获取ID位置(测试角色移动队列.back())
+		draw_circle(位置, 12.0 + sin(Engine.get_frames_drawn() * 0.05), Color.BLUE)
+		
+	# 绘制精确目的地
+	if 测试角色移动队列.size() >= 1:
+		draw_circle(测试角色精确目的地, 12.0 + sin(Engine.get_frames_drawn() * 0.05), Color.AQUA)
+		
+
 func _ready_调试() -> void:
 	var 随机初始id :int = Array(AX.get_point_ids()).pick_random()
 	var 随机位置 :Vector2 = AX.get_point_position(随机初始id)
 	测试角色位置 = 随机位置
 
 
+#var 测试角色移动目标中途地点 := Vector2.ZERO ## 目的地.
+#var 测试角色移动点1 := Vector2.ZERO # 离最近的两点
+#var 测试角色移动点2 := Vector2.ZERO
 
-var 测试角色位置 := Vector2.ZERO
-var 测试角色移动队列 := []
 
+## 假设角色想去某个点, 我们该把 "精确目的地" 安排在哪里呢?
+## 如果目的地点是"悬空"的,那么会改为选择最近特异点;
+## 如果不是悬空,我们则放置在两点之间连线上.
+## TEST
+func 获取最近可行目的地(pos:Vector2) -> Vector2:
+	## 首先获取目的地(离指令最近位置)是否可站立.根据该信息判断具体怎么走.
+	
+	var 最近coord := 瓦片层.local_to_map(AX.get_closest_position_in_segment(pos))
+	if _瓦片位置可站立(最近coord):
+		# 可站立. 我们可以选择两点中点作为目的地.
+		#print("瓦片可站立")
+		return 获取吸附到网格中心后点(AX.get_closest_position_in_segment(pos))
+	else:
+		# 不可站立. 我们只能选择最近特异点.
+		#print("瓦片不可站立")
+		return AX.get_point_position(AX.get_closest_point(pos))
+		
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		# TEST 实现寻路。
-		var 鼠标最近ID :=  AX.get_closest_point(get_global_mouse_position())
+		var 鼠标位置 := get_global_mouse_position()
+		
+		var 鼠标最近ID :=  AX.get_closest_point(鼠标位置)
 		var 测试角色最近ID := AX.get_closest_point(测试角色位置)
 		print("尝试移动角色到 ID:[%s] 位置" % [鼠标最近ID])
 		
 		var 路径 := AX.get_id_path(测试角色最近ID, 鼠标最近ID, true)
 		测试角色移动队列 = 路径
 		print(路径)
+		
+		测试角色精确目的地 = 获取最近可行目的地(AX.get_closest_position_in_segment(鼠标位置))
 
 
+func 目的地是特异点():
+	if 测试角色移动队列.size()>=1:
+		return 测试角色精确目的地 == 获取ID位置(测试角色移动队列.back())
+	else:
+		return false
+
+
+func 尚未抵达目的地() -> bool:
+	if 测试角色移动队列.size() <= 0:  ## "未初始化" 被视为 "以抵达目的地"
+		return false 
+	
+	# 目的地不是特异点,我们根据最终位置判断
+	if 目的地是特异点() == false:
+		var 到精确目的地的距离 := (测试角色精确目的地 - 测试角色位置).length()
+		if 到精确目的地的距离 <= 3.0: # 抵达目的地
+			return false
+		else:
+			return true
+	
+	# 目的地是特异点,我们根据数组大小判断.
+	if 目的地是特异点():
+		if 测试角色移动队列.size() >= 1:
+			return true
+		else:
+			return false
+	return false
+
+
+func 角色当前路径位于两水平连接特异点之间():
+	if 测试角色移动队列.size()<=1:
+		return false
+	
+	var 最近点 := AX.get_closest_point(测试角色位置)
+	var 第一点 :Vector2 = AX.get_point_position(测试角色移动队列[0]) 
+	var 第二点 :Vector2 = AX.get_point_position(测试角色移动队列[1]) 
+	
+	if _特异点_可建立平面行走双向连接(获取Map坐标(第一点), 获取Map坐标(第二点)):
+		return true
+	else:
+		return false
+
+var _临时特异点 :Array[int] = []
+
+## BROKEN FIXME 这个方法没有被正确实现!!!
 func _process_测试角色移动路径():
-	if 测试角色移动队列.size()>=2:
-		#测试角色位置.x = move_toward(测试角色位置.x, AX.get_point_position(测试角色移动队列[1]).x, 3.0)
-		#测试角色位置.y = move_toward(测试角色位置.y, AX.get_point_position(测试角色移动队列[1]).y, 3.0)
-		
-		var dir :Vector2 = (AX.get_point_position(测试角色移动队列[1])-测试角色位置).normalized()
-		测试角色位置 += dir * 3.0
-		
-		if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[1])) <= 4.0:
-			测试角色移动队列.pop_at(0)
+	const MOVE_SPEED := 1.0
+	const POINT_POP_DISTANCE := 2.0
+	
+	#AX.get_point_connections()
+	#
+	#if 角色当前路径位于两水平连接特异点之间():
+		#测试角色移动队列.pop_front()
+	#
+	#if 尚未抵达目的地() and 目的地是特异点()==true:
+		#if 测试角色移动队列.size()>=1:
+			#var dir :Vector2 = (AX.get_point_position(测试角色移动队列[0])-测试角色位置).normalized()
+			#测试角色位置 += dir * MOVE_SPEED
+#
+		## 如果抵达一个点,则将该点弹出.
+		#if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[0])) <= POINT_POP_DISTANCE:
+			#测试角色移动队列.pop_at(0)
+			#
+		## 如果抵达了终点,则弹出其他所有点.
+		#if 测试角色位置.distance_to(测试角色精确目的地) <= POINT_POP_DISTANCE:
+			#print("抵达目的地!")
+			#测试角色移动队列 = []
+#
+	#if 尚未抵达目的地() and 目的地是特异点()==false:
+		#if 测试角色移动队列.size() >=2 or (测试角色移动队列.size()==1 and abs(测试角色位置.y-测试角色精确目的地.y)>2.0): # 如果有两个或更多点,则按照特异点的情况处理.
+			#var dir :Vector2 = (AX.get_point_position(测试角色移动队列[0])-测试角色位置).normalized()
+			#测试角色位置 += dir * MOVE_SPEED
+			## 如果抵达一个点,则将该点弹出.
+			#if 测试角色位置.distance_to(AX.get_point_position(测试角色移动队列[0])) <= POINT_POP_DISTANCE:
+				#测试角色移动队列.pop_at(0)
+#
+			#if 测试角色位置.distance_to(测试角色精确目的地) <= POINT_POP_DISTANCE:
+				#测试角色移动队列 = []
+		#
+		#elif 测试角色移动队列.size() == 1 : # 如果有最后一个点, 且该点与目的地y坐标相同, 我们则要根据特异点进行移动.
+			## 直接移动到目标地点
+			#var dir :Vector2 = (测试角色精确目的地-测试角色位置).normalized()
+			#测试角色位置 += dir * MOVE_SPEED
+			#
+			#if 测试角色位置.distance_to(测试角色精确目的地) <= POINT_POP_DISTANCE:
+				#测试角色移动队列 = []

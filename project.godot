@@ -15,7 +15,7 @@ imgui/config="uid://bgl8xasd6jasx"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://byydh7igj8x65"
+run/main_scene="uid://46akf7qlggek"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"
@@ -28,6 +28,11 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 "全局Toast层"="*res://全局/全局Toast层/全局toast层.tscn"
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/missing_tool=2
+
 [display]
 
 window/size/viewport_width=1120
@@ -35,7 +40,7 @@ window/size/viewport_height=640
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/godot_owl/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/imgui-godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/godot_owl/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/imgui-godot/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
