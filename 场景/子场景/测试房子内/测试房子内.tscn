@@ -8,7 +8,7 @@
 resource_name = "测试房子内的子场景"
 script/source = "extends 子场景
 
-@onready var 出口连接门 = %\"交互式子场景连接门\"
+@onready var 出口连接门 := %\"交互式子场景连接门\"
 "
 
 [node name="测试房子内" type="Node2D" node_paths=PackedStringArray("可放置建筑层", "蓝图显示层")]

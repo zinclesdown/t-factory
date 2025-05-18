@@ -12,7 +12,7 @@ extends 攻击源
 var 当前攻击目标:人形角色 = null
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# 获取靠近的单位表\ 最后读取最近的敌人单位
 	var bodies := 攻击范围Area2D.get_overlapping_bodies()
 	var 敌人Bodies := 节点方法.获取保留列表中组内节点的数组("敌人角色", bodies)
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		攻击CD计时器.start()
 
 
-func 执行攻击(目标:人形角色):
+func 执行攻击(目标:人形角色) -> void:
 	目标.受到攻击(电击伤害, self)
 	
 	var 电弧特效实例 :一次性电弧特效实例 = 电弧特效实例_预制件.instantiate()

@@ -86,3 +86,16 @@
 # 命名规范
 
 别急. 先写再说.
+
+
+
+
+# 备注:
+
+```gdscript
+if Engine.has_singleton("ImGuiAPI"):
+	var ImGui: Object = Engine.get_singleton("ImGuiAPI")
+	ImGui.Begin("hello")
+	ImGui.End()
+```
+imgui-godot尚不支持web. 发布的时候记得处理下.

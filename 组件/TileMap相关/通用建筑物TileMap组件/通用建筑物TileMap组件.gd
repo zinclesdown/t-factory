@@ -18,9 +18,9 @@ var _场景决定的不可放置区域:Array[Vector2i] = []
 
 
 #region 调试
-var DEBUG_PRINT_ENABLED = false
+var DEBUG_PRINT_ENABLED := false
 
-func debug_print(input_str):
+func debug_print(input_str:String) -> void:
 	if DEBUG_PRINT_ENABLED:
 		print_rich(input_str)
 

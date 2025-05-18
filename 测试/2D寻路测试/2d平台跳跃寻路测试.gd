@@ -324,60 +324,65 @@ func _特异点_AB之间是直接垂直相连的梯子_没有其他梯子(coordA
 
 var _imgui状态 := "瓦片调试"
 
-func _imgui_检测瓦片属性():
-	ImGui.Begin("瓦片属性", [], ImGui.WindowFlags_MenuBar)
-	var coord := 瓦片层.local_to_map(get_global_mouse_position())
-	
-	ImGui.BeginMenuBar()
-	if ImGui.MenuItem("瓦片调试"):
-		_imgui状态 = "瓦片调试"
-	if ImGui.MenuItem("其他调试"):     
-		_imgui状态 = "其他调试"
-	ImGui.EndMenuBar()
+func _imgui_检测瓦片属性()->void:
+	if Engine.has_singleton("ImGuiAPI"):
+		@warning_ignore("shadowed_global_identifier")
+		var ImGui: Object = Engine.get_singleton("ImGuiAPI")
 
-	if _imgui状态 == "瓦片调试":
-		if ImGui.CollapsingHeader("属性相关", ImGui.TreeNodeFlags_DefaultOpen):
-			ImGui.Text("位置： %s" % [coord])
-			ImGui.Text("瓦片数据: %s" % [获取瓦片数据(coord)])
-			ImGui.Text("占据空间: %s" % [_瓦片占据空间(coord)])
-			ImGui.Text("是有空间区域： %s" % [_瓦片为有空间区域(coord)])
-			ImGui.Text("位置可站立: %s" % [_瓦片位置可站立(coord)])
-			ImGui.Text("正下方有支撑: %s" % [_瓦片正下方有支撑(coord)])
-			ImGui.Text("是梯子: %s" % [_瓦片是梯子(coord)])
-			ImGui.Text("是梯子顶部: %s" % [_瓦片是梯子顶端(coord)])
-			ImGui.Text("是梯子底部: %s" % [_瓦片是梯子底部(coord)])
-			ImGui.Text("位置有容纳人形空间: %s" % [_瓦片位置有容纳人形空间(coord)])
+		ImGui.Begin("瓦片属性", [], ImGui.WindowFlags_MenuBar)
+		var coord := 瓦片层.local_to_map(get_global_mouse_position())
 		
-		if ImGui.CollapsingHeader("特异点相关", ImGui.TreeNodeFlags_DefaultOpen):
-			ImGui.Text("_瓦片是悬崖特异点: %s" % [_瓦片是悬崖特异点(coord)])
-			ImGui.Text("_瓦片是梯子特异点: %s" % [_瓦片是梯子特异点(coord)])
-			ImGui.Text("_瓦片是梯子上方一格的特异点: %s" % [_瓦片是梯子上方一格的特异点(coord)])
-			ImGui.Text("_瓦片是墙壁特异点: %s" % [_瓦片是墙壁特异点(coord)])
-			ImGui.Text("_瓦片是坠落特异点: %s" % [_瓦片是坠落特异点(coord)])
-		
-		if ImGui.CollapsingHeader("导航相关", ImGui.TreeNodeFlags_DefaultOpen):
-			ImGui.SeparatorText("导航信息")
-			ImGui.Text("测试角色位置 %s" % [测试角色位置])
-			ImGui.Text("移动数组： %s" % [测试角色移动队列])
+		ImGui.BeginMenuBar()
+		if ImGui.MenuItem("瓦片调试"):
+			_imgui状态 = "瓦片调试"
+		if ImGui.MenuItem("其他调试"):     
+			_imgui状态 = "其他调试"
+		ImGui.EndMenuBar()
 
-		ImGui.Text("尚未抵达目的地: %s" % [尚未抵达目的地()])
-		ImGui.Text("目的地是特异点: %s" % [目的地是特异点()])
-		ImGui.Text("角色当前路径位于两水平连接特异点之间: %s" % [角色当前路径位于两水平连接特异点之间()])
-		
-		
-		if 测试角色移动队列.size() >= 2:
-			ImGui.Text("当前角色移动状态: %s" % [Enum移动方式_to_string(获取点到点移动方式(测试角色移动队列[0], 测试角色移动队列[1]))])
-		else:
-			ImGui.Text("当前没有在移动")
+		if _imgui状态 == "瓦片调试":
+			if ImGui.CollapsingHeader("属性相关", ImGui.TreeNodeFlags_DefaultOpen):
+				ImGui.Text("位置： %s" % [coord])
+				ImGui.Text("瓦片数据: %s" % [获取瓦片数据(coord)])
+				ImGui.Text("占据空间: %s" % [_瓦片占据空间(coord)])
+				ImGui.Text("是有空间区域： %s" % [_瓦片为有空间区域(coord)])
+				ImGui.Text("位置可站立: %s" % [_瓦片位置可站立(coord)])
+				ImGui.Text("正下方有支撑: %s" % [_瓦片正下方有支撑(coord)])
+				ImGui.Text("是梯子: %s" % [_瓦片是梯子(coord)])
+				ImGui.Text("是梯子顶部: %s" % [_瓦片是梯子顶端(coord)])
+				ImGui.Text("是梯子底部: %s" % [_瓦片是梯子底部(coord)])
+				ImGui.Text("位置有容纳人形空间: %s" % [_瓦片位置有容纳人形空间(coord)])
 			
-		if ImGui.Button("烘焙导航"):
-			烘焙导航()
-	
-	ImGui.End()
+			if ImGui.CollapsingHeader("特异点相关", ImGui.TreeNodeFlags_DefaultOpen):
+				ImGui.Text("_瓦片是悬崖特异点: %s" % [_瓦片是悬崖特异点(coord)])
+				ImGui.Text("_瓦片是梯子特异点: %s" % [_瓦片是梯子特异点(coord)])
+				ImGui.Text("_瓦片是梯子上方一格的特异点: %s" % [_瓦片是梯子上方一格的特异点(coord)])
+				ImGui.Text("_瓦片是墙壁特异点: %s" % [_瓦片是墙壁特异点(coord)])
+				ImGui.Text("_瓦片是坠落特异点: %s" % [_瓦片是坠落特异点(coord)])
+			
+			if ImGui.CollapsingHeader("导航相关", ImGui.TreeNodeFlags_DefaultOpen):
+				ImGui.SeparatorText("导航信息")
+				ImGui.Text("测试角色位置 %s" % [测试角色位置])
+				ImGui.Text("移动数组： %s" % [测试角色移动队列])
+
+			ImGui.Text("尚未抵达目的地: %s" % [尚未抵达目的地()])
+			ImGui.Text("目的地是特异点: %s" % [目的地是特异点()])
+			ImGui.Text("角色当前路径位于两水平连接特异点之间: %s" % [角色当前路径位于两水平连接特异点之间()])
+			
+			
+			if 测试角色移动队列.size() >= 2:
+				ImGui.Text("当前角色移动状态: %s" % [Enum移动方式_to_string(获取点到点移动方式(测试角色移动队列[0], 测试角色移动队列[1]))])
+			else:
+				ImGui.Text("当前没有在移动")
+				
+			if ImGui.Button("烘焙导航"):
+				烘焙导航()
+		
+		ImGui.End()
 
 
 
-func 烘焙导航():
+
+func 烘焙导航()->void:
 	AX.clear()
 	var 特异点: Array[Vector2i] # 边缘, 可掉落点, 梯子的下方/上方, 斜坡的两侧(斜坡占据的点位)
 
@@ -559,7 +564,7 @@ func _input(_event: InputEvent) -> void:
 		测试角色精确目的地 = 获取最近可行目的地(AX.get_closest_position_in_segment(鼠标位置))
 
 
-func 目的地是特异点():
+func 目的地是特异点() -> bool:
 	if 测试角色移动队列.size()>=1:
 		return 测试角色精确目的地 == 获取ID位置(测试角色移动队列.back())
 	else:
@@ -587,11 +592,11 @@ func 尚未抵达目的地() -> bool:
 	return false
 
 
-func 角色当前路径位于两水平连接特异点之间():
+func 角色当前路径位于两水平连接特异点之间()->bool:
 	if 测试角色移动队列.size()<=1:
 		return false
 	
-	var 最近点 := AX.get_closest_point(测试角色位置)
+	# var 最近点 := AX.get_closest_point(测试角色位置)
 	var 第一点 :Vector2 = AX.get_point_position(测试角色移动队列[0]) 
 	var 第二点 :Vector2 = AX.get_point_position(测试角色移动队列[1]) 
 	
@@ -600,13 +605,13 @@ func 角色当前路径位于两水平连接特异点之间():
 	else:
 		return false
 
-var _临时特异点 :Array[int] = []
+# var _临时特异点 :Array[int] = []
 
 ## BROKEN FIXME 这个方法没有被正确实现!!!
 func _process_测试角色移动路径():
-	const MOVE_SPEED := 1.0
-	const POINT_POP_DISTANCE := 2.0
-	
+	# const MOVE_SPEED := 1.0
+	# const POINT_POP_DISTANCE := 2.0
+	pass
 	#AX.get_point_connections()
 	#
 	#if 角色当前路径位于两水平连接特异点之间():

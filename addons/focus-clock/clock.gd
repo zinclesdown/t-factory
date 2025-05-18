@@ -56,7 +56,7 @@ func capitalize_weekday_zh_cn(num: int) -> String:
 			return "五"
 		6:
 			return "六"
-		7:
+		0:
 			return "日"
 		_:
 			return "ERROR"

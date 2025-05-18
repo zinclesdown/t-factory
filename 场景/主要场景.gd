@@ -27,7 +27,7 @@ func _ready() -> void:
 
 
 
-func _ready_处理场景内已有子场景的初始化():
+func _ready_处理场景内已有子场景的初始化() -> void:
 	# 先对子场景进行初始化. 假设我们预先定义了已有的子场景:
 	for container:SubViewportContainer in 子场景所在根节点.get_children():
 		# 移除不合法容器
@@ -49,24 +49,13 @@ func _ready_处理场景内已有子场景的初始化():
 		print("初始化了合法的容器: ", 待初始化子场景, "  容器:", container)
 
 
-
-func _ready_处理玩家对话开始结束的操作状态切换():
+func _ready_处理玩家对话开始结束的操作状态切换() -> void:
 	# 处理对话相关状态
-	对话组件.对话开始.connect(
-		func():
-			
-			玩家全局状态.操作状态设置为交互中()
-	)
-	对话组件.对话结束.connect(
-		func():
-			玩家全局状态.操作状态设置为自由活动()
-	)
-	pass
+	对话组件.对话开始.connect(func()->void: 玩家全局状态.操作状态设置为交互中())
+	对话组件.对话结束.connect(func()->void: 玩家全局状态.操作状态设置为自由活动())
 
 
-
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	%"显示子场景表".text = str(_子场景表)
 
 	## 仅显示玩家所在的子场景
@@ -77,7 +66,7 @@ func _process(delta: float) -> void:
 			_子场景对应容器[i].show()
 
 ## 追加子场景
-func 添加子场景(追加的子场景:子场景):
+func 添加子场景(追加的子场景:子场景) -> void:
 	
 	# 场景树里加东西.
 	var 子视图容器 := SubViewportContainer.new()
@@ -104,7 +93,7 @@ func 添加子场景(追加的子场景:子场景):
 
 
 ## 移除子场景, 会对子场景进行析构.
-func 移除并破坏子场景(待移除子场景:子场景):
+func 移除并破坏子场景(待移除子场景:子场景) -> void:
 	var 容器 :SubViewportContainer= _子场景对应容器[待移除子场景]
 	
 	_子场景对应容器.erase(待移除子场景)
@@ -116,7 +105,7 @@ func 移除并破坏子场景(待移除子场景:子场景):
 
 
 ## 把角色从场景A移动到场景B
-func 将角色切换到子场景(角色:人形角色, 目标子场景:子场景, 默认位置:Vector2):
+func 将角色切换到子场景(角色:人形角色, 目标子场景:子场景, 默认位置:Vector2) -> void:
 	print("试图将角色 %s 从原本场景 %s 移动到子场景 %s 的位置 %s 了!!" % [角色, 角色.获取此角色所在子场景(), 目标子场景, 默认位置])
 	角色.切换该角色所在子场景(目标子场景, 默认位置)
 	print("切换完毕.")

@@ -77,7 +77,7 @@ func _process(_delta: float) -> void:
 
 
 
-func 开始对话(玩家:Node2D, 对方:Node2D, 对话资源:DialogueResource, 标题="默认对话"):
+func 开始对话(玩家:Node2D, 对方:Node2D, 对话资源:DialogueResource, 标题:="默认对话") -> void:
 	玩家位置 = 玩家
 	对方位置 = 对方 # 记录位置
 	_开始对话(对话资源, 标题)
@@ -145,7 +145,7 @@ func 应用当前的对话行() -> void:
 	if 当前的对话行.responses.size() > 0:
 		回复选项列表.show()
 	elif 当前的对话行.time != "":
-		var time = 当前的对话行.text.length() * 0.02 if 当前的对话行.time == "auto" else 当前的对话行.time.to_float()
+		var time := 当前的对话行.text.length() * 0.02 if 当前的对话行.time == "auto" else 当前的对话行.time.to_float()
 		await get_tree().create_timer(time).timeout
 		进入下一段对话(当前的对话行.next_id)
 	else:

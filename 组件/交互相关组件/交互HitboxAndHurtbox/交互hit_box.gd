@@ -27,7 +27,7 @@ func 获取最近的交互HurtBox() -> 交互HurtBox实例:
 
 
 
-func 对最近的HurtBox进行交互(args:Array=[]):
+func 对最近的HurtBox进行交互(args:Array=[]) -> void:
 	if 范围内有HurtBox():
 		获取最近的交互HurtBox()._被Hitbox执行了交互(self, args)
 	else:

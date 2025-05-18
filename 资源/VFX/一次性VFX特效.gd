@@ -7,6 +7,6 @@ extends Marker2D
 
 func _ready() -> void:
 	get_tree().create_timer(存在时间).timeout.connect(
-		func():
+		func()->void:
 			queue_free()
 	)

@@ -13,7 +13,7 @@ class_name 玩家角色
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	玩家全局状态.设置当前玩家角色(self)
 
 func _physics_process(_delta: float) -> void:
@@ -39,13 +39,13 @@ func _physics_process(_delta: float) -> void:
 		%"UI_交互指示器".hide()
 
 
-func _physics_交互中(_delta:float):
+func _physics_交互中(_delta:float) -> void:
 	pass
 
-func _physics_对话中(_delta:float):
+func _physics_对话中(_delta:float) -> void:
 	pass
 
-func _physics_自由控制(_delta:float):
+func _physics_自由控制(_delta:float) -> void:
 	# 施加玩家控制
 	var inputDir := Input.get_axis("左移", "右移")
 	if Input.is_action_pressed("跑步"):

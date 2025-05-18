@@ -9,10 +9,10 @@ enum Toast位置 {
 @onready var 右下角容器: VBoxContainer = %右下角容器
 
 func _ready() -> void:
-	右下角容器.get_children().all(func(a): a.queue_free(); return true)
+	右下角容器.get_children().all(func(a:Node)->bool: a.queue_free(); return true)
 
 
-func 发送Toast消息(消息:String, TTL:=2.0, 位置:=Toast位置.右下角):
+func 发送Toast消息(消息:String, TTL:=2.0, _位置:=Toast位置.右下角) -> void:
 	var 预制件 := 右下角Toast消息预制件.instantiate()
 	右下角容器.add_child(预制件)
 	右下角容器.move_child(预制件, 0)
