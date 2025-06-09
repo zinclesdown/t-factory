@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://b58nqh2mdl0an"]
+
+[ext_resource type="PackedScene" uid="uid://0hyvqhclvoqp" path="res://测试/旧测试/小游戏_太空侵略者/原始文件/太空侵略者.tscn" id="1_nl81x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cw424"]
+viewport_path = NodePath("SubViewport")
+
+[node name="太空侵略者" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 341.0
+offset_bottom = 561.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(192, 320)
+render_target_update_mode = 4
+
+[node name="太空侵略者" parent="SubViewport" instance=ExtResource("1_nl81x")]
+
+[node name="UITextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(192, 320)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_cw424")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(1.92523e-07, 0.593437, 0.730845, 1)
+border_width = 4.0

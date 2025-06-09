@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ss8ld520m68w"]
-
-[ext_resource type="Script" uid="uid://g377yh6xek68" path="res://测试/2D特殊工厂物流测试/2d工厂物流测试.gd" id="1_qwnhe"]
-
-[node name="2D工厂物流测试" type="Node2D"]
-script = ExtResource("1_qwnhe")

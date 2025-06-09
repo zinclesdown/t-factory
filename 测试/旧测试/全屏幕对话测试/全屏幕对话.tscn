@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://ugcmgp1aaf75"]
+
+[ext_resource type="Script" uid="uid://qdr1yt8635nj" path="res://测试/旧测试/全屏幕对话测试/全屏幕对话.gd" id="1_6q3av"]
+
+[node name="全屏幕对话" type="CanvasLayer"]
+script = ExtResource("1_6q3av")
+
+[node name="左边角色" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.0987654
+anchor_right = 0.368056
+anchor_bottom = 0.888889
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="左边角色"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="左边角色"]
+layout_mode = 2
+text = "左边角色"
+
+[node name="右边角色" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.638889
+anchor_top = 0.0987654
+anchor_right = 0.944444
+anchor_bottom = 0.901235
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="右边角色"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="右边角色"]
+layout_mode = 2
+text = "右边角色"
+
+[node name="对话框" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.263889
+anchor_top = 0.54321
+anchor_right = 0.743056
+anchor_bottom = 0.864198
+offset_top = 3.05176e-05
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="对话框"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="对话框/VBoxContainer"]
+layout_mode = 2
+
+[node name="发言人名称框" type="PanelContainer" parent="对话框/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.115942
+anchor_right = 0.376812
+offset_top = -16.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="对话框/VBoxContainer/Control/发言人名称框"]
+layout_mode = 2
+text = "发言人"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="对话框/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "发言内容!"
