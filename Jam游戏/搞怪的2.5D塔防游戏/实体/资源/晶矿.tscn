@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxarumqn7xqmm"]
+
+[ext_resource type="Script" uid="uid://b05vhf4ksm4b0" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/实体.gd" id="1_yfc65"]
+[ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="2_l1y0u"]
+[ext_resource type="Texture2D" uid="uid://o1mvydx6uq10" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/crystal_aigen.png" id="3_yfc65"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kmjy0"]
+viewport_path = NodePath("Sprite3D2/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6c60"]
+resource_local_to_scene = true
+shader = ExtResource("2_l1y0u")
+shader_parameter/clr = Color(1, 0.81666666, 0, 1)
+shader_parameter/type = 2
+shader_parameter/thickness = 2.0
+
+[node name="晶矿" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
+script = ExtResource("1_yfc65")
+"图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
+metadata/_custom_type_script = "uid://b05vhf4ksm4b0"
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0227594, 0)
+pixel_size = 0.03
+alpha_cut = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_kmjy0")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D2"]
+transparent_bg = true
+oversampling = false
+size = Vector2i(72, 72)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite3D2/SubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_e6c60")
+texture = ExtResource("3_yfc65")
+centered = false

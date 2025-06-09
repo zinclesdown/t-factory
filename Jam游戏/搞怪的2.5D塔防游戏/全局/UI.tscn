@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq6cfrf8cwbo4"]
+
+[ext_resource type="Script" uid="uid://505pfr5rvh0u" path="res://Jam游戏/搞怪的2.5D塔防游戏/全局/ui.gd" id="1_b3bc3"]
+[ext_resource type="Texture2D" uid="uid://o1mvydx6uq10" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/crystal_aigen.png" id="2_3b2b5"]
+[ext_resource type="Texture2D" uid="uid://73qr5cg0ymub" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/tree.png" id="3_c7vh1"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_b3bc3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 183.0
+offset_bottom = 112.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_3b2b5")
+expand_mode = 2
+
+[node name="矿石Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "114514"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_c7vh1")
+expand_mode = 2
+
+[node name="木材Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "114514"
+
+[node name="UI操作状态" type="LimboHSM" parent="."]
+
+[node name="自由选取" type="LimboState" parent="UI操作状态"]
+
+[node name="建筑模式" type="LimboState" parent="UI操作状态"]
+
+[node name="建筑预览" type="LimboState" parent="UI操作状态"]
+
+[node name="暂停" type="LimboState" parent="UI操作状态"]
