@@ -6,12 +6,11 @@ extends CharacterBody3D
 func 可被选择() -> bool:
 	return true
 
-var 被选择:bool = false
-
+#var 被选择:bool = false
 
 func _process(delta: float) -> void:
 	if 图像 and 图像.material is ShaderMaterial:
-		if 被选择 == true:
+		if is_in_group("被选择物") == true:
 			(图像.material as ShaderMaterial).set_shader_parameter("thickness", 2.0)
 		else:
 			(图像.material as ShaderMaterial).set_shader_parameter("thickness", 0.0)

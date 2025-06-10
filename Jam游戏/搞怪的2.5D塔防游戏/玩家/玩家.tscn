@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://drtd0d75r5x7d"]
+[gd_scene load_steps=7 format=3 uid="uid://drtd0d75r5x7d"]
 
 [ext_resource type="Script" uid="uid://dcw3uiiis3a75" path="res://Jam游戏/搞怪的2.5D塔防游戏/玩家/玩家.gd" id="1_enbrf"]
 [ext_resource type="Texture2D" uid="uid://bo1phnndfbv08" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/people.png" id="2_8uvt8"]
 [ext_resource type="Script" uid="uid://o0ysfrvd6d7c" path="res://Jam游戏/搞怪的2.5D塔防游戏/玩家/鼠标绘制器VFX.gd" id="3_vniun"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54218"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_54218"]
+material = SubResource("StandardMaterial3D_54218")
+radius = 0.125
+height = 0.25
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nmtyc"]
 
@@ -15,6 +23,18 @@ metadata/_edit_group_ = true
 transform = Transform3D(0.99999523, -0.002685656, 0.0014703562, 0.001470356, 0.8424511, 0.53877085, -0.002685656, -0.5387661, 0.8424512, 0, 6.3222117, 6.2229004)
 near = 0.001
 far = 240.3
+
+[node name="鼠标与地面接触用射线" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+debug_shape_thickness = 1
+
+[node name="鼠标选择示意球" type="MeshInstance3D" parent="Camera3D/鼠标与地面接触用射线"]
+transform = Transform3D(0.99999523, 0.0014703562, -0.0026856558, -0.002685656, 0.842451, -0.5387661, 0.001470356, 0.5387708, 0.84245104, 0.0074166656, -1.9734657, -8.648712)
+mesh = SubResource("SphereMesh_54218")
+skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

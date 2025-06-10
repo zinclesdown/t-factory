@@ -41,3 +41,11 @@ centered = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0145124, 0)
 shape = SubResource("CapsuleShape3D_8cpg2")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1774192, 0)
+pixel_size = 0.01
+billboard = 1
+alpha_cut = 1
+texture_filter = 0
+text = "Editing"

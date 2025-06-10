@@ -1,8 +1,8 @@
 class_name UI单例
 extends CanvasLayer
 
-var 当前基地 :基地:
-	get: return 基地.基地单例
+var 当前基地 :JAM_基地:
+	get: return JAM_基地.基地单例
 
 func _process(delta: float) -> void:
 	ImGui.Begin("建筑系统")
