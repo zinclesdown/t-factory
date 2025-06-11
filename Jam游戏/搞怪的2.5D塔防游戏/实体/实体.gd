@@ -10,7 +10,13 @@ func 可被选择() -> bool:
 
 func _process(delta: float) -> void:
 	if 图像 and 图像.material is ShaderMaterial:
-		if is_in_group("被选择物") == true:
+		
+		if is_in_group("被高亮物") == true:
 			(图像.material as ShaderMaterial).set_shader_parameter("thickness", 2.0)
+			(图像.material as ShaderMaterial).set_shader_parameter("clr", Color.WHITE)
+		elif is_in_group("被选择物") == true:
+			(图像.material as ShaderMaterial).set_shader_parameter("thickness", 2.0)
+			(图像.material as ShaderMaterial).set_shader_parameter("clr", Color.YELLOW)
 		else:
 			(图像.material as ShaderMaterial).set_shader_parameter("thickness", 0.0)
+			(图像.material as ShaderMaterial).set_shader_parameter("clr", Color.WHITE)

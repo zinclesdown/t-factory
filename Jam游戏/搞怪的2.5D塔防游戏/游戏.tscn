@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb1qc75lvyaay"]
+[gd_scene load_steps=16 format=3 uid="uid://cb1qc75lvyaay"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbm42g8isifd2" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/草地.res" id="1_4unyw"]
 [ext_resource type="PackedScene" uid="uid://w3ryahr6g2g8" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/人/人.tscn" id="2_sfwsw"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bu4uk03qmwi26" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑/基地.tscn" id="5_38wew"]
 [ext_resource type="PackedScene" uid="uid://i6lubm4bkbr0" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/资源/树.tscn" id="6_vaapg"]
 [ext_resource type="PackedScene" uid="uid://cxarumqn7xqmm" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/资源/晶矿.tscn" id="7_7qnql"]
+[ext_resource type="Script" uid="uid://n41m21osjf1j" path="res://Jam游戏/搞怪的2.5D塔防游戏/ui.gd" id="8_0m1ev"]
+[ext_resource type="Texture2D" uid="uid://o1mvydx6uq10" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/矿物.png" id="9_38wew"]
+[ext_resource type="Texture2D" uid="uid://73qr5cg0ymub" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/tree.png" id="10_vaapg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bcbcq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -152,3 +155,33 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="鼠标选择目的地碰撞体"]
 shape = SubResource("WorldBoundaryShape3D_4unyw")
 debug_color = Color(0, 0.5379962, 0.6303051, 0.41960785)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("8_0m1ev")
+
+[node name="资源量显示器" type="VBoxContainer" parent="UI"]
+offset_bottom = 40.0
+
+[node name="矿物" type="HBoxContainer" parent="UI/资源量显示器"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/资源量显示器/矿物"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_38wew")
+expand_mode = 1
+
+[node name="矿物Label" type="Label" parent="UI/资源量显示器/矿物"]
+layout_mode = 2
+
+[node name="木材" type="HBoxContainer" parent="UI/资源量显示器"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/资源量显示器/木材"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("10_vaapg")
+expand_mode = 1
+
+[node name="木材Label" type="Label" parent="UI/资源量显示器/木材"]
+layout_mode = 2

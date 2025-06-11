@@ -57,6 +57,7 @@ folder_colors={
 "我方角色"="我方单位,"
 "可选择物"="可被鼠标选择的玩意的集合。鬼知道是什么类型。"
 "被选择物"="正在被选取的物体。"
+"被高亮物"="鼠标悬浮"
 
 [gui]
 
@@ -222,6 +223,16 @@ d={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(387, 25),"global_position":Vector2(389, 57),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+"鼠标滚轮上"={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(157, 6),"global_position":Vector2(159, 38),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+"鼠标滚轮下"={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(478, 16),"global_position":Vector2(480, 48),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [internationalization]
 
@@ -232,9 +243,11 @@ locale/translations_pot_files=PackedStringArray("res://资源/对话/荷取的�
 2d_physics/layer_1="世界碰撞层"
 3d_physics/layer_1="世界实体"
 2d_physics/layer_2="单向向上碰撞(平台)"
-3d_physics/layer_2="鼠标选择世界碰撞"
+3d_physics/layer_2="鼠标选择世界层碰撞"
 2d_physics/layer_3="可交互物品的HurtBox (E)"
+3d_physics/layer_3="鼠标可选择的实体"
 2d_physics/layer_4="有血量角色的Hurtbox"
+3d_physics/layer_4="可采集资源点"
 
 [milestone]
 

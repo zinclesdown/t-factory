@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq6cfrf8cwbo4"]
 
 [ext_resource type="Script" uid="uid://505pfr5rvh0u" path="res://Jam游戏/搞怪的2.5D塔防游戏/全局/ui.gd" id="1_b3bc3"]
-[ext_resource type="Texture2D" uid="uid://o1mvydx6uq10" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/crystal_aigen.png" id="2_3b2b5"]
+[ext_resource type="Texture2D" uid="uid://o1mvydx6uq10" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/矿物.png" id="2_3b2b5"]
 [ext_resource type="Texture2D" uid="uid://73qr5cg0ymub" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/tree.png" id="3_c7vh1"]
 
 [node name="UI" type="CanvasLayer"]

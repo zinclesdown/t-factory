@@ -16,25 +16,37 @@ height = 0.25
 
 [node name="玩家" type="CharacterBody3D" node_paths=PackedStringArray("相机")]
 script = ExtResource("1_enbrf")
-"相机" = NodePath("Camera3D")
+"相机" = NodePath("相机旋转Margin/Camera3D")
 metadata/_edit_group_ = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.99999523, -0.002685656, 0.0014703562, 0.001470356, 0.8424511, 0.53877085, -0.002685656, -0.5387661, 0.8424512, 0, 6.3222117, 6.2229004)
+[node name="相机旋转Margin" type="Marker3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="相机旋转Margin"]
+transform = Transform3D(0.99999535, -0.0026856565, 0.0014703557, 0.0014703562, 0.84245116, 0.5387708, -0.0026856563, -0.53876615, 0.8424511, 0, 6.3222117, 6.2229004)
 near = 0.001
 far = 240.3
 
-[node name="鼠标与地面接触用射线" type="RayCast3D" parent="Camera3D"]
+[node name="鼠标与地面接触用射线" type="RayCast3D" parent="相机旋转Margin/Camera3D"]
+unique_name_in_owner = true
 target_position = Vector3(0, 0, -100)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 debug_shape_thickness = 1
 
-[node name="鼠标选择示意球" type="MeshInstance3D" parent="Camera3D/鼠标与地面接触用射线"]
+[node name="鼠标选择示意球" type="MeshInstance3D" parent="相机旋转Margin/Camera3D/鼠标与地面接触用射线"]
+unique_name_in_owner = true
 transform = Transform3D(0.99999523, 0.0014703562, -0.0026856558, -0.002685656, 0.842451, -0.5387661, 0.001470356, 0.5387708, 0.84245104, 0.0074166656, -1.9734657, -8.648712)
 mesh = SubResource("SphereMesh_54218")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
+
+[node name="选择实体用射线" type="RayCast3D" parent="相机旋转Margin/Camera3D"]
+unique_name_in_owner = true
+editor_description = "鼠标悬浮在实体上，可以选中"
+collision_mask = 4
+hit_from_inside = true
+debug_shape_thickness = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -42,6 +54,7 @@ mesh = SubResource("CapsuleMesh_nmtyc")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6786703, 0)
+visible = false
 pixel_size = 0.03
 alpha_cut = 1
 texture_filter = 0

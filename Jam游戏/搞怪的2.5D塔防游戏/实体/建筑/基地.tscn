@@ -19,6 +19,7 @@ height = 2.604248
 radius = 1.1748047
 
 [node name="基地" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
+collision_layer = 5
 script = ExtResource("1_rd1n5")
 "图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"

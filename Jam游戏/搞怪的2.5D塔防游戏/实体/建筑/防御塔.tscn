@@ -19,6 +19,7 @@ height = 4.282959
 radius = 0.8388672
 
 [node name="防御塔" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
+collision_layer = 5
 script = ExtResource("1_ak8g4")
 "图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"

@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://w3ryahr6g2g8"]
+[gd_scene load_steps=12 format=3 uid="uid://w3ryahr6g2g8"]
 
 [ext_resource type="Texture2D" uid="uid://bo1phnndfbv08" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/people.png" id="1_4qhtj"]
 [ext_resource type="Script" uid="uid://co33apq3jryxn" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/人/人.gd" id="1_6yp3w"]
 [ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="2_8cpg2"]
+[ext_resource type="Script" uid="uid://cfp2fh14hinqa" path="res://addons/godot_state_charts/state_chart.gd" id="4_h6bd8"]
+[ext_resource type="Script" uid="uid://dtqm7r6ogkgmr" path="res://addons/godot_state_charts/compound_state.gd" id="5_v4u1a"]
+[ext_resource type="Script" uid="uid://c1qtqfj808xss" path="res://addons/godot_state_charts/atomic_state.gd" id="6_7nxqx"]
+[ext_resource type="Script" uid="uid://dm364h8t1i8f8" path="res://addons/godot_state_charts/transition.gd" id="7_7nxqx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8cpg2"]
 viewport_path = NodePath("Sprite3D2/SubViewport")
@@ -16,7 +20,13 @@ shader_parameter/thickness = 2.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8cpg2"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fb011"]
+height = 0.63757324
+radius = 1.206543
+
 [node name="人" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
+collision_layer = 5
+collision_mask = 0
 script = ExtResource("1_6yp3w")
 "图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"
@@ -49,3 +59,41 @@ billboard = 1
 alpha_cut = 1
 texture_filter = 0
 text = "Editing"
+
+[node name="采矿范围" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="采矿范围"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56095326, 0)
+shape = SubResource("CylinderShape3D_fb011")
+debug_color = Color(2.3584068e-06, 0.6436718, 0.30142394, 0.41960785)
+
+[node name="人物状态" type="Node" parent="."]
+script = ExtResource("4_h6bd8")
+metadata/_custom_type_script = "uid://cfp2fh14hinqa"
+
+[node name="CompoundState" type="Node" parent="人物状态"]
+script = ExtResource("5_v4u1a")
+initial_state = NodePath("采集资源")
+
+[node name="自由活动" type="Node" parent="人物状态/CompoundState"]
+script = ExtResource("6_7nxqx")
+
+[node name="采集资源" type="Node" parent="人物状态/CompoundState/自由活动"]
+script = ExtResource("7_7nxqx")
+to = NodePath("../../采集资源")
+event = &"采集资源"
+delay_in_seconds = "0.0"
+
+[node name="采集资源" type="Node" parent="人物状态/CompoundState"]
+script = ExtResource("6_7nxqx")
+
+[node name="采集结束" type="Node" parent="人物状态/CompoundState/采集资源"]
+script = ExtResource("7_7nxqx")
+to = NodePath("../../自由活动")
+event = &"采集结束"
+delay_in_seconds = "0.0"
+
+[connection signal="state_processing" from="人物状态/CompoundState/自由活动" to="." method="_on_自由活动_state_processing"]
+[connection signal="state_processing" from="人物状态/CompoundState/采集资源" to="." method="_on_采集资源_state_processing"]
