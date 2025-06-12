@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drtd0d75r5x7d"]
+[gd_scene load_steps=8 format=3 uid="uid://drtd0d75r5x7d"]
 
 [ext_resource type="Script" uid="uid://dcw3uiiis3a75" path="res://Jam游戏/搞怪的2.5D塔防游戏/玩家/玩家.gd" id="1_enbrf"]
 [ext_resource type="Texture2D" uid="uid://bo1phnndfbv08" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/people.png" id="2_8uvt8"]
@@ -14,7 +14,11 @@ height = 0.25
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nmtyc"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_54218"]
+
 [node name="玩家" type="CharacterBody3D" node_paths=PackedStringArray("相机")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_enbrf")
 "相机" = NodePath("相机旋转Margin/Camera3D")
 metadata/_edit_group_ = true
@@ -66,3 +70,4 @@ texture = ExtResource("2_8uvt8")
 script = ExtResource("3_vniun")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_54218")

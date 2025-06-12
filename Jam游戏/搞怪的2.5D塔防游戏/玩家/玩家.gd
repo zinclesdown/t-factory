@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name JAM_玩家
 
 
 
@@ -11,6 +12,11 @@ var 移动速度 := 10.0
 @onready var 相机旋转margin: Marker3D = %相机旋转Margin
 
 
+static var 单例:JAM_玩家
+
+func _ready() -> void:
+	单例 = self
+
 ## 更新两条射线的方向。
 func _process_更新射线() -> void:
 	var 相机法向 := 相机.project_local_ray_normal(获取鼠标屏幕位置())
@@ -19,15 +25,15 @@ func _process_更新射线() -> void:
 	选择实体用射线.target_position = 射线目的地
 
 
-func 获取鼠标屏幕位置() -> Vector2:
-	return _鼠标绘制器.get_local_mouse_position()
+static func 获取鼠标屏幕位置() -> Vector2:
+	return 单例._鼠标绘制器.get_local_mouse_position()
 
 ## 主要用于定位鼠标在3d地图里的位置。
-func 获取鼠标与3d选择面相交位置() -> Vector3:
-	return 鼠标选择用射线.get_collision_point()
+static func 获取鼠标与3d选择面相交位置() -> Vector3:
+	return 单例.鼠标选择用射线.get_collision_point()
 
-func 获取当前鼠标悬浮的单位() -> Node:
-	var collider :Node = 选择实体用射线.get_collider()
+static func 获取当前鼠标悬浮的单位() -> Node:
+	var collider :Node = 单例.选择实体用射线.get_collider()
 	if is_instance_valid(collider):
 		if collider.is_in_group("可选择物"):
 			return collider
@@ -72,8 +78,8 @@ var _鼠标拖动起始点 := Vector2.ZERO
 
 
 func _process_绘制鼠标旁物体的选择信息() -> void:
-	var 鼠标位置 :Vector2 = _鼠标绘制器.get_global_mouse_position()
-	var 可选择物体列表 := get_tree().get_nodes_in_group("可选择物")
+	#var 鼠标位置 :Vector2 = _鼠标绘制器.get_global_mouse_position()
+	#var 可选择物体列表 := get_tree().get_nodes_in_group("可选择物")
 	
 	
 	for i in 获取高亮的物体列表():
@@ -104,7 +110,12 @@ func 获取高亮的物体列表() -> Array[Node]:
 
 
 #var 被选中物体 := []
-func _input(_event: InputEvent) -> void:
+#func _input(_event: InputEvent) -> void:
+#
+		#
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	var 鼠标位置 :Vector2 = _鼠标绘制器.get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("鼠标左键"):
@@ -132,12 +143,14 @@ func _input(_event: InputEvent) -> void:
 			get_tree().call_group("被选择物", "命令采矿", 获取当前鼠标悬浮的单位())
 		else:
 			get_tree().call_group("被选择物", "命令移动", 获取鼠标与3d选择面相交位置())
-		
 
 
-func _unhandled_input(event: InputEvent) -> void:
 	var 鼠标滚轮输入 := Input.get_axis("鼠标滚轮上", "鼠标滚轮下")
-	相机旋转margin.rotation.x += 鼠标滚轮输入/180.0 * 5.0
+	相机旋转margin.rotation.x += 鼠标滚轮输入/180.0 * 20.0
 	
-	
+	if event is InputEventMouseMotion:
+		if Input.is_action_pressed("鼠标中键"):
+			global_position.x -= event.relative.x * 0.05
+			global_position.z -= event.relative.y * 0.05
+			
 	

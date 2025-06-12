@@ -18,14 +18,15 @@ shader_parameter/clr = Color(1, 0.81666666, 0, 1)
 shader_parameter/type = 2
 shader_parameter/thickness = 2.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8cpg2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nxqx"]
+size = Vector3(0.607666, 1.4648438, 0.125)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fb011"]
 height = 0.63757324
-radius = 1.206543
+radius = 0.7558594
 
 [node name="人" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
-collision_layer = 5
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_6yp3w")
 "图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
@@ -49,8 +50,8 @@ texture = ExtResource("1_4qhtj")
 centered = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0145124, 0)
-shape = SubResource("CapsuleShape3D_8cpg2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8069929, 0)
+shape = SubResource("BoxShape3D_7nxqx")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1774192, 0)

@@ -19,6 +19,7 @@ shader_parameter/thickness = 2.0
 [node name="晶矿" type="CharacterBody3D" node_paths=PackedStringArray("资源量显示Label", "图像") groups=["可选择物"]]
 collision_layer = 13
 script = ExtResource("1_gqwu8")
+"DEBUG_显示资源量" = true
 "资源" = Dictionary[String, int]({
 "矿物": 500
 })

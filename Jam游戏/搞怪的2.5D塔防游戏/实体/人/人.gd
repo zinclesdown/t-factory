@@ -82,12 +82,17 @@ func _on_采集资源_state_processing(_delta: float) -> void:
 
 
 
-func _on_自由活动_state_processing(_delta: float) -> void:
+func _on_自由活动_state_processing(delta: float) -> void:
 	设置头文字("自由活动")
-	var dir_norm := (目标位置 - global_position).normalized()
+	
+	var distance := 目标位置 - global_position
+	var dir_norm := distance.normalized()
+	
 	velocity = dir_norm * 移动速度
 	velocity.y = 0
-	move_and_slide()
+	
+	if distance.length() >= velocity.length()*delta:
+		move_and_slide()
 
 
 func 身上还有剩余空间() -> bool:

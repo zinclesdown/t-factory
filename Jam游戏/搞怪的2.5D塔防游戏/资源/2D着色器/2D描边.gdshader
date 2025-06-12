@@ -5,6 +5,8 @@ uniform vec4 clr : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform int type : hint_range(0, 2) = 2;
 uniform float thickness = 1.0;
 
+uniform vec4 modifier :source_color= vec4(1.0);
+
 const vec2[8] DIRECTIONS = {
 	vec2(1.0, 0.0),
 	vec2(0.0, 1.0),
@@ -29,4 +31,5 @@ float check(sampler2D tex, vec2 from, vec2 size) {
 
 void fragment() {
 	COLOR = mix(COLOR, clr, max(0, check(TEXTURE, UV, TEXTURE_PIXEL_SIZE) - gtz(COLOR.a)));
+	COLOR *= modifier;
 }

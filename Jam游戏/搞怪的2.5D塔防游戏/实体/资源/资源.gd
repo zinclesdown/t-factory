@@ -36,6 +36,9 @@ func 有剩余资源() -> bool:
 		return false
 	return true
 
+func _ready() -> void:
+	资源 = 资源.duplicate(true)
+
 func _process(_delta: float) -> void:
 	super._process(_delta)
 	

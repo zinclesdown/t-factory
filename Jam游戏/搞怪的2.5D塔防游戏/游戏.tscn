@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cb1qc75lvyaay"]
+[gd_scene load_steps=18 format=3 uid="uid://cb1qc75lvyaay"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbm42g8isifd2" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/草地.res" id="1_4unyw"]
+[ext_resource type="Script" uid="uid://b7nllvuqdymfc" path="res://Jam游戏/搞怪的2.5D塔防游戏/游戏.gd" id="1_38wew"]
 [ext_resource type="PackedScene" uid="uid://w3ryahr6g2g8" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/人/人.tscn" id="2_sfwsw"]
 [ext_resource type="PackedScene" uid="uid://yq46cuns8jgy" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑/防御塔.tscn" id="3_6iyp2"]
 [ext_resource type="PackedScene" uid="uid://drtd0d75r5x7d" path="res://Jam游戏/搞怪的2.5D塔防游戏/玩家/玩家.tscn" id="4_0m1ev"]
+[ext_resource type="PackedScene" uid="uid://cemsjejs6g4kc" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑蓝图/防御塔_蓝图.tscn" id="4_vaapg"]
 [ext_resource type="PackedScene" uid="uid://bu4uk03qmwi26" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑/基地.tscn" id="5_38wew"]
 [ext_resource type="PackedScene" uid="uid://i6lubm4bkbr0" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/资源/树.tscn" id="6_vaapg"]
 [ext_resource type="PackedScene" uid="uid://cxarumqn7xqmm" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/资源/晶矿.tscn" id="7_7qnql"]
@@ -20,7 +22,6 @@ energy_multiplier = 0.8
 sky_material = SubResource("ProceduralSkyMaterial_bcbcq")
 
 [sub_resource type="Environment" id="Environment_eu7l1"]
-background_mode = 2
 sky = SubResource("Sky_js7pq")
 tonemap_mode = 2
 
@@ -35,17 +36,23 @@ item/0/navigation_layers = 1
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4unyw"]
 
-[node name="世界测试" type="Node3D"]
+[node name="游戏" type="Node3D"]
+script = ExtResource("1_38wew")
+"人_TSCN" = ExtResource("2_sfwsw")
+"防御塔_TSCN" = ExtResource("3_6iyp2")
+"蓝图_防御塔_TSCN" = ExtResource("4_vaapg")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="环境" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="环境"]
 environment = SubResource("Environment_eu7l1")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.9165443, 0.38520062, -0.10754995, -2.8235467e-09, 0.26891983, 0.96316254, 0.39993313, -0.8827812, 0.24647693, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="环境"]
+transform = Transform3D(0.9165443, 0.38520062, -0.107549936, -2.8235467e-09, 0.26891983, 0.96316254, 0.39993313, -0.8827812, 0.24647692, 0, 0, 0)
 light_energy = 0.1
 shadow_enabled = true
 
-[node name="地图" type="GridMap" parent="."]
+[node name="世界" type="GridMap" parent="."]
 mesh_library = SubResource("MeshLibrary_irod6")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -53,106 +60,120 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="玩家" parent="地图" instance=ExtResource("4_0m1ev")]
+[node name="玩家" parent="世界" instance=ExtResource("4_0m1ev")]
 
-[node name="人" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="组_人物" type="Node3D" parent="世界"]
+
+[node name="人" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96771, 0.058757067, 1.6218622)
 
-[node name="人2" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="人2" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9264746, 0.05875802, -3.7978764)
 
-[node name="人3" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="人3" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7174215, 0.05875802, -5.5129576)
 
-[node name="人4" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="人4" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6931024, 0.05875802, -1.3832121)
 
-[node name="人5" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="人5" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.803388, 0.05875802, -6.74051)
 
-[node name="人6" parent="地图" instance=ExtResource("2_sfwsw")]
+[node name="人6" parent="世界/组_人物" instance=ExtResource("2_sfwsw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2352214, 0.05875802, -6.391755)
 
-[node name="防御塔" parent="地图" instance=ExtResource("3_6iyp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5870247, 0, -3.5789537)
+[node name="组_资源" type="Node3D" parent="世界"]
 
-[node name="防御塔2" parent="地图" instance=ExtResource("3_6iyp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.762392, 0, -6.7355614)
+[node name="晶矿" type="Node3D" parent="世界/组_资源"]
 
-[node name="基地" parent="地图" instance=ExtResource("5_38wew")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6228113, 0, -2.7998953)
-
-[node name="树" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.312971, 0, -9.242243)
-
-[node name="树2" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3435416, -9.536743e-07, -8.59375)
-
-[node name="树3" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1846967, -9.536743e-07, -7.821706)
-
-[node name="树4" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.857433, -9.536743e-07, -9.384125)
-
-[node name="树7" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2652574, 0, -12.003023)
-
-[node name="树8" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8037815, 0, -13.48556)
-
-[node name="树9" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.713715, 0, -14.9334135)
-
-[node name="树10" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.827415, 0, -13.05231)
-
-[node name="树11" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7138395, 0, -13.434615)
-
-[node name="树12" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5701904, 0, -17.260437)
-
-[node name="树13" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3095913, 0, -16.685053)
-
-[node name="树14" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.551965, 0, -13.135168)
-
-[node name="树15" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3793, 0, -17.18887)
-
-[node name="树16" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.874149, 0, -11.224052)
-
-[node name="树17" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.117873, 0, -10.968272)
-
-[node name="树18" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.082979, 0, -9.062389)
-
-[node name="树5" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.000687, -9.536743e-07, -7.817486)
-
-[node name="树6" parent="地图" instance=ExtResource("6_vaapg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.443386, 0, -7.6582346)
-
-[node name="晶矿" parent="." instance=ExtResource("7_7qnql")]
+[node name="晶矿" parent="世界/组_资源/晶矿" instance=ExtResource("7_7qnql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.068182, 0, -2.4135895)
 
-[node name="晶矿2" parent="." instance=ExtResource("7_7qnql")]
+[node name="晶矿2" parent="世界/组_资源/晶矿" instance=ExtResource("7_7qnql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.257701, 0, -0.18084955)
 
-[node name="晶矿4" parent="." instance=ExtResource("7_7qnql")]
+[node name="晶矿4" parent="世界/组_资源/晶矿" instance=ExtResource("7_7qnql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5904875, 0, -0.7067971)
 
-[node name="晶矿3" parent="." instance=ExtResource("7_7qnql")]
+[node name="晶矿3" parent="世界/组_资源/晶矿" instance=ExtResource("7_7qnql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.197981, 0, -3.8985763)
 
-[node name="鼠标选择目的地碰撞体" type="Area3D" parent="."]
+[node name="树" type="Node3D" parent="世界/组_资源"]
+
+[node name="树" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.312971, 0, -9.242243)
+
+[node name="树2" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3435416, -9.536743e-07, -8.59375)
+
+[node name="树3" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1846967, -9.536743e-07, -7.821706)
+
+[node name="树4" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.857433, -9.536743e-07, -9.384125)
+
+[node name="树7" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2652574, 0, -12.003023)
+
+[node name="树8" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8037815, 0, -13.48556)
+
+[node name="树9" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.713715, 0, -14.9334135)
+
+[node name="树10" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.827415, 0, -13.05231)
+
+[node name="树11" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7138395, 0, -13.434615)
+
+[node name="树12" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5701904, 0, -17.260437)
+
+[node name="树13" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3095913, 0, -16.685053)
+
+[node name="树14" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.551965, 0, -13.135168)
+
+[node name="树15" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3793, 0, -17.18887)
+
+[node name="树16" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.874149, 0, -11.224052)
+
+[node name="树17" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.117873, 0, -10.968272)
+
+[node name="树18" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.082979, 0, -9.062389)
+
+[node name="树5" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.000687, -9.536743e-07, -7.817486)
+
+[node name="树6" parent="世界/组_资源/树" instance=ExtResource("6_vaapg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.443386, 0, -7.6582346)
+
+[node name="组_建筑物" type="Node3D" parent="世界"]
+
+[node name="防御塔" parent="世界/组_建筑物" instance=ExtResource("3_6iyp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5870247, 0, -3.5789537)
+
+[node name="防御塔2" parent="世界/组_建筑物" instance=ExtResource("3_6iyp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.762392, 0, -6.7355614)
+
+[node name="基地" parent="世界/组_建筑物" instance=ExtResource("5_38wew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6228113, 0, -2.7998953)
+
+[node name="组_建筑物_蓝图预览" type="Node3D" parent="世界"]
+
+[node name="组_其他" type="Node3D" parent="世界"]
+
+[node name="鼠标选择目的地碰撞体" type="Area3D" parent="世界/组_其他"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="鼠标选择目的地碰撞体"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="世界/组_其他/鼠标选择目的地碰撞体"]
 shape = SubResource("WorldBoundaryShape3D_4unyw")
 debug_color = Color(0, 0.5379962, 0.6303051, 0.41960785)
 
