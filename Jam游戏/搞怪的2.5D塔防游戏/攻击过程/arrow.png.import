@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wmnsyekchhix"
-path="res://.godot/imported/tesla_builder.png-b7127b8a0f5b9f429883f31523e6455b.ctex"
+uid="uid://boua21wks4jfq"
+path.s3tc="res://.godot/imported/arrow.png-49bb04212687af6666488876efa5d994.s3tc.ctex"
+path.etc2="res://.godot/imported/arrow.png-49bb04212687af6666488876efa5d994.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://资源/图像/物品/tesla_builder.png"
-dest_files=["res://.godot/imported/tesla_builder.png-b7127b8a0f5b9f429883f31523e6455b.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/攻击过程/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-49bb04212687af6666488876efa5d994.s3tc.ctex", "res://.godot/imported/arrow.png-49bb04212687af6666488876efa5d994.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +39,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

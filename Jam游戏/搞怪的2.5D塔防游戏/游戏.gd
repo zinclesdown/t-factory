@@ -4,16 +4,16 @@ extends Node3D
 @export var 防御塔_TSCN: PackedScene
 @export var 蓝图_防御塔_TSCN: PackedScene
 
+@export var 敌人_TSCN :PackedScene
 
 @onready var 组_人物: Node3D = $世界/组_人物
-
 @onready var 组_资源: Node3D = $世界/组_资源
-
 @onready var 组_建筑物: Node3D = $世界/组_建筑物
 @onready var 组_建筑物_蓝图预览: Node3D = $世界/组_建筑物_蓝图预览
-
 @onready var 组_其他: Node3D = $世界/组_其他
+@onready var 组_敌人: Node3D = $世界/组_敌人
 
+@onready var 刷怪路径: Path3D = %刷怪路径
 
 
 var 当前模式 := 自由模式 
@@ -29,6 +29,9 @@ func _process(_delta: float) -> void:
 	if ImGui.Button("造人"):
 		造人()
 	
+	if ImGui.Button("刷怪"):
+		刷怪()
+	
 	ImGui.Text("当前蓝图建筑名称: " + 当前蓝图建筑名称)
 	ImGui.Text("当前模式: %s" % 当前模式)
 	
@@ -36,6 +39,7 @@ func _process(_delta: float) -> void:
 		当前蓝图建筑名称 = "防御塔"
 		当前模式 = 建造模式
 	ImGui.End()
+
 
 	if 当前蓝图建筑名称 == "防御塔":
 		预览防御塔(JAM_玩家.获取鼠标与3d选择面相交位置())
@@ -81,3 +85,12 @@ func 造人() -> void:
 	实例.global_position = JAM_基地.获取单例位置()
 	实例.global_position.y = 0
 	实例.命令移动(JAM_基地.获取单例位置() + Vector3(randf_range(-1, 1), 0, randf_range(1, 2)))
+
+
+func 刷怪() -> void:
+	var 刷怪点 := 刷怪路径.get_child(0) as PathFollow3D
+	刷怪点.progress_ratio = randf_range(0, 1)
+	
+	var 实例 :JAM_敌人= 敌人_TSCN.instantiate()
+	组_敌人.add_child(实例)
+	实例.global_position = 刷怪点.global_position

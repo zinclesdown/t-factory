@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yq46cuns8jgy"]
+[gd_scene load_steps=9 format=3 uid="uid://yq46cuns8jgy"]
 
 [ext_resource type="Script" uid="uid://bpd8ixnrjp18c" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑/防御塔.gd" id="1_b04sf"]
 [ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="1_ishx4"]
 [ext_resource type="Texture2D" uid="uid://buna8vqg7neo2" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/Tower.png" id="1_k3o7x"]
+[ext_resource type="PackedScene" uid="uid://desqxxi4nsud8" path="res://Jam游戏/搞怪的2.5D塔防游戏/攻击过程/箭塔射击.tscn" id="2_4b1ob"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_krtoq"]
 viewport_path = NodePath("Sprite3D2/SubViewport")
@@ -19,9 +20,13 @@ shader_parameter/modifier = Color(1, 1, 1, 1)
 height = 4.282959
 radius = 0.8388672
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b04sf"]
+radius = 8.0
+
 [node name="防御塔" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
 collision_layer = 5
 script = ExtResource("1_b04sf")
+"射箭攻击TSCN" = ExtResource("2_4b1ob")
 "图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"
 
@@ -46,3 +51,20 @@ centered = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1565115, 0)
 shape = SubResource("CylinderShape3D_ak8g4")
+
+[node name="射击范围" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="射击范围"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_b04sf")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="射击点Marker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.9, 0)
+
+[node name="射击冷却Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
