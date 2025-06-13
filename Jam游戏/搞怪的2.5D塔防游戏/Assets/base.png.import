@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f8abkjw30fv6"
-path="res://.godot/imported/atlas-props.png-c3651c23b15adb8ffb38f23d0e15c16c.ctex"
+uid="uid://ymttftav65cv"
+path.s3tc="res://.godot/imported/base.png-799df9fc933d3e6ce944f745f4ff34e5.s3tc.ctex"
+path.etc2="res://.godot/imported/base.png-799df9fc933d3e6ce944f745f4ff34e5.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/atlas-props.png"
-dest_files=["res://.godot/imported/atlas-props.png-c3651c23b15adb8ffb38f23d0e15c16c.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/base.png"
+dest_files=["res://.godot/imported/base.png-799df9fc933d3e6ce944f745f4ff34e5.s3tc.ctex", "res://.godot/imported/base.png-799df9fc933d3e6ce944f745f4ff34e5.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

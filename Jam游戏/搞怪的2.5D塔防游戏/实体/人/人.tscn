@@ -1,23 +1,46 @@
 [gd_scene load_steps=12 format=3 uid="uid://w3ryahr6g2g8"]
 
-[ext_resource type="Texture2D" uid="uid://bo1phnndfbv08" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/people.png" id="1_4qhtj"]
+[ext_resource type="Texture2D" uid="uid://bo1phnndfbv08" path="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/people.png" id="1_4qhtj"]
 [ext_resource type="Script" uid="uid://co33apq3jryxn" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/人/人.gd" id="1_6yp3w"]
-[ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="2_8cpg2"]
+[ext_resource type="Shader" uid="uid://co22jgm7adsfo" path="res://着色器/Sprite3D复合着色器.gdshader" id="2_7nxqx"]
 [ext_resource type="Script" uid="uid://cfp2fh14hinqa" path="res://addons/godot_state_charts/state_chart.gd" id="4_h6bd8"]
 [ext_resource type="Script" uid="uid://dtqm7r6ogkgmr" path="res://addons/godot_state_charts/compound_state.gd" id="5_v4u1a"]
 [ext_resource type="Script" uid="uid://c1qtqfj808xss" path="res://addons/godot_state_charts/atomic_state.gd" id="6_7nxqx"]
 [ext_resource type="Script" uid="uid://dm364h8t1i8f8" path="res://addons/godot_state_charts/transition.gd" id="7_7nxqx"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7nxqx"]
-viewport_path = NodePath("Sprite3D2/SubViewport")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7nxqx"]
+load_path = "res://.godot/imported/people.png-c6af05894a27d944ee4b9bdcb7d8cc1f.s3tc.ctex"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mn0ot"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chaph"]
 resource_local_to_scene = true
-shader = ExtResource("2_8cpg2")
-shader_parameter/clr = Color(1, 0.81666666, 0, 1)
-shader_parameter/type = 2
-shader_parameter/thickness = 2.0
-shader_parameter/modifier = Color(1, 1, 1, 1)
+render_priority = 0
+shader = ExtResource("2_7nxqx")
+shader_parameter/sprite_texture = SubResource("CompressedTexture2D_7nxqx")
+shader_parameter/time_offset = 6.809999847782881
+shader_parameter/enable_lighting = false
+shader_parameter/wave_strength = 0.0
+shader_parameter/wave_frequency = 10.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_type = 2
+shader_parameter/outline_thickness = 0.0
+shader_parameter/jelly_frequency = 1.0000000149012
+shader_parameter/jelly_amplitude = 0.0999999977648
+shader_parameter/affect_below_ground = false
+shader_parameter/inverse_phase = true
+shader_parameter/distortion_progress = 0.0
+shader_parameter/distortion_strength = 0.02
+shader_parameter/distortion_speed_x = 1.0
+shader_parameter/distortion_speed_y = 0.5
+shader_parameter/distortion_time_weight = 1.0
+shader_parameter/dissolve_progress = 0.0
+shader_parameter/dissolve_edge_color = Color(1, 0.5, 0, 1)
+shader_parameter/dissolve_edge_width = 0.05
+shader_parameter/modifier_color = Color(1, 1, 1, 1)
+shader_parameter/enable_modifier = false
+shader_parameter/shake_amplitude = 0.0
+shader_parameter/shake_frequency = 10.0
+shader_parameter/shake_x_weight = 1.0
+shader_parameter/shake_y_weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7nxqx"]
 size = Vector3(0.607666, 1.4648438, 0.125)
@@ -30,25 +53,16 @@ radius = 0.7558594
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_6yp3w")
-"图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
+"图像" = NodePath("Sprite3D")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77869844, 0)
+material_override = SubResource("ShaderMaterial_chaph")
 pixel_size = 0.03
 alpha_cut = 1
 texture_filter = 0
-texture = SubResource("ViewportTexture_7nxqx")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D2"]
-transparent_bg = true
-oversampling = false
-size = Vector2i(64, 64)
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite3D2/SubViewport"]
-material = SubResource("ShaderMaterial_mn0ot")
 texture = ExtResource("1_4qhtj")
-centered = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8069929, 0)

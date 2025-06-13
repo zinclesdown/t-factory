@@ -2,22 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buna8vqg7neo2"
-path.s3tc="res://.godot/imported/Tower.png-888a4c4b168b8821a89fdabe3399da20.s3tc.ctex"
-path.etc2="res://.godot/imported/Tower.png-888a4c4b168b8821a89fdabe3399da20.etc2.ctex"
+uid="uid://bh5c655rtvd11"
+path="res://.godot/imported/WORLD_0.png-020f15a87a2eb87b3d41b60353acf004.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "727dd8189d748017e5fd21a7f71a1d92"
 }
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/Tower.png"
-dest_files=["res://.godot/imported/Tower.png-888a4c4b168b8821a89fdabe3399da20.s3tc.ctex", "res://.godot/imported/Tower.png-888a4c4b168b8821a89fdabe3399da20.etc2.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/WORLD_0.png"
+dest_files=["res://.godot/imported/WORLD_0.png-020f15a87a2eb87b3d41b60353acf004.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

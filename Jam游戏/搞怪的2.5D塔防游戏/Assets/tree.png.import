@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5c655rtvd11"
-path="res://.godot/imported/WORLD_0.png-4af23bed8ea010b32685ee84958f897a.ctex"
+uid="uid://73qr5cg0ymub"
+path="res://.godot/imported/tree.png-93406bf773394bf9983a8c841866aec4.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "727dd8189d748017e5fd21a7f71a1d92"
 }
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/WORLD_0.png"
-dest_files=["res://.godot/imported/WORLD_0.png-4af23bed8ea010b32685ee84958f897a.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/tree.png"
+dest_files=["res://.godot/imported/tree.png-93406bf773394bf9983a8c841866aec4.ctex"]
 
 [params]
 
@@ -26,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -40,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

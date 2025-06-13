@@ -1,19 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu4uk03qmwi26"]
+[gd_scene load_steps=6 format=3 uid="uid://bu4uk03qmwi26"]
 
 [ext_resource type="Script" uid="uid://csdr8gb3roqfe" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/建筑/基地.gd" id="1_rd1n5"]
-[ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="2_0ufb1"]
-[ext_resource type="Texture2D" uid="uid://ymttftav65cv" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/base.png" id="3_7nmfb"]
+[ext_resource type="Texture2D" uid="uid://ymttftav65cv" path="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/base.png" id="2_i4pph"]
+[ext_resource type="Shader" uid="uid://co22jgm7adsfo" path="res://着色器/Sprite3D复合着色器.gdshader" id="2_kbbbi"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_krtoq"]
-viewport_path = NodePath("Sprite3D2/SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6c60"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt5hq"]
 resource_local_to_scene = true
-shader = ExtResource("2_0ufb1")
-shader_parameter/clr = Color(1, 0.81666666, 0, 1)
-shader_parameter/type = 2
-shader_parameter/thickness = 2.0
-shader_parameter/modifier = Color(1, 1, 1, 1)
+render_priority = 0
+shader = ExtResource("2_kbbbi")
+shader_parameter/sprite_texture = ExtResource("2_i4pph")
+shader_parameter/time_offset = 0.0
+shader_parameter/enable_lighting = false
+shader_parameter/wave_strength = 0.0
+shader_parameter/wave_frequency = 10.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_type = 2
+shader_parameter/outline_thickness = 0.0
+shader_parameter/jelly_frequency = 1.0
+shader_parameter/jelly_amplitude = 0.0
+shader_parameter/affect_below_ground = false
+shader_parameter/inverse_phase = true
+shader_parameter/distortion_progress = 0.0
+shader_parameter/distortion_strength = 0.02
+shader_parameter/distortion_speed_x = 1.0
+shader_parameter/distortion_speed_y = 0.5
+shader_parameter/distortion_time_weight = 1.0
+shader_parameter/dissolve_progress = 0.0
+shader_parameter/dissolve_edge_color = Color(1, 0.5, 0, 1)
+shader_parameter/dissolve_edge_width = 0.05
+shader_parameter/modifier_color = Color(1, 1, 1, 1)
+shader_parameter/enable_modifier = false
+shader_parameter/shake_amplitude = 0.0
+shader_parameter/shake_frequency = 10.0
+shader_parameter/shake_x_weight = 1.0
+shader_parameter/shake_y_weight = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rd1n5"]
 height = 2.604248
@@ -22,26 +42,16 @@ radius = 1.1748047
 [node name="基地" type="CharacterBody3D" node_paths=PackedStringArray("图像") groups=["可选择物"]]
 collision_layer = 5
 script = ExtResource("1_rd1n5")
-"图像" = NodePath("Sprite3D2/SubViewport/Sprite2D")
+"图像" = NodePath("Sprite3D2")
 metadata/_custom_type_script = "uid://b05vhf4ksm4b0"
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9093695, 0)
+material_override = SubResource("ShaderMaterial_bt5hq")
 pixel_size = 0.03
 alpha_cut = 1
 texture_filter = 0
-texture = SubResource("ViewportTexture_krtoq")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D2"]
-transparent_bg = true
-oversampling = false
-size = Vector2i(128, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite3D2/SubViewport"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_e6c60")
-texture = ExtResource("3_7nmfb")
-centered = false
+texture = ExtResource("2_i4pph")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3515707, 0)

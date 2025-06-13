@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ceb2b6tur0bwg"
-path="res://.godot/imported/WORLD.gltf-b863bf154df7dc2caa70ac6339e8fa76.scn"
+path="res://.godot/imported/WORLD.gltf-7724fe07f5b2c815343228801dcae1f9.scn"
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/WORLD.gltf"
-dest_files=["res://.godot/imported/WORLD.gltf-b863bf154df7dc2caa70ac6339e8fa76.scn"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/WORLD.gltf"
+dest_files=["res://.godot/imported/WORLD.gltf-7724fe07f5b2c815343228801dcae1f9.scn"]
 
 [params]
 
@@ -45,7 +45,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Jam游戏/搞怪的2.5D塔防游戏/资源/草地.res",
+"save_to_file/fallback_path": "res://Jam游戏/搞怪的2.5D塔防游戏/Assets/草地.res",
 "save_to_file/path": "uid://dbm42g8isifd2"
 }
 }

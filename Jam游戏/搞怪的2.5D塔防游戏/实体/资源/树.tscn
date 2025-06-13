@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://i6lubm4bkbr0"]
 
 [ext_resource type="Script" uid="uid://13hbv3mc0asw" path="res://Jam游戏/搞怪的2.5D塔防游戏/实体/资源/资源.gd" id="1_6wk3c"]
-[ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/2D着色器/2D描边.gdshader" id="2_q25mf"]
-[ext_resource type="Texture2D" uid="uid://73qr5cg0ymub" path="res://Jam游戏/搞怪的2.5D塔防游戏/资源/tree.png" id="3_3udn7"]
+[ext_resource type="Shader" uid="uid://c2liyapvqrlka" path="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/2D着色器/2D描边.gdshader" id="2_q25mf"]
+[ext_resource type="Texture2D" uid="uid://73qr5cg0ymub" path="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/tree.png" id="3_3udn7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_krtoq"]
 viewport_path = NodePath("Sprite3D2/SubViewport")

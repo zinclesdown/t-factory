@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o1mvydx6uq10"
-path="res://.godot/imported/矿物.png-2689d94385cf67c6b536bc186fe73415.ctex"
+uid="uid://f8abkjw30fv6"
+path="res://.godot/imported/atlas-props.png-aea85875396b2fe4fc8677d206399f39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/矿物.png"
-dest_files=["res://.godot/imported/矿物.png-2689d94385cf67c6b536bc186fe73415.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/atlas-props.png"
+dest_files=["res://.godot/imported/atlas-props.png-aea85875396b2fe4fc8677d206399f39.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

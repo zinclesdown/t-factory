@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ymttftav65cv"
-path="res://.godot/imported/base.png-83b916784482ec3975623d346cbbf809.ctex"
+uid="uid://o1mvydx6uq10"
+path="res://.godot/imported/矿物.png-ddb9d24d139210e966b053c9ed24b55b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Jam游戏/搞怪的2.5D塔防游戏/资源/base.png"
-dest_files=["res://.godot/imported/base.png-83b916784482ec3975623d346cbbf809.ctex"]
+source_file="res://Jam游戏/搞怪的2.5D塔防游戏/Assets/矿物.png"
+dest_files=["res://.godot/imported/矿物.png-ddb9d24d139210e966b053c9ed24b55b.ctex"]
 
 [params]
 
