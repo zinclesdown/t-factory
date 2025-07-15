@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=4 uid="uid://46akf7qlggek"]
 
-[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://资源/图块/场景Tileset.tres" id="1_udg4s"]
+[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://Jam游戏/特殊的塔防游戏/资源/图块/场景Tileset.tres" id="1_udg4s"]
 [ext_resource type="Script" uid="uid://dx1yql7pfawq3" path="res://测试/旧测试/2D寻路测试/2d平台跳跃寻路测试.gd" id="1_yqaav"]
 
 [node name="2D平台跳跃寻路测试" type="Node2D"]

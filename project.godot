@@ -15,20 +15,18 @@ imgui/config="uid://bgl8xasd6jasx"
 [application]
 
 config/name="t-factory"
-run/main_scene="uid://cb1qc75lvyaay"
+run/main_scene="uid://blypxri80sd8i"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"
 
 [autoload]
 
-"资源管理器"="*res://全局/资源管理器.tscn"
-"对话组件"="*res://全局/对话OverLay/对话Overlay.tscn"
+"资源管理器"="*res://Jam游戏/特殊的塔防游戏/资源管理器.tscn"
+"对话组件"="*res://通用/自动加载/对话OverLay/对话Overlay.tscn"
+"全局Toast层"="*res://通用/自动加载/Toast层/全局toast层.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-"全局Toast层"="*res://全局/全局Toast层/全局toast层.tscn"
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
@@ -43,7 +41,7 @@ window/size/viewport_height=640
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/imgui-godot/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/postfx/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/focus-clock/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/imgui-godot/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/simple_gdscript_formatter/plugin.cfg")
 
 [file_customization]
 
@@ -241,7 +239,7 @@ d={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://资源/对话/荷取的测试对话.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Jam游戏/特殊的塔防游戏/资源/对话/荷取的测试对话.dialogue")
 
 [layer_names]
 

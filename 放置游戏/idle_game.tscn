@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://blypxri80sd8i"]
+
+[ext_resource type="Script" uid="uid://qmoboyeld1mw" path="res://放置游戏/idle_game.gd" id="1_tv66r"]
+
+[node name="IdleGame" type="Node" node_paths=PackedStringArray("displayerLabel", "mainTickTimer", "farmTickTimer", "battleTickTimer")]
+script = ExtResource("1_tv66r")
+displayerLabel = NodePath("Label")
+mainTickTimer = NodePath("Timers/MainTimeTimer")
+farmTickTimer = NodePath("Timers/FarmTickTimer")
+battleTickTimer = NodePath("Timers/BattleTickTimer")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="MainTimeTimer" type="Timer" parent="Timers"]
+
+[node name="FarmTickTimer" type="Timer" parent="Timers"]
+
+[node name="BattleTickTimer" type="Timer" parent="Timers"]

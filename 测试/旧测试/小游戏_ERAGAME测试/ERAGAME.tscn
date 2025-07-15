@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bj8ojdy4h12e8"]
 
 [ext_resource type="Script" uid="uid://cltyjth3dmscy" path="res://测试/旧测试/小游戏_ERAGAME测试/eragame.gd" id="1_3fmco"]
-[ext_resource type="FontFile" uid="uid://ct4uhxp5mypor" path="res://资源/字体/MapleMono-SC-NF-Regular.ttf" id="1_dwj43"]
+[ext_resource type="FontFile" uid="uid://ct4uhxp5mypor" path="res://通用/字体/MapleMono-SC-NF-Regular.ttf" id="1_dwj43"]
 [ext_resource type="PackedScene" uid="uid://d37mlerwio3lk" path="res://测试/旧测试/小游戏_ERAGAME测试/组件/可用操作.tscn" id="3_chl51"]
 [ext_resource type="PackedScene" uid="uid://dpujb57kpvdyo" path="res://测试/旧测试/小游戏_ERAGAME测试/组件/情况.tscn" id="4_t7jt8"]
 [ext_resource type="PackedScene" uid="uid://55cvn3ujgajm" path="res://测试/旧测试/小游戏_ERAGAME测试/组件/珠的属性.tscn" id="5_6fw50"]

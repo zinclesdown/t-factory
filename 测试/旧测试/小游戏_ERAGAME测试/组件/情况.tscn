@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpujb57kpvdyo"]
 
-[ext_resource type="Texture2D" uid="uid://dsoyngchjk274" path="res://资源/图像/UI/icon.svg" id="1_m1egn"]
+[ext_resource type="Texture2D" uid="uid://dsoyngchjk274" path="res://Jam游戏/特殊的塔防游戏/资源/图像/UI/icon.svg" id="1_m1egn"]
 
 [node name="情况" type="VBoxContainer"]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cltgd87cqhows" path="res://Jam游戏/旧东西/不知所谓的游戏/玩家.gd" id="1_um00k"]
 [ext_resource type="Texture2D" uid="uid://dp0df7fingovj" path="res://Jam游戏/旧东西/不知所谓的游戏/AI素材/receiver.png" id="2_25cng"]
 [ext_resource type="Texture2D" uid="uid://xh8ub6jwg3h8" path="res://Jam游戏/旧东西/不知所谓的游戏/miner.png" id="4_x6ap0"]
-[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://资源/图块/场景Tileset.tres" id="6_l7vm7"]
+[ext_resource type="TileSet" uid="uid://pwyohycwqejy" path="res://Jam游戏/特殊的塔防游戏/资源/图块/场景Tileset.tres" id="6_l7vm7"]
 [ext_resource type="Script" uid="uid://bvqtumsty5hiu" path="res://Jam游戏/旧东西/不知所谓的游戏/2D导航图块层.gd" id="7_whldg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7vm7"]
