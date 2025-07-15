@@ -39,3 +39,4 @@ func 被命中(攻击:Dictionary) -> void:
 	if 生命 == 0:
 		queue_free()
 	return
+

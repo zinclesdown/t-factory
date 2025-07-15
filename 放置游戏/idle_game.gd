@@ -80,15 +80,29 @@ func _ready() -> void:
 	battleTickTimer.start(BattleTickTime)
 
 
+func _process(_delta: float) -> void:
+	_updateLabel()
+
+
+func BuidFarm():
+	pass
+
+
 func _updateLabel() -> void:
-	displayerLabel.text = StringMethods.GetDictStr(Player, "Player") + "\n"
+	#if Engine.get_frames_drawn() % 20 != 0:
+		#return
+
+	displayerLabel.text = ""
+	displayerLabel.text += StringMethods.StringProgressBar(1 - mainTickTimer.time_left / MainTickTime, 30) + "\n"
+	displayerLabel.text += StringMethods.GetDictStr(Player, "Player") + "\n"
 	displayerLabel.text += StringMethods.GetDictStr(Inventory, "Inventory") + "\n"
 	displayerLabel.text += StringMethods.GetDictStr(Base, "Base") + "\n"
 
 
 # Main Loop.
 func _onMainTickTimerTimeout() -> void:
-	_updateLabel()
+	pass
+	#_updateLabel()
 
 
 # Farm Loop.

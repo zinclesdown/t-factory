@@ -11,5 +11,5 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		velocity.y = 0
 	else:
-		velocity += 全局.重力加速度
+		velocity.y += 9.8
 	move_and_slide()

@@ -58,18 +58,22 @@ func _process(_delta: float) -> void:
 	_process_更新射线()
 	_鼠标绘制器.更新状态(_鼠标正在拖动, _鼠标拖动起始点)
 	_process_绘制鼠标旁物体的选择信息()
-	
-	ImGui.Begin("玩家面板")
-	ImGui.Text("Col: %s" % [str(鼠标选择用射线.get_collision_point())])
-	鼠标选择示意球.global_position =  获取鼠标与3d选择面相交位置()
-	
-	ImGui.TextWrapped("被选中物体：%s" % [str(获取被选中物体列表())])
-	ImGui.TextWrapped("被选中物体：%s" % [str(获取被选中物体列表())])
-	#var 可选择物体列表 := get_tree().get_nodes_in_group("可选择物")
-	#for obj:实体 in 可选择物体列表:
-		#var 屏幕位置 := 相机.unproject_position(obj.global_position)
-		#ImGui.Text("屏幕位置： %s %s" % [obj, 屏幕位置])
-	ImGui.End()
+
+
+	if Engine.has_singleton("ImGuiAPI"):
+		var IMGUI: Object = Engine.get_singleton("ImGuiAPI")
+
+		IMGUI.Begin("玩家面板")
+		IMGUI.Text("Col: %s" % [str(鼠标选择用射线.get_collision_point())])
+		鼠标选择示意球.global_position =  获取鼠标与3d选择面相交位置()
+		
+		IMGUI.TextWrapped("被选中物体：%s" % [str(获取被选中物体列表())])
+		IMGUI.TextWrapped("被选中物体：%s" % [str(获取被选中物体列表())])
+		#var 可选择物体列表 := get_tree().get_nodes_in_group("可选择物")
+		#for obj:实体 in 可选择物体列表:
+			#var 屏幕位置 := 相机.unproject_position(obj.global_position)
+			#IMGUI.Text("屏幕位置： %s %s" % [obj, 屏幕位置])
+		IMGUI.End()
 
 
 @onready var _鼠标绘制器 :Node2D = $鼠标选取框绘制层/鼠标绘制器 

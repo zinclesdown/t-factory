@@ -25,20 +25,23 @@ enum {
 
 
 func _process(_delta: float) -> void:
-	ImGui.Begin("生产")
-	if ImGui.Button("造人"):
-		造人()
-	
-	if ImGui.Button("刷怪"):
-		刷怪()
-	
-	ImGui.Text("当前蓝图建筑名称: " + 当前蓝图建筑名称)
-	ImGui.Text("当前模式: %s" % 当前模式)
-	
-	if ImGui.Button("造防御塔"):
-		当前蓝图建筑名称 = "防御塔"
-		当前模式 = 建造模式
-	ImGui.End()
+	if Engine.has_singleton("ImGuiAPI"):
+		var IMGUI: Object = Engine.get_singleton("ImGuiAPI")
+
+		IMGUI.Begin("生产")
+		if IMGUI.Button("造人"):
+			造人()
+		
+		if IMGUI.Button("刷怪"):
+			刷怪()
+		
+		IMGUI.Text("当前蓝图建筑名称: " + 当前蓝图建筑名称)
+		IMGUI.Text("当前模式: %s" % 当前模式)
+		
+		if IMGUI.Button("造防御塔"):
+			当前蓝图建筑名称 = "防御塔"
+			当前模式 = 建造模式
+		IMGUI.End()
 
 
 	if 当前蓝图建筑名称 == "防御塔":
