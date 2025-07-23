@@ -14,8 +14,8 @@ imgui/config="uid://bgl8xasd6jasx"
 
 [application]
 
-config/name="t-factory"
-run/main_scene="uid://blypxri80sd8i"
+config/name="Weird Game"
+run/main_scene="uid://ccefolwc37230"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.099986, 0.099986, 0.099986, 1)
 config/icon="uid://cm0svkod4g3ra"

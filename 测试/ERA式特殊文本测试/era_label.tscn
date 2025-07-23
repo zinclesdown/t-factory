@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://hhpcjgbyo3cd"]
+
+[ext_resource type="Script" uid="uid://va5gap75w03b" path="res://测试/ERA式特殊文本测试/era_label.gd" id="1_5ptmi"]
+
+[node name="ERALabel" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+bbcode_enabled = true
+text = "[url meta=TESTMETA]Test Message Please Ignore[/url]"
+selection_enabled = true
+script = ExtResource("1_5ptmi")

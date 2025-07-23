@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccefolwc37230"]
+
+[ext_resource type="Script" uid="uid://c0q33hkgrhp3i" path="res://PathOS实现/game.gd" id="1_1vo6v"]
+
+[node name="GAME" type="Node" node_paths=PackedStringArray("renderMountpoint")]
+script = ExtResource("1_1vo6v")
+renderMountpoint = NodePath("RendererRoot")
+
+[node name="RendererRoot" type="Node2D" parent="."]

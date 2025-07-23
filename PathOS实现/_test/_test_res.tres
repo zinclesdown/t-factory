@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="_TestCustomResource" load_steps=2 format=3 uid="uid://sjps3u7m8yux"]
+
+[ext_resource type="Script" uid="uid://c3tdgppo18s7t" path="res://PathOS实现/_test/_test_custom_res.gd" id="1_dow66"]
+
+[resource]
+script = ExtResource("1_dow66")
+resInfo = "res2"
+metadata/_custom_type_script = "uid://c3tdgppo18s7t"
