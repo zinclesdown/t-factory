@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciym71858du2g"]
+
+[ext_resource type="Script" uid="uid://dhu7juhce5w38" path="res://Jam游戏/Gameloop游戏/scenes/01_attack_button.gd" id="1_0xt5c"]
+
+[node name="01AttackButton" type="Button"]
+anchors_preset = -1
+anchor_left = -0.06875
+anchor_top = -0.0453125
+anchor_right = 0.07053571
+anchor_bottom = 0.0546875
+focus_mode = 0
+text = "ATTACK"
+script = ExtResource("1_0xt5c")
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 30.0
+show_percentage = false

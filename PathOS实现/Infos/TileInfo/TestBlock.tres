@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TileInfo" load_steps=4 format=3 uid="uid://dhypjmqr56f6e"]
+
+[ext_resource type="Script" uid="uid://libev8117ch5" path="res://PathOS实现/Infos/TileInfo/TileInfo.gd" id="1_b62lu"]
+[ext_resource type="Texture2D" uid="uid://bvctsmjg1cn4r" path="res://PathOS实现/Infos/TileInfo/roguelikeSheet_transparent.png" id="2_35sjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg3r8"]
+atlas = ExtResource("2_35sjf")
+region = Rect2(153, 17, 16, 16)
+
+[resource]
+script = ExtResource("1_b62lu")
+texture = SubResource("AtlasTexture_vg3r8")
+metadata/_custom_type_script = "uid://libev8117ch5"

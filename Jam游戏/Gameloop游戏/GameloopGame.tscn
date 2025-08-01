@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccyhdqngs5qm2"]
+
+[ext_resource type="Script" uid="uid://b1yxif6ycrw2h" path="res://Jam游戏/Gameloop游戏/gameloop_game.gd" id="1_u6eo0"]
+[ext_resource type="Script" uid="uid://bvrpjr2i8sa5d" path="res://Jam游戏/Gameloop游戏/dialog_rich_text.gd" id="2_4hbv5"]
+[ext_resource type="PackedScene" uid="uid://ciym71858du2g" path="res://Jam游戏/Gameloop游戏/scenes/01_attack_button.tscn" id="2_aoaev"]
+
+[sub_resource type="GDScript" id="GDScript_aoaev"]
+resource_name = "_00"
+script/source = "extends Button
+
+func _pressed() -> void:
+	find_parent(\"GameloopGame\").ActivateGame(\"00GameBegin\")
+"
+
+[node name="GameloopGame" type="Node"]
+script = ExtResource("1_u6eo0")
+
+[node name="DialogRichText" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+offset_left = 398.0
+offset_top = 106.0
+offset_right = 763.0
+offset_bottom = 259.0
+text = "Test Message, please Ignore!"
+script = ExtResource("2_4hbv5")
+
+[node name="01AttackButton" parent="." instance=ExtResource("2_aoaev")]
+unique_name_in_owner = true
+offset_left = 579.0
+offset_top = 433.0
+offset_right = 579.0
+offset_bottom = 433.0
+
+[node name="DebugPanel" type="VBoxContainer" parent="."]
+anchors_preset = -1
+offset_left = 989.0
+offset_top = 222.0
+offset_right = 1121.0
+offset_bottom = 472.0
+metadata/_edit_group_ = true
+
+[node name="00GameBegin" type="Button" parent="DebugPanel"]
+layout_mode = 2
+text = "GameBegin"
+script = SubResource("GDScript_aoaev")
+
+[connection signal="attackFinished" from="01AttackButton" to="." method="_onScene01AttackFinished"]
