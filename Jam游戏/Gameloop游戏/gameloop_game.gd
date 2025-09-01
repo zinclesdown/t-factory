@@ -19,7 +19,7 @@ func _ready() -> void:
 	ActivateGame("01AttackButton")
 
 
-## 启用游戏。
+## Launch the game
 func ActivateGame(gameName: String) -> Error:
 	match gameName:
 		"01AttackButton":
@@ -35,9 +35,11 @@ func ActivateGame(gameName: String) -> Error:
 			return ERR_DOES_NOT_EXIST
 	return OK
 
+
 # OK
 func DisplayText(text: String) -> void:
 	%DialogRichText.DisplayText(text)
+
 
 # maybe ok
 func _onScene01AttackFinished() -> void:

@@ -1,0 +1,202 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2bsyahl2fwy1"]
+
+[ext_resource type="Script" uid="uid://de0ja8y7tmn4x" path="res://通用/AIGC/RogueLike地牢生成器/DebugPanel.gd" id="1_2lqm3"]
+
+[node name="DebugPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2lqm3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ConfigSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "配置参数"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ConfigSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="WidthLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+layout_mode = 2
+text = "宽度:"
+
+[node name="WidthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 512.0
+value = 128.0
+
+[node name="HeightLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+layout_mode = 2
+text = "高度:"
+
+[node name="HeightSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 512.0
+value = 128.0
+
+[node name="MinRoomSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+layout_mode = 2
+text = "最小房间:"
+
+[node name="MinRoomSizeSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 4.0
+max_value = 20.0
+value = 8.0
+
+[node name="MaxRoomSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+layout_mode = 2
+text = "最大房间:"
+
+[node name="MaxRoomSizeSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 50.0
+value = 20.0
+
+[node name="MinRoomDistanceLabel" type="Label" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+layout_mode = 2
+text = "房间间距:"
+
+[node name="MinRoomDistanceSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/ConfigSection/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 20.0
+value = 5.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ControlSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "调试控制"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ControlSection"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GenerateBtn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "生成完整地牢"
+
+[node name="Step1Btn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "步骤1: 初始化"
+
+[node name="Step2Btn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "步骤2: 生成房间"
+
+[node name="Step3Btn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "步骤3: 连接房间"
+
+[node name="Step4Btn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "步骤4: 放置门"
+
+[node name="Step5Btn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "步骤5: 添加墙壁"
+
+[node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/ControlSection/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatsSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/StatsSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "统计信息"
+
+[node name="StatsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/StatsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "等待生成..."
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CanvasSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CanvasSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "地牢预览"
+
+[node name="DungeonCanvas" type="RichTextLabel" parent="MarginContainer/VBoxContainer/CanvasSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigSection/GridContainer/WidthSpinBox" to="." method="_on_width_spin_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigSection/GridContainer/HeightSpinBox" to="." method="_on_height_spin_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigSection/GridContainer/MinRoomSizeSpinBox" to="." method="_on_min_room_size_spin_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigSection/GridContainer/MaxRoomSizeSpinBox" to="." method="_on_max_room_size_spin_box_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ConfigSection/GridContainer/MinRoomDistanceSpinBox" to="." method="_on_min_room_distance_spin_box_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/GenerateBtn" to="." method="_on_generate_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/Step1Btn" to="." method="_on_step_1_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/Step2Btn" to="." method="_on_step_2_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/Step3Btn" to="." method="_on_step_3_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/Step4Btn" to="." method="_on_step_4_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/Step5Btn" to="." method="_on_step_5_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlSection/ButtonContainer/ResetBtn" to="." method="_on_reset_btn_pressed"]
