@@ -6,7 +6,7 @@
 # 郑重说明： 务必、务必、务必使用缩进！！！不要用四个空格！我看到就来气！
 
 # (optional) icon to show in the editor dialogs:
-@icon("res://path/to/optional/icon.svg")
+# @icon("res://path/to/optional/icon.svg")
 
 # @tool 修饰符可以让你得脚本变成“工具脚本”，在编辑器里即可运行。
 # 当你继承自EditorScript时，这个是必须的！

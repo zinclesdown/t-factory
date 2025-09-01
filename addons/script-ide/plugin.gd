@@ -180,9 +180,9 @@ func _enter_tree() -> void:
 	create_set_scripts_popup()
 
 	# Configure tab container and bar.
+	scripts_tab_bar.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	scripts_tab_container.tabs_visible = is_script_tabs_visible
 	scripts_tab_container.drag_to_rearrange_enabled = true
-	scripts_tab_container.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	update_tabs_position()
 
 	scripts_tab_bar.tab_close_display_policy = TabBar.CLOSE_BUTTON_SHOW_ACTIVE_ONLY
@@ -209,6 +209,7 @@ func _enter_tree() -> void:
 	outline_parent.remove_child(old_outline)
 
 	outline = ItemList.new()
+	outline.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	outline.allow_reselect = true
 	outline.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	outline_parent.add_child(outline)
@@ -569,10 +570,9 @@ func add_to_outline_if_selected(btn: Button, action: Callable):
 func open_quick_search_popup():
 	if (quick_open_popup == null):
 		quick_open_popup = load_rel("quickopen/quick_open_panel.tscn").instantiate()
+		quick_open_popup.set_unparent_when_invisible(true)
 		quick_open_popup.plugin = self
 
-	if (quick_open_popup.get_parent() != null):
-		quick_open_popup.get_parent().remove_child(quick_open_popup)
 	quick_open_popup.popup_exclusive_on_parent(EditorInterface.get_script_editor(), get_center_editor_rect())
 
 func open_override_popup():
@@ -582,10 +582,9 @@ func open_override_popup():
 
 	if (override_popup == null):
 		override_popup = load_rel("override/override_panel.tscn").instantiate()
+		override_popup.set_unparent_when_invisible(true)
 		override_popup.plugin = self
 
-	if (override_popup.get_parent() != null):
-		override_popup.get_parent().remove_child(override_popup)
 	override_popup.popup_exclusive_on_parent(EditorInterface.get_script_editor(), get_center_editor_rect())
 
 func hide_scripts_popup():
@@ -675,7 +674,7 @@ func navigate_list(list: ItemList, index: int, amount: int):
 func get_center_editor_rect() -> Rect2i:
 	var script_editor: ScriptEditor = EditorInterface.get_script_editor()
 
-	var size: Vector2i = Vector2i(400, 500)
+	var size: Vector2i = Vector2i(400, 500) * get_editor_scale()
 	var x: int
 	var y: int
 
@@ -705,6 +704,7 @@ func open_outline_popup():
 
 	if (outline_popup == null):
 		outline_popup = PopupPanel.new()
+		outline_popup.set_unparent_when_invisible(true)
 
 	var outline_initially_closed: bool = !outline_container.visible
 	if (outline_initially_closed):
@@ -714,8 +714,6 @@ func open_outline_popup():
 
 	outline_popup.popup_hide.connect(on_outline_popup_hidden.bind(outline_initially_closed, old_text, button_flags))
 
-	if (outline_popup.get_parent() != null):
-		outline_popup.get_parent().remove_child(outline_popup)
 	outline_popup.popup_exclusive_on_parent(EditorInterface.get_script_editor(), get_center_editor_rect())
 
 	update_outline()
@@ -1220,6 +1218,10 @@ func on_tab_hovered(idx: int):
 	last_tab_hovered = idx
 
 func on_tab_bar_gui_input(event: InputEvent):
+	# MIGRATION: This is not needed anymore in Godot 4.5
+	if (Engine.get_version_info()["minor"] > 4):
+		return
+
 	if (last_tab_hovered == -1):
 		return
 
@@ -1232,6 +1234,10 @@ func on_tab_bar_gui_input(event: InputEvent):
 				last_tab_hovered = -1
 
 func on_active_tab_rearranged(idx_to: int):
+	# MIGRATION: This is not needed anymore in Godot 4.5
+	if (Engine.get_version_info()["minor"] > 4):
+		return
+
 	var control: Control = scripts_tab_container.get_tab_control(selected_tab)
 	if (!control):
 		return
@@ -1322,18 +1328,18 @@ class TabStateCache:
 		if (tab_container != null):
 			tabs_visible = tab_container.tabs_visible
 			drag_to_rearrange_enabled = tab_container.drag_to_rearrange_enabled
-			auto_translate_mode_state = tab_container.auto_translate_mode
 		if (tab_bar != null):
 			tab_bar_drag_to_rearrange_enabled = tab_bar.drag_to_rearrange_enabled
 			tab_close_display_policy = tab_bar.tab_close_display_policy
 			select_with_rmb = tab_bar.select_with_rmb
+			auto_translate_mode_state = tab_bar.auto_translate_mode
 
 	func restore(tab_container: TabContainer, tab_bar: TabBar):
 		if (tab_container != null):
 			tab_container.tabs_visible = tabs_visible
 			tab_container.drag_to_rearrange_enabled = drag_to_rearrange_enabled
-			tab_container.auto_translate_mode = auto_translate_mode_state
 		if (tab_bar != null):
 			tab_bar.drag_to_rearrange_enabled = drag_to_rearrange_enabled
 			tab_bar.tab_close_display_policy = tab_close_display_policy
 			tab_bar.select_with_rmb = select_with_rmb
+			tab_bar.auto_translate_mode = auto_translate_mode_state
