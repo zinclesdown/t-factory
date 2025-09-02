@@ -126,7 +126,7 @@ class Room:
 		height = p_height
 	
 	func get_center() -> Point:
-		return Point.new(x + width / 2, y + height / 2)
+		return Point.new(x + int(width / 2.0), y + int(height / 2.0))
 	
 	func get_bounds() -> Array:
 		return [x, y, x + width - 1, y + height - 1]
@@ -412,9 +412,9 @@ func _split_bsp_node(node: BSPNode, leaves: Array[BSPNode]) -> void:
 	
 	# 决定分割方向
 	var split_direction: String
-	if node.width / node.height > config.split_ratio:
+	if float(node.width) / float(node.height) > config.split_ratio:
 		split_direction = "vertical"
-	elif node.height / node.width > config.split_ratio:
+	elif float(node.height) / float(node.width) > config.split_ratio:
 		split_direction = "horizontal"
 	else:
 		if randf() < 0.5:
@@ -504,8 +504,8 @@ func _generate_room_in_leaf(leaf: BSPNode) -> Room:
 	var min_ratio = config.room_size_ratio_min
 	var max_ratio = config.room_size_ratio_max
 	
-	var width_ratio = room_width / leaf.width
-	var height_ratio = room_height / leaf.height
+	var width_ratio = float(room_width) / float(leaf.width)
+	var height_ratio = float(room_height) / float(leaf.height)
 	
 	if width_ratio < min_ratio:
 		room_width = leaf.width * min_ratio
@@ -859,7 +859,7 @@ func _calculate_stats(cell_counts: Dictionary) -> Dictionary:
 		var total_area = 0
 		for size in room_sizes:
 			total_area += size["area"]
-		avg_room_size = total_area / room_sizes.size()
+		avg_room_size = total_area / float(room_sizes.size())
 	
 	# 连接统计
 	var mst_count = 0
@@ -872,7 +872,7 @@ func _calculate_stats(cell_counts: Dictionary) -> Dictionary:
 		total_length += conn.corridor.size()
 	var avg_length = 0.0
 	if not connections.is_empty():
-		avg_length = total_length / connections.size()
+		avg_length = total_length / float(connections.size())
 	
 	# 门统计
 	var single_room_doors = 0
@@ -891,8 +891,8 @@ func _calculate_stats(cell_counts: Dictionary) -> Dictionary:
 		"cell_counts": cell_counts,
 		"total_cells": total_cells,
 		"used_cells": used_cells,
-		"coverage_ratio": used_cells / total_cells,
-		"wall_ratio": cell_counts["wall"] / total_cells,
+		"coverage_ratio": used_cells / float(total_cells),
+		"wall_ratio": cell_counts["wall"] / float(total_cells),
 		"room_sizes": room_sizes,
 		"average_room_size": avg_room_size,
 		"last_generation_time": generation_stats["last_generation_time"],
@@ -917,13 +917,13 @@ func _calculate_stats(cell_counts: Dictionary) -> Dictionary:
 		},
 		"wall_stats": {
 			"wall_count": cell_counts["wall"],
-			"coverage": cell_counts["wall"] / total_cells
+			"coverage": cell_counts["wall"] / float(total_cells)
 		}
 	}
 	
 	# 计算环路比率
 	if not connections.is_empty():
-		stats["cycle_ratio"] = extra_count / connections.size()
+		stats["cycle_ratio"] = extra_count / float(connections.size())
 	else:
 		stats["cycle_ratio"] = 0.0
 	
@@ -988,7 +988,7 @@ static func create_test_generator(width: int = 64, height: int = 64) -> DungeonG
 	height = max(height, 50)
 	
 	# 调整房间大小以适应小地图
-	var max_room_size = min(20, min(width, height) / 4)
+	var max_room_size = min(20, int(min(width, height) / 4.0))
 	
 	var config = DungeonConfig.new()
 	config.width = width

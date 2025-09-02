@@ -5,8 +5,8 @@
 # 包含常用的语法结构、最佳实践和注意事项
 # 
 # 作者：Claude Code
-# 版本：2.1
-# 更新日期：2025-09-01
+# 版本：2.2
+# 更新日期：2025-09-02
 # 
 # ===============================================================
 
@@ -295,6 +295,42 @@ func _run() -> void:
 
     ## 注意！！Godot数组属于"传引用传递"。上述操作会导致数组指向了不同的内存位置！
     ## 无论何时，你的最小操作单元应该是"对象"。这意味着，无论何时，你都不应该直接引用一个数组。倘若需要外部使用，最好连带方法一起包装在类中。
+
+# 6. 整数除法规范：（必须显式转换为浮点数！）
+## 在GDScript中，整数除法会截断小数部分，这可能导致不期望的结果。
+## 在需要精确计算的场景中，必须将操作数转换为浮点数。
+
+## 错误示范：
+var ratio = width / height        # 整数除法，会截断小数部分
+var center = x + width / 2        # 中心点计算可能不准确
+var average = total / count        # 平均值计算会丢失精度
+
+## 正确示范：
+var ratio = float(width) / float(height)      # 显式转换为浮点数
+var center = x + int(width / 2.0)              # 计算中心点时使用浮点除法
+var average = total / float(count)             # 统计计算时保持精度
+
+## 常见需要使用浮点除法的场景：
+## 1. 比例计算：房间大小比例、宽高比判断
+## 2. 中心点计算：确保几何中心定位准确
+## 3. 统计信息：平均值、覆盖率、比率等
+## 4. 几何运算：距离、角度、面积计算
+
+## 实际应用示例：
+## BSP分割方向判断
+if float(node.width) / float(node.height) > config.split_ratio:
+    split_direction = "vertical"
+elif float(node.height) / float(node.width) > config.split_ratio:
+    split_direction = "horizontal"
+
+## 房间比例计算
+var width_ratio = float(room_width) / float(leaf.width)
+var height_ratio = float(room_height) / float(leaf.height)
+
+## 统计信息计算
+var coverage_ratio = used_cells / float(total_cells)
+var avg_room_size = total_area / float(room_sizes.size())
+var avg_length = total_length / float(connections.size())
     
     ## 实际应用示例：包装地牢数据
     class DungeonWrapper:
