@@ -1,33 +1,73 @@
 # DebugPanel.gd
 # 地牢生成器调试面板
+#
+# 这是一个为地牢生成器提供的可视化调试界面，支持：
+# - 实时参数调整和预览
+# - 分步骤生成过程展示
+# - ASCII字符渲染地牢地图
+# - 详细的统计信息显示
+# 
+# 主要功能：
+# 1. 参数控制：通过SpinBox调整地牢生成参数
+# 2. 步骤调试：支持5个生成步骤的独立执行
+# 3. 可视化渲染：使用ASCII字符显示地牢结构
+# 4. 统计信息：实时显示房间、连接、门等统计数据
+#
+# @author Claude Code
+# @version 2.1
+# @date 2025-09-01
 
 extends Panel
 
+# ===========================================
 # UI节点引用
+# ===========================================
+## 统计信息显示标签
 @onready var stats_label = %StatsLabel
+## 地牢ASCII画布（RichTextLabel）
 @onready var dungeon_canvas: RichTextLabel = %DungeonCanvas
 
+# ===========================================
 # 配置控件
+# ===========================================
+## 地图宽度控制
 @onready var width_spin_box = %WidthSpinBox
+## 地图高度控制
 @onready var height_spin_box = %HeightSpinBox
+## 最小房间尺寸控制
 @onready var min_room_size_spin_box = %MinRoomSizeSpinBox
+## 最大房间尺寸控制
 @onready var max_room_size_spin_box = %MaxRoomSizeSpinBox
+## 房间最小距离控制
 @onready var min_room_distance_spin_box = %MinRoomDistanceSpinBox
 
+# ===========================================
 # 按钮控件
+# ===========================================
+## 完整生成按钮
 @onready var generate_btn = %GenerateBtn
+## 步骤1：初始化BSP树
 @onready var step1_btn = %Step1Btn
+## 步骤2：生成房间
 @onready var step2_btn = %Step2Btn
+## 步骤3：连接房间
 @onready var step3_btn = %Step3Btn
+## 步骤4：放置门
 @onready var step4_btn = %Step4Btn
+## 步骤5：添加墙壁
 @onready var step5_btn = %Step5Btn
+## 重置调试按钮
 @onready var reset_btn = %ResetBtn
 
-# 地牢生成器
+# ===========================================
+# 核心变量
+# ===========================================
+## 地牢生成器实例
 var generator: DungeonGenerator
 
-# 调试状态
+## 当前调试步骤（0-5）
 var debug_step = 0
+## 调试数据存储，包含网格、房间、连接、门信息
 var debug_data = {
 	"grid": [],
 	"rooms": [],
@@ -35,7 +75,10 @@ var debug_data = {
 	"doors": []
 }
 
-## ASCII符号
+# ===========================================
+# ASCII渲染符号映射
+# ===========================================
+## 地牢元素类型到ASCII字符的映射
 var symbols = {
 	DungeonGenerator.CellType.EMPTY: " ",
 	DungeonGenerator.CellType.ROOM_FLOOR: ".",
@@ -44,6 +87,12 @@ var symbols = {
 	DungeonGenerator.CellType.DOOR: "D"
 }
 
+## 面板初始化函数
+## 在面板准备好时调用，负责：
+## 1. 创建初始配置对象
+## 2. 初始化地牢生成器
+## 3. 设置初始状态
+## 4. 更新UI控件状态
 func _ready():
 	# 创建配置对象并设置初始值
 	var config = DungeonGenerator.DungeonConfig.new()
@@ -62,6 +111,8 @@ func _ready():
 	# 更新按钮状态
 	_update_button_states()
 
+## 从UI控件更新生成器配置
+## 读取所有SpinBox的值并更新到生成器配置中
 func _update_config_from_ui():
 	"""从UI更新配置"""
 	var config = generator.config

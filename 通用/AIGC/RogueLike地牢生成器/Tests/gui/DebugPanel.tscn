@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2bsyahl2fwy1"]
 
-[ext_resource type="Script" uid="uid://de0ja8y7tmn4x" path="res://通用/AIGC/RogueLike地牢生成器/DebugPanel.gd" id="1_2lqm3"]
+[ext_resource type="Script" uid="uid://de0ja8y7tmn4x" path="res://通用/AIGC/RogueLike地牢生成器/Tests/gui/DebugPanel.gd" id="1_2lqm3"]
 
 [node name="DebugPanel" type="Panel"]
 anchors_preset = 15

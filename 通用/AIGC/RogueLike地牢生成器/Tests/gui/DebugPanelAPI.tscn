@@ -1,0 +1,218 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6c772ruvj37t"]
+
+[ext_resource type="Script" uid="uid://7ygkurw5d8fm" path="res://通用/AIGC/RogueLike地牢生成器/Tests/gui/DebugPanelAPI.gd" id="1_mxpsd"]
+
+[node name="DebugPanelAPI" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxpsd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HeaderSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "DungeonGenerator API 调试面板"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HeaderSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "简化的地牢生成器接口测试"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainControls" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BasicConfig" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfigLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "基础配置"
+
+[node name="ConfigGrid" type="GridContainer" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="WidthLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+layout_mode = 2
+text = "宽度:"
+
+[node name="WidthSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 512.0
+value = 128.0
+
+[node name="HeightLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+layout_mode = 2
+text = "高度:"
+
+[node name="HeightSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 512.0
+value = 128.0
+
+[node name="MinRoomLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+layout_mode = 2
+text = "最小房间:"
+
+[node name="MinRoomSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 4.0
+max_value = 20.0
+value = 8.0
+
+[node name="MaxRoomLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+layout_mode = 2
+text = "最大房间:"
+
+[node name="MaxRoomSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 8.0
+max_value = 50.0
+value = 20.0
+
+[node name="FontSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+layout_mode = 2
+text = "字体大小:"
+
+[node name="FontSizeSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MainControls/BasicConfig/ConfigGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 4.0
+max_value = 20.0
+value = 8.0
+
+[node name="QuickActions" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuickLabel" type="Label" parent="MarginContainer/VBoxContainer/MainControls/QuickActions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "快速生成"
+
+[node name="QuickButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MainControls/QuickActions"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="SmallDungeonBtn" type="Button" parent="MarginContainer/VBoxContainer/MainControls/QuickActions/QuickButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "小型地牢 (64x64)"
+
+[node name="MediumDungeonBtn" type="Button" parent="MarginContainer/VBoxContainer/MainControls/QuickActions/QuickButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "中型地牢 (128x128)"
+
+[node name="LargeDungeonBtn" type="Button" parent="MarginContainer/VBoxContainer/MainControls/QuickActions/QuickButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "大型地牢 (256x256)"
+
+[node name="DenseDungeonBtn" type="Button" parent="MarginContainer/VBoxContainer/MainControls/QuickActions/QuickButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "密集型地牢"
+
+[node name="SparseDungeonBtn" type="Button" parent="MarginContainer/VBoxContainer/MainControls/QuickActions/QuickButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "稀疏型地牢"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ActionSection" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GenerateBtn" type="Button" parent="MarginContainer/VBoxContainer/ActionSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "生成地牢"
+
+[node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/ActionSection"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置"
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DisplaySection" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatsSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/DisplaySection"]
+layout_mode = 2
+
+[node name="StatsLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/DisplaySection/StatsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[b]统计信息[/b]
+
+等待生成地牢..."
+
+[node name="CanvasSection" type="VBoxContainer" parent="MarginContainer/VBoxContainer/DisplaySection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CanvasLabel" type="Label" parent="MarginContainer/VBoxContainer/DisplaySection/CanvasSection"]
+layout_mode = 2
+text = "地牢预览"
+
+[node name="DungeonCanvas" type="RichTextLabel" parent="MarginContainer/VBoxContainer/DisplaySection/CanvasSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[code][/code]"
+selection_enabled = true

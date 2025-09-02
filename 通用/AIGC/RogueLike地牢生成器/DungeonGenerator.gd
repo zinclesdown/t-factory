@@ -1,6 +1,19 @@
 # DungeonGenerator.gd
 # Godot GDScript版本的地牢生成器
-# 使用GDScript 4.x的新特性
+# 
+# 这是一个基于GDScript 4.x的高性能Roguelike风格地牢生成器，采用数据驱动架构设计。
+# 核心算法包括BSP树空间分割、Kruskal最小生成树房间连接、L型走廊生成等。
+# 
+# 主要特性：
+# - 数据驱动架构：所有状态和配置都可序列化为JSON
+# - 高性能算法：基于BSP树和最小生成树的高效地牢生成
+# - 模块化设计：每个组件职责单一，便于维护和扩展
+# - 完整的错误处理：使用枚举定义错误类型，便于调试
+# - 统计信息：提供详细的生成统计和性能指标
+# 
+# @author Claude Code
+# @version 2.1
+# @date 2025-09-01
 
 @tool
 extends RefCounted
@@ -9,26 +22,44 @@ class_name DungeonGenerator
 # ===========================================
 # 错误类型枚举
 # ===========================================
+## 地牢生成过程中可能遇到的错误类型
+## 使用枚举便于错误处理和调试
 enum DungeonError {
+	## 生成成功
 	SUCCESS = 0,
+	## 配置参数无效
 	INVALID_CONFIG = 1,
+	## 生成过程失败
 	GENERATION_FAILED = 2,
+	## 无法生成任何房间
 	NO_ROOMS_GENERATED = 3,
+	## 无法建立房间连接
 	NO_CONNECTIONS_POSSIBLE = 4,
+	## 坐标超出有效范围
 	INVALID_COORDINATES = 5,
+	## 网格访问越界
 	GRID_OUT_OF_BOUNDS = 6,
+	## 房间重叠
 	ROOM_OVERLAP = 7,
+	## BSP树分割失败
 	BSP_SPLIT_FAILED = 8,
 }
 
 # ===========================================
 # 地牢元素类型
 # ===========================================
+## 地牢网格中不同类型单元格的枚举定义
+## 每种类型都有特定的含义和渲染方式
 enum CellType {
+	## 空白区域，未使用的空间
 	EMPTY = 0,
+	## 房间地面，可行走区域
 	ROOM_FLOOR = 1,
+	## 墙壁，不可通过的障碍物
 	WALL = 2,
+	## 走廊，连接房间的通道
 	CORRIDOR = 3,
+	## 门，房间与走廊的连接点
 	DOOR = 4,
 }
 
@@ -39,23 +70,31 @@ enum CellType {
 # ===========================================
 # 2D坐标点
 # ===========================================
-## 表示2D空间中的坐标点
+## 表示2D空间中的坐标点，用于地牢中的位置计算
+## 提供距离计算和序列化功能
 class Point:
+	## X坐标
 	var x: int
+	## Y坐标
 	var y: int
 	
 	## 构造函数
+	## @param p_x: X坐标
+	## @param p_y: Y坐标
 	func _init(p_x: int, p_y: int):
 		x = p_x
 		y = p_y
 	
 	## 计算到另一个点的欧几里得距离
+	## @param other: 目标点
+	## @return: 两点之间的直线距离
 	func distance_to(other: Point) -> float:
 		var dx = x - other.x
 		var dy = y - other.y
 		return sqrt(dx * dx + dy * dy)
 	
-	## 转换为字典格式
+	## 转换为字典格式，便于序列化和调试
+	## @return: 包含x,y坐标的字典
 	func to_dict() -> Dictionary:
 		return {"x": x, "y": y}
 
@@ -63,13 +102,23 @@ class Point:
 # ===========================================
 # 房间数据结构
 # ===========================================
-## 表示地牢中的矩形房间
+## 表示地牢中的矩形房间，包含位置、尺寸和计算方法
+## 房间是地牢的基本组成单元，通过走廊相互连接
 class Room:
+	## 房间左上角X坐标
 	var x: int
+	## 房间左上角Y坐标
 	var y: int
+	## 房间宽度
 	var width: int
+	## 房间高度
 	var height: int
 	
+	## 构造函数
+	## @param p_x: 左上角X坐标
+	## @param p_y: 左上角Y坐标
+	## @param p_width: 房间宽度
+	## @param p_height: 房间高度
 	func _init(p_x: int, p_y: int, p_width: int, p_height: int):
 		x = p_x
 		y = p_y
