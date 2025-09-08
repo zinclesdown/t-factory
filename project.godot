@@ -28,6 +28,7 @@ config/icon="uid://cm0svkod4g3ra"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 ImGuiRoot="*res://addons/imgui-godot/data/ImGuiRoot.tscn"
+DialogueState="*res://通用/自动加载/对话OverLay/DialogueState.gd"
 
 [debug]
 
@@ -238,7 +239,7 @@ d={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Jam游戏/特殊的塔防游戏/资源/对话/荷取的测试对话.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Jam游戏/特殊的塔防游戏/资源/对话/测试用对话.dialogue", "res://通用/AIGC/LLM Dialogue/rpg_example_dialogue.dialogue", "res://通用/AIGC/LLM Dialogue/untitled.dialogue")
 
 [layer_names]
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dkihodfihr71o"
+path="res://.godot/imported/测试用对话.dialogue-b9181ed1cd2d9cb5f919401981a3a6d1.tres"
+
+[deps]
+
+source_file="res://Jam游戏/特殊的塔防游戏/资源/对话/测试用对话.dialogue"
+dest_files=["res://.godot/imported/测试用对话.dialogue-b9181ed1cd2d9cb5f919401981a3a6d1.tres"]
+
+[params]
+
+defaults=true

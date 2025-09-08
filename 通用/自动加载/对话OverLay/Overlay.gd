@@ -167,7 +167,8 @@ func _on_mutation_cooldown_timeout() -> void:
 func _on_mutated(_mutation: Dictionary) -> void:
 	正在等待玩家输入 = false
 	即将隐藏对话气球 = true
-	函数突变冷却计时器.开始对话(0.1)
+	函数突变冷却计时器.start(0.1)
+	#函数突变冷却计时器.开始对话(0.1)
 
 
 ## 检测是否需要跳过对话打字效果

@@ -1,0 +1,73 @@
+# 简短测试对话
+
+using DialogueState
+
+~ start
+村民: 你好，冒险者！欢迎来到我们的村庄。
+% 村民: 看起来你经过了长途跋涉。
+% 村民: 我们村子很少见到陌生人。
+
+- 你是谁？
+	村民: 我是这个村子的村长。
+	村民: 负责照顾这里的一切。
+	do setvar("met_mayor", true)
+	- 村子有什么特别之处吗？
+		村民: 我们村子有座古老的守护石。
+		村民: 它保护我们免受邪恶侵害。
+		=> stone_info
+	- 我能在这里休息吗？
+		=> rest_option
+- 我在寻找任务
+	村民: [#interested] 任务？你看起来很能干。
+	村民: 我们确实需要一些帮助。
+	=> quest_offer
+- 只是路过
+	村民: [#disappointed] 哦，这样啊...
+	村民: 如果改变主意，随时来找我。
+	=> END
+
+~ stone_info
+村民: 守护石在村子中央的神殿里。
+村民: 它最近变得有些奇怪...
+- 怎么奇怪了？
+	村民: [#worried] 它的光芒在减弱。
+	村民: 我们不知道为什么。
+	do DialogueState.setvar("knows_stone_problem", true)
+	=> start
+- 我能去看看吗？
+	村民: [#serious] 当然可以，但要小心。
+	村民: 接近它的人有时会看到奇怪的东西。
+	do DialogueState.setvar("can_visit_stone", true)
+	=> start
+
+~ rest_option
+村民: [#friendly] 当然可以！
+if DialogueState.getvar("gold", 0) >= 5
+	村民: 住宿需要 5 个金币，你愿意吗？
+	- 好的 [do DialogueState.setvar("gold", DialogueState.getvar("gold") - 5)]
+		村民: [#happy] 谢谢！这是你的房间钥匙。
+		do DialogueState.setvar("rested", true)
+		=> END
+	- 太贵了
+		=> start
+else
+	村民: [#sad] 住宿需要 5 个金币，但你钱不够。
+	村民: 如果你愿意帮忙，可以免费住宿。
+	- 我愿意帮忙
+		=> quest_offer
+	- 算了
+		=> start
+
+~ quest_offer
+村民: [#hopeful] 太好了！
+村民: 我们需要有人去神殿查看守护石。
+- 我去查看
+	村民: [#grateful] 谢谢你！
+	do DialogueState.setvar("accepted_quest", true)
+	=> END
+- 先告诉我更多
+	村民: 守护石最近光芒减弱，我们很担心。
+	村民: 去看看情况，然后回来报告。
+	=> start
+
+~ END

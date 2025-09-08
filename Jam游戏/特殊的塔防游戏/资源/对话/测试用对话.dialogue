@@ -1,0 +1,28 @@
+~ title
+
+[wave amp=25 freq=5]Hi![/wave]
+
+[shake rate=20 level=10]HELLO world![/shake]
+
+Emmmm... Who are you?
+
+Nathan: [[Hi|Hello|Howdy]]
+
+[speed=0.2]
+
+Nathan: This is Some Dialogue
+Nathan: Choose a Response...
+- Option 1
+	Nathan: You chose option 1
+- Option 2
+	Nathan: You chose option 2
+
+% Nathan: This is random line 1.
+% Nathan: This is random line 2.
+%1 Nathan: This is weighted random line 3.
+
+Nathan: [[Hi|Hello|Howdy]]
+
+
+=> title
+=> END
