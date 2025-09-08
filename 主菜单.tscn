@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6rqmqpflecn3"]
+
+[ext_resource type="Script" uid="uid://oxnyn0g6dl0g" path="res://主菜单.gd" id="1_xp2j8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="主菜单" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_xp2j8")
+
+[node name="背景" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="标题" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "东方工厂模拟游戏"
+horizontal_alignment = 1
+
+[node name="按钮容器" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="开始游戏按钮" type="Button" parent="按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2")
+text = "开始游戏"
+
+[node name="继续游戏按钮" type="Button" parent="按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2")
+text = "继续游戏"
+
+[node name="设置按钮" type="Button" parent="按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2")
+text = "设置"
+
+[node name="退出游戏按钮" type="Button" parent="按钮容器"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_2")
+text = "退出游戏"
+
+[connection signal="pressed" from="按钮容器/开始游戏按钮" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="按钮容器/继续游戏按钮" to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="按钮容器/设置按钮" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="按钮容器/退出游戏按钮" to="." method="_on_exit_game_pressed"]

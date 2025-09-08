@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://csmygx26cbqcv"
+path="res://.godot/imported/untitled.dialogue-45139739ec59c0966eda7785dc2d07c0.tres"
+
+[deps]
+
+source_file="res://工具/AIGC/LLM Dialogue/untitled.dialogue"
+dest_files=["res://.godot/imported/untitled.dialogue-45139739ec59c0966eda7785dc2d07c0.tres"]
+
+[params]
+
+defaults=true
